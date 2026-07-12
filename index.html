@@ -168,6 +168,16 @@ p{margin:0;}
 .testimonial-name{font-family:var(--font-display);font-weight:600;font-size:15px;margin-bottom:2px;}
 .testimonial-role{font-size:13px;color:var(--text-faint);}
 
+.video-modal{position:fixed;inset:0;background:rgba(10,10,11,0.92);display:none;align-items:center;justify-content:center;z-index:1000;padding:24px;}
+.video-modal.open{display:flex;}
+.video-modal-inner{position:relative;width:100%;max-width:960px;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;}
+.video-modal-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.video-modal-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1001;}
+.video-modal-close:hover{border-color:var(--text-faint);}
+@media (max-width:640px){
+  .video-modal-close{top:12px;right:12px;width:36px;height:36px;}
+}
+
 .case{margin-top:var(--gap-block);}
 .case.case-tight{margin-top:20px;}
 .case-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;overflow:hidden;}
@@ -492,6 +502,13 @@ p{margin:0;}
 
 </main>
 
+<div class="video-modal" id="videoModal">
+  <button class="video-modal-close" id="videoModalClose" aria-label="Закрыть">
+    <svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+  </button>
+  <div class="video-modal-inner" id="videoModalInner"></div>
+</div>
+
 <script>
 const i18n = {
   ru: {
@@ -650,15 +667,37 @@ if(showreelWrap){
   }, { once:true });
 }
 
+const videoModal = document.getElementById('videoModal');
+const videoModalInner = document.getElementById('videoModalInner');
+const videoModalClose = document.getElementById('videoModalClose');
+
+function openVideoModal(id, hash){
+  const src = 'https://player.vimeo.com/video/' + id + '?h=' + hash + '&autoplay=1';
+  videoModalInner.innerHTML = '<iframe title="vimeo-player" src="' + src + '" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>';
+  videoModal.classList.add('open');
+}
+
+function closeVideoModal(){
+  videoModal.classList.remove('open');
+  videoModalInner.innerHTML = '';
+}
+
+if(videoModalClose){
+  videoModalClose.addEventListener('click', closeVideoModal);
+}
+if(videoModal){
+  videoModal.addEventListener('click', (e) => {
+    if(e.target === videoModal) closeVideoModal();
+  });
+}
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') closeVideoModal();
+});
+
 document.querySelectorAll('.carousel-item[data-vimeo-id]').forEach(item => {
-  item.addEventListener('click', function loadReel(){
-    const id = item.dataset.vimeoId;
-    const hash = item.dataset.vimeoH;
-    const src = 'https://player.vimeo.com/video/' + id + '?h=' + hash + '&autoplay=1';
-    item.innerHTML = '<iframe title="vimeo-player" src="' + src + '" style="position:absolute;inset:0;width:100%;height:100%;border:0;" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>';
-    item.style.cursor = 'default';
-    item.style.backgroundImage = 'none';
-  }, { once:true });
+  item.addEventListener('click', () => {
+    openVideoModal(item.dataset.vimeoId, item.dataset.vimeoH);
+  });
 });
 
 const carouselTrack = document.getElementById('motionCarousel');
