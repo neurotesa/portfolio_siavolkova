@@ -116,6 +116,9 @@ p{margin:0;}
 .about-grid > *{min-width:0;}
 .about-copy .section-label{margin-bottom:16px;}
 .video-placeholder{position:relative;aspect-ratio:16/9;background:var(--surface);border:1px solid var(--line);border-radius:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.video-placeholder[data-vimeo-id]{cursor:pointer;}
+.video-placeholder[data-vimeo-id]:hover .video-play{transform:scale(1.06);}
+.video-play{transition:transform .18s ease;}
 .video-play{width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;}
 .video-duration{position:absolute;top:16px;right:16px;font-size:12px;color:var(--text-mute);background:rgba(10,10,11,0.6);padding:5px 10px;border-radius:100px;}
 .video-caption{position:absolute;bottom:18px;left:18px;font-size:13px;color:var(--text-faint);}
@@ -401,9 +404,8 @@ p{margin:0;}
 
   <section class="section" id="motion">
     <p class="section-label reveal" data-i18n="section.motion">Motion</p>
-    <div class="video-placeholder reveal">
-      <div class="video-play"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
-      <span class="video-caption" data-i18n="motion.caption">Шоурил — соберём отдельно</span>
+    <div class="video-placeholder reveal" id="showreelWrap" data-vimeo-id="986483979" data-vimeo-h="e9f316cb5d" style="background-image:url('assets/showreel-thumb.jpg');background-size:cover;background-position:center;">
+      <div class="video-play" id="showreelPlay"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
     </div>
 
     <div class="carousel-wrap reveal">
@@ -591,6 +593,17 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+const showreelWrap = document.getElementById('showreelWrap');
+if(showreelWrap){
+  showreelWrap.addEventListener('click', function loadShowreel(){
+    const id = showreelWrap.dataset.vimeoId;
+    const hash = showreelWrap.dataset.vimeoH;
+    const src = 'https://player.vimeo.com/video/' + id + '?h=' + hash + '&autoplay=1';
+    showreelWrap.innerHTML = '<iframe title="vimeo-player" src="' + src + '" style="position:absolute;inset:0;width:100%;height:100%;border:0;" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>';
+    showreelWrap.style.cursor = 'default';
+  }, { once:true });
+}
 
 const carouselTrack = document.getElementById('motionCarousel');
 const carouselPrev = document.getElementById('carouselPrev');
