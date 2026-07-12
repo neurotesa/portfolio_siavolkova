@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyro — case study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:        #0A0A0B;
+  --surface:   #141416;
+  --surface-2: #1B1B1E;
+  --line:      #26262A;
+  --text:      #F2F2F0;
+  --text-mute: #8C8C91;
+  --text-faint:#5C5C61;
+  --accent:    #9DB4FF;
+  --font-display: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --container: 980px;
+}
+*,*::before,*::after{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 32px;}
+
+.nav{padding:20px 0;position:sticky;top:0;z-index:50;background:rgba(10,10,11,0.75);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;}
+.nav-name{font-family:var(--font-display);font-weight:600;font-size:15px;letter-spacing:-0.01em;}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text-mute);}
+.back-link:hover{color:var(--text);}
+
+.hero{padding:64px 0 32px;}
+.case-tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
+.case-tags span{font-size:13px;color:var(--text-mute);background:var(--surface-2);border:1px solid var(--line);padding:8px 16px;border-radius:8px;}
+.hero h1{font-family:var(--font-display);font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-0.01em;margin:0 0 16px;}
+.hero p{font-size:17px;line-height:1.6;color:var(--text-mute);max-width:640px;margin:0;}
+
+.proto-section{padding:24px 0 96px;}
+.proto-frame{width:100%;border:1px solid var(--line);border-radius:24px;background:var(--surface);overflow:hidden;}
+.proto-frame iframe{width:100%;height:900px;border:0;display:block;}
+
+.footer{padding:32px 0 48px;display:flex;justify-content:space-between;font-size:13px;color:var(--text-faint);border-top:1px solid var(--line);}
+
+@media (max-width:640px){
+  .proto-frame iframe{height:760px;}
+  .hero{padding:40px 0 24px;}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Назад
+    </a>
+    <span class="nav-name">Anastasia Volkova</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="case-tags">
+      <span>FinTech</span><span>Mobile</span><span>Onboarding</span>
+    </div>
+    <h1>Skyro — merchant onboarding</h1>
+    <p>Мобильный флоу регистрации мерчанта: выбор роли, бизнес-данные, документы и подтверждение — с веткой для Sole Proprietor / Corporation / Partnership. Прототип ниже кликабельный — можно пройти весь флоу.</p>
+  </section>
+
+  <section class="proto-section">
+    <div class="proto-frame">
+      <iframe src="skyro-prototype.html" title="Skyro interactive prototype" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <div class="footer">
+    <span>© 2026 Sia Volkova</span>
+    <a href="index.html">На главную</a>
+  </div>
+</main>
+
+</body>
+</html>
