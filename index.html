@@ -16,7 +16,7 @@
   --text:      #F2F2F0;
   --text-mute: #8C8C91;
   --text-faint:#5C5C61;
-  --accent:    #9DB4FF;
+  --accent:    #4ADE80;
   --font-display: 'Manrope', sans-serif;
   --font-body: 'Inter', sans-serif;
   --container: 980px;
@@ -139,7 +139,8 @@ p{margin:0;}
 .exp-result{font-size:14px;color:#4ADE80;font-weight:600;margin:0;}
 
 .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-.quick-media{aspect-ratio:1/1;background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:14px;}
+.quick-media{aspect-ratio:4/3;background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:14px;overflow:hidden;}
+.quick-media img{width:100%;height:100%;object-fit:cover;display:block;}
 .quick-name{font-family:var(--font-display);font-weight:600;font-size:15px;margin-bottom:4px;}
 .quick-desc{font-size:13px;color:var(--text-mute);line-height:1.4;}
 
@@ -344,7 +345,7 @@ p{margin:0;}
     <p class="section-label reveal" data-i18n="section.quick">Quick projects</p>
     <div class="quick-grid">
       <a href="skyro-case.html" class="quick-item reveal" style="display:block;">
-        <div class="quick-media"></div>
+        <div class="quick-media"><img src="assets/skyro-quick-thumb.jpg" alt="Skyro merchant registration flow"></div>
         <p class="quick-name">Skyro</p>
         <p class="quick-desc" data-i18n="quick1.desc">Мобильный флоу регистрации мерчанта</p>
       </a>
