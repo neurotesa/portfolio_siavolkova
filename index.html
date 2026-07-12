@@ -656,6 +656,32 @@ if(carouselTrack && carouselPrev && carouselNext){
   carouselNext.addEventListener('click', () => carouselTrack.scrollBy({left:scrollAmount(), behavior:'smooth'}));
 }
 
+function fitHeroHeadline(){
+  const headline = document.querySelector('.hero-headline');
+  const hero = document.querySelector('.hero');
+  if(!headline || !hero) return;
+
+  if(window.innerWidth <= 640){
+    headline.style.fontSize = '';
+    return;
+  }
+
+  const baseSize = 16;
+  headline.style.fontSize = baseSize + 'px';
+  const naturalWidth = headline.scrollWidth;
+  const availableWidth = hero.clientWidth;
+  if(naturalWidth === 0) return;
+
+  const fitted = baseSize * (availableWidth / naturalWidth);
+  headline.style.fontSize = fitted + 'px';
+}
+
+fitHeroHeadline();
+window.addEventListener('resize', fitHeroHeadline);
+if(document.fonts && document.fonts.ready){
+  document.fonts.ready.then(fitHeroHeadline);
+}
+
 </script>
 
 </body>
