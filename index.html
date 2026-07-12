@@ -83,8 +83,8 @@ p{margin:0;}
 
 .hero-headline{display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;gap:0 0.35em;font-size:clamp(30px,7vw,64px);font-weight:800;letter-spacing:-0.01em;line-height:1;margin:0 0 28px;text-transform:uppercase;white-space:nowrap;}
 .hero-word{font-family:var(--font-display);}
-.hero-avatar{display:inline-flex;flex-shrink:0;}
-.hero-avatar svg{width:1.35em;height:1.35em;display:block;}
+.hero-avatar{display:inline-flex;flex-shrink:0;border-radius:50%;overflow:hidden;background:var(--bg);}
+.hero-avatar video{width:1.35em;height:1.35em;display:block;object-fit:cover;}
 .hero-avatar-bob{animation:avatarBob 3.2s ease-in-out infinite;transform-origin:50% 60%;}
 .hero-avatar-eyes{animation:avatarBlink 4.5s ease-in-out infinite;transform-origin:50% 52%;}
 @keyframes avatarBob{
@@ -112,9 +112,10 @@ p{margin:0;}
 .section--divider{border-top:1px solid var(--line);}
 .section-label{font-size:13px;color:var(--text-faint);margin-bottom:28px;letter-spacing:0.02em;}
 
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.about-grid{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;}
 .about-grid > *{min-width:0;}
 .about-copy .section-label{margin-bottom:16px;}
+.photo-placeholder{aspect-ratio:1/1;width:100%;max-width:220px;background:var(--surface);border:1px solid var(--line);border-radius:18px;}
 .video-placeholder{position:relative;aspect-ratio:16/9;background:var(--surface);border:1px solid var(--line);border-radius:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .video-placeholder[data-vimeo-id]{cursor:pointer;}
 .video-placeholder[data-vimeo-id]:hover .video-play{transform:scale(1.06);}
@@ -156,6 +157,13 @@ p{margin:0;}
 
 .motion-text{font-size:16px;line-height:1.6;color:var(--text-mute);max-width:600px;margin-top:24px;}
 
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.testimonial-grid > *{min-width:0;}
+.testimonial-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:32px;display:flex;flex-direction:column;}
+.testimonial-quote{font-size:15px;line-height:1.6;color:var(--text-mute);margin-bottom:24px;}
+.testimonial-name{font-family:var(--font-display);font-weight:600;font-size:15px;margin-bottom:2px;}
+.testimonial-role{font-size:13px;color:var(--text-faint);}
+
 .case{margin-top:var(--gap-block);}
 .case.case-tight{margin-top:20px;}
 .case-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;overflow:hidden;}
@@ -190,6 +198,7 @@ p{margin:0;}
   .hero{padding:64px 0 0;}
   .about-grid{grid-template-columns:1fr;gap:24px;}
   .quick-grid{grid-template-columns:repeat(2,1fr);}
+  .testimonial-grid{grid-template-columns:1fr;}
   .exp-item-head{flex-direction:column;gap:4px;align-items:flex-start;}
   .carousel-btn{display:none;}
   .carousel-item{width:180px;}
@@ -234,20 +243,7 @@ p{margin:0;}
     <h1 class="hero-headline">
       <span class="hero-word" data-i18n="hero.word1">Product</span>
       <span class="hero-avatar" aria-hidden="true">
-        <svg viewBox="0 0 100 100">
-          <g class="hero-avatar-bob">
-            <circle cx="50" cy="52" r="34" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
-            <path d="M20 40 Q22 14 50 14 Q78 14 80 40 Q64 30 50 30 Q36 30 20 40 Z" fill="var(--text)"/>
-            <g class="hero-avatar-eyes">
-              <ellipse cx="39" cy="52" rx="9" ry="6" fill="none" stroke="var(--text-mute)" stroke-width="1.5"/>
-              <ellipse cx="63" cy="52" rx="9" ry="6" fill="none" stroke="var(--text-mute)" stroke-width="1.5"/>
-              <line x1="48" y1="52" x2="54" y2="52" stroke="var(--text-mute)" stroke-width="1.5"/>
-              <circle cx="39" cy="52" r="2.4" fill="var(--accent)"/>
-              <circle cx="63" cy="52" r="2.4" fill="var(--accent)"/>
-            </g>
-            <path d="M42 66 Q50 71 58 66" fill="none" stroke="var(--text-mute)" stroke-width="2" stroke-linecap="round"/>
-          </g>
-        </svg>
+        <video src="assets/hero-avatar.mp4" autoplay muted loop playsinline></video>
       </span>
       <span class="hero-word" data-i18n="hero.word2">designer</span>
     </h1>
@@ -272,11 +268,7 @@ p{margin:0;}
 
   <section class="section">
     <div class="about-grid">
-      <div class="video-placeholder reveal">
-        <div class="video-play"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
-        <span class="video-duration">1:00</span>
-        <span class="video-caption" data-i18n="video.caption">Видео скоро появится</span>
-      </div>
+      <div class="photo-placeholder reveal"></div>
       <div class="about-copy">
         <p class="section-label reveal" data-i18n="section.about">Обо мне</p>
         <p class="about-text reveal" data-i18n="about.text">Плейсхолдер короткого текста о себе — пара предложений: кто я,
@@ -448,6 +440,27 @@ p{margin:0;}
     </div>
   </section>
 
+  <section class="section" id="testimonials">
+    <p class="section-label reveal" data-i18n="section.testimonials">Отзывы</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote" data-i18n="test1.quote">Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.</p>
+        <p class="testimonial-name" data-i18n="test1.name">Имя Фамилия</p>
+        <p class="testimonial-role" data-i18n="test1.role">Должность, компания — плейсхолдер</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote" data-i18n="test2.quote">Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.</p>
+        <p class="testimonial-name" data-i18n="test2.name">Имя Фамилия</p>
+        <p class="testimonial-role" data-i18n="test2.role">Должность, компания — плейсхолдер</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote" data-i18n="test3.quote">Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.</p>
+        <p class="testimonial-name" data-i18n="test3.name">Имя Фамилия</p>
+        <p class="testimonial-role" data-i18n="test3.role">Должность, компания — плейсхолдер</p>
+      </div>
+    </div>
+  </section>
+
   <section class="contact">
     <h2 class="reveal" data-i18n="contact.title">Готова обсудить<br>следующий проект.</h2>
     <div class="contact-links reveal">
@@ -477,6 +490,7 @@ const i18n = {
     "section.quick": "Quick projects",
     "section.motion": "Motion",
     "section.about": "Обо мне",
+    "section.testimonials": "Отзывы",
     "about.text": "Плейсхолдер короткого текста о себе — пара предложений: кто я, чем занимаюсь, что для меня важно в работе. Без длинной автобиографии, просто человеческий тон перед списком опыта.",
     "video.caption": "Видео скоро появится",
     "exp1.role": "Product Designer", "exp1.co": "Компания / клиент — плейсхолдер",
@@ -503,6 +517,12 @@ const i18n = {
     "reel3.label": "Эксплейнер №3",
     "reel4.label": "Эксплейнер №4",
     "motion.text": "Плейсхолдер короткого текста — какие моушн-проекты я делала, для кого, и как этот опыт связан с product-дизайном сегодня.",
+    "test1.quote": "Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.",
+    "test1.name": "Имя Фамилия", "test1.role": "Должность, компания — плейсхолдер",
+    "test2.quote": "Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.",
+    "test2.name": "Имя Фамилия", "test2.role": "Должность, компания — плейсхолдер",
+    "test3.quote": "Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.",
+    "test3.name": "Имя Фамилия", "test3.role": "Должность, компания — плейсхолдер",
     "labs.placeholder": "Место под будущие эксперименты — например AI-тул",
     "contact.title": "Готова обсудить<br>следующий проект.",
     "contact.email": "email — плейсхолдер"
@@ -517,6 +537,7 @@ const i18n = {
     "section.quick": "Quick projects",
     "section.motion": "Motion",
     "section.about": "About me",
+    "section.testimonials": "Testimonials",
     "about.text": "Short about-me placeholder — a couple of sentences on who I am, what I do, and what matters to me in the work. No long autobiography, just a human tone before the experience list.",
     "video.caption": "Video coming soon",
     "exp1.role": "Product Designer", "exp1.co": "Company / client — placeholder",
@@ -543,6 +564,12 @@ const i18n = {
     "reel3.label": "Explainer #3",
     "reel4.label": "Explainer #4",
     "motion.text": "Short placeholder text — which motion projects I worked on, for whom, and how that experience connects to product design today.",
+    "test1.quote": "Testimonial placeholder — a couple of sentences on how great and effective it was to work together.",
+    "test1.name": "First Last", "test1.role": "Role, company — placeholder",
+    "test2.quote": "Testimonial placeholder — a couple of sentences on how great and effective it was to work together.",
+    "test2.name": "First Last", "test2.role": "Role, company — placeholder",
+    "test3.quote": "Testimonial placeholder — a couple of sentences on how great and effective it was to work together.",
+    "test3.name": "First Last", "test3.role": "Role, company — placeholder",
     "labs.placeholder": "Slot for future experiments — like an AI tool",
     "contact.title": "Ready to talk about<br>the next project.",
     "contact.email": "email — placeholder"
