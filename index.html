@@ -79,7 +79,7 @@ p{margin:0;}
 .hero-centered{text-align:center;display:flex;flex-direction:column;align-items:center;}
 .hero-top{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:36px;}
 .status-pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text-mute);background:var(--surface);border:1px solid var(--line);padding:7px 14px 7px 10px;border-radius:100px;}
-.status-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(157,180,255,0.15);}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 3px rgba(74,222,128,0.15);}
 
 .hero-headline{display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;gap:0 0.35em;font-size:clamp(30px,7vw,64px);font-weight:800;letter-spacing:-0.01em;line-height:1;margin:0 0 28px;text-transform:uppercase;white-space:nowrap;}
 .hero-word{font-family:var(--font-display);}
@@ -122,7 +122,7 @@ p{margin:0;}
 .video-placeholder[data-vimeo-id]{cursor:pointer;}
 .video-placeholder[data-vimeo-id]:hover .video-play{transform:scale(1.06);}
 .video-play{transition:transform .18s ease;}
-.video-play{width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;}
+.video-play{width:56px;height:56px;border-radius:50%;background:#F2F2F0;display:flex;align-items:center;justify-content:center;}
 .video-duration{position:absolute;top:16px;right:16px;font-size:12px;color:var(--text-mute);background:rgba(10,10,11,0.6);padding:5px 10px;border-radius:100px;}
 .video-caption{position:absolute;bottom:18px;left:18px;font-size:13px;color:var(--text-faint);}
 
@@ -150,7 +150,7 @@ p{margin:0;}
 .carousel-item[data-vimeo-id]{cursor:pointer;}
 .carousel-item[data-vimeo-id]:hover .carousel-play{transform:scale(1.08);}
 .carousel-play{transition:transform .18s ease;}
-.carousel-play{width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;}
+.carousel-play{width:36px;height:36px;border-radius:50%;background:#F2F2F0;display:flex;align-items:center;justify-content:center;}
 .carousel-label{position:absolute;bottom:12px;left:12px;font-size:12px;color:var(--text-faint);}
 .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--text-mute);display:flex;align-items:center;justify-content:center;cursor:pointer;}
 .carousel-btn:hover{color:var(--text);border-color:var(--text-faint);}
@@ -163,6 +163,8 @@ p{margin:0;}
 .testimonial-grid > *{min-width:0;}
 .testimonial-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:32px;display:flex;flex-direction:column;}
 .testimonial-quote{font-size:15px;line-height:1.6;color:var(--text-mute);margin-bottom:24px;}
+.testimonial-footer{display:flex;align-items:center;gap:12px;margin-top:auto;}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;}
 .testimonial-name{font-family:var(--font-display);font-weight:600;font-size:15px;margin-bottom:2px;}
 .testimonial-role{font-size:13px;color:var(--text-faint);}
 
@@ -357,25 +359,25 @@ p{margin:0;}
   <section class="section" id="motion">
     <p class="section-label reveal" data-i18n="section.motion">Motion</p>
     <div class="video-placeholder reveal" id="showreelWrap" data-vimeo-id="986483979" data-vimeo-h="e9f316cb5d" style="background-image:url('assets/showreel-thumb.jpg');background-size:cover;background-position:center;">
-      <div class="video-play" id="showreelPlay"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
+      <div class="video-play" id="showreelPlay"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="#8C8C91"/></svg></div>
     </div>
 
     <div class="carousel-wrap reveal">
       <div class="carousel-track" id="motionCarousel">
         <div class="carousel-item" data-vimeo-id="708579268" data-vimeo-h="015769af14" style="background-image:url('assets/reel1-thumb.jpg');background-size:cover;background-position:center;">
-          <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
+          <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#8C8C91"/></svg></div>
         </div>
         <div class="carousel-item" data-vimeo-id="729928768" data-vimeo-h="a2adcaecd3" style="background-image:url('assets/reel2-thumb.jpg');background-size:cover;background-position:center;">
-          <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
+          <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#8C8C91"/></svg></div>
         </div>
         <div class="carousel-item" data-vimeo-id="715960847" data-vimeo-h="0071d9c262" style="background-image:url('assets/reel3-thumb.jpg');background-size:cover;background-position:center;">
-          <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
+          <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#8C8C91"/></svg></div>
         </div>
         <div class="carousel-item" data-vimeo-id="493337381" data-vimeo-h="d1ba2b0b23" style="background-image:url('assets/reel4-thumb.jpg');background-size:cover;background-position:center;">
-          <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
+          <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#8C8C91"/></svg></div>
         </div>
         <div class="carousel-item" data-vimeo-id="338222790" data-vimeo-h="0c25a9f865" style="background-image:url('assets/reel5-thumb.jpg');background-size:cover;background-position:center;">
-          <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
+          <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#8C8C91"/></svg></div>
         </div>
       </div>
       <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Назад">
@@ -446,19 +448,34 @@ p{margin:0;}
     <p class="section-label reveal" data-i18n="section.testimonials">Отзывы</p>
     <div class="testimonial-grid">
       <div class="testimonial-card reveal">
-        <p class="testimonial-quote" data-i18n="test1.quote">Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.</p>
-        <p class="testimonial-name" data-i18n="test1.name">Имя Фамилия</p>
-        <p class="testimonial-role" data-i18n="test1.role">Должность, компания — плейсхолдер</p>
+        <p class="testimonial-quote" data-i18n="test1.quote">I recommend Anastasia for her timely delivery and professionalism. She's a joy to work with! Positive and collaborative</p>
+        <div class="testimonial-footer">
+          <img class="testimonial-avatar" src="assets/testimonial-ahmad.jpg" alt="">
+          <div>
+            <p class="testimonial-name" data-i18n="test1.name">Ahmad Al-Karmi</p>
+            <p class="testimonial-role" data-i18n="test1.role">Product Manager</p>
+          </div>
+        </div>
       </div>
       <div class="testimonial-card reveal">
-        <p class="testimonial-quote" data-i18n="test2.quote">Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.</p>
-        <p class="testimonial-name" data-i18n="test2.name">Имя Фамилия</p>
-        <p class="testimonial-role" data-i18n="test2.role">Должность, компания — плейсхолдер</p>
+        <p class="testimonial-quote" data-i18n="test2.quote">Anastasia is an outstanding mentor with deep expertise. She helped me master complex AE techniques, highly recommend</p>
+        <div class="testimonial-footer">
+          <img class="testimonial-avatar" src="assets/testimonial-passant.jpg" alt="">
+          <div>
+            <p class="testimonial-name" data-i18n="test2.name">Passant Khattab</p>
+            <p class="testimonial-role" data-i18n="test2.role">Graphic Designer</p>
+          </div>
+        </div>
       </div>
       <div class="testimonial-card reveal">
-        <p class="testimonial-quote" data-i18n="test3.quote">Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.</p>
-        <p class="testimonial-name" data-i18n="test3.name">Имя Фамилия</p>
-        <p class="testimonial-role" data-i18n="test3.role">Должность, компания — плейсхолдер</p>
+        <p class="testimonial-quote" data-i18n="test3.quote">Anastasia delivered stunning UI visuals, upgraded our processes, and automated key parts of the design routine</p>
+        <div class="testimonial-footer">
+          <img class="testimonial-avatar" src="assets/testimonial-german.jpg" alt="">
+          <div>
+            <p class="testimonial-name" data-i18n="test3.name">German Shalov</p>
+            <p class="testimonial-role" data-i18n="test3.role">Senior Product Manager</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -519,12 +536,12 @@ const i18n = {
     "reel3.label": "Эксплейнер №3",
     "reel4.label": "Эксплейнер №4",
     "motion.text": "Плейсхолдер короткого текста — какие моушн-проекты я делала, для кого, и как этот опыт связан с product-дизайном сегодня.",
-    "test1.quote": "Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.",
-    "test1.name": "Имя Фамилия", "test1.role": "Должность, компания — плейсхолдер",
-    "test2.quote": "Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.",
-    "test2.name": "Имя Фамилия", "test2.role": "Должность, компания — плейсхолдер",
-    "test3.quote": "Плейсхолдер отзыва — пара предложений о том, как было приятно и результативно работать вместе.",
-    "test3.name": "Имя Фамилия", "test3.role": "Должность, компания — плейсхолдер",
+    "test1.quote": "I recommend Anastasia for her timely delivery and professionalism. She's a joy to work with! Positive and collaborative",
+    "test1.name": "Ahmad Al-Karmi", "test1.role": "Product Manager",
+    "test2.quote": "Anastasia is an outstanding mentor with deep expertise. She helped me master complex AE techniques, highly recommend",
+    "test2.name": "Passant Khattab", "test2.role": "Graphic Designer",
+    "test3.quote": "Anastasia delivered stunning UI visuals, upgraded our processes, and automated key parts of the design routine",
+    "test3.name": "German Shalov", "test3.role": "Senior Product Manager",
     "labs.placeholder": "Место под будущие эксперименты — например AI-тул",
     "contact.title": "Готова обсудить<br>следующий проект.",
     "contact.email": "email — плейсхолдер"
@@ -566,12 +583,12 @@ const i18n = {
     "reel3.label": "Explainer #3",
     "reel4.label": "Explainer #4",
     "motion.text": "Short placeholder text — which motion projects I worked on, for whom, and how that experience connects to product design today.",
-    "test1.quote": "Testimonial placeholder — a couple of sentences on how great and effective it was to work together.",
-    "test1.name": "First Last", "test1.role": "Role, company — placeholder",
-    "test2.quote": "Testimonial placeholder — a couple of sentences on how great and effective it was to work together.",
-    "test2.name": "First Last", "test2.role": "Role, company — placeholder",
-    "test3.quote": "Testimonial placeholder — a couple of sentences on how great and effective it was to work together.",
-    "test3.name": "First Last", "test3.role": "Role, company — placeholder",
+    "test1.quote": "I recommend Anastasia for her timely delivery and professionalism. She's a joy to work with! Positive and collaborative",
+    "test1.name": "Ahmad Al-Karmi", "test1.role": "Product Manager",
+    "test2.quote": "Anastasia is an outstanding mentor with deep expertise. She helped me master complex AE techniques, highly recommend",
+    "test2.name": "Passant Khattab", "test2.role": "Graphic Designer",
+    "test3.quote": "Anastasia delivered stunning UI visuals, upgraded our processes, and automated key parts of the design routine",
+    "test3.name": "German Shalov", "test3.role": "Senior Product Manager",
     "labs.placeholder": "Slot for future experiments — like an AI tool",
     "contact.title": "Ready to talk about<br>the next project.",
     "contact.email": "email — placeholder"
