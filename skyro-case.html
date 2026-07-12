@@ -16,7 +16,7 @@
   --text:      #F2F2F0;
   --text-mute: #8C8C91;
   --text-faint:#5C5C61;
-  --accent:    #9DB4FF;
+  --accent:    #4ADE80;
   --font-display: 'Manrope', sans-serif;
   --font-body: 'Inter', sans-serif;
   --container: 980px;
@@ -48,16 +48,63 @@ a{color:inherit;text-decoration:none;}
 
 .footer{padding:32px 0 48px;display:flex;justify-content:space-between;font-size:13px;color:var(--text-faint);}
 
+.before-section{padding:0 0 96px;}
+.before-text .section-label{margin-bottom:12px;}
+.section-label{font-size:13px;color:var(--text-faint);letter-spacing:0.02em;}
+.before-desc{font-size:17px;line-height:1.6;color:var(--text-mute);max-width:640px;margin:0;}
+.shot-frame{width:340px;min-height:340px;margin:0 auto;overflow-y:auto;overflow-x:hidden;border:1px solid var(--line);border-radius:14px;background:var(--surface);scrollbar-width:thin;flex-shrink:0;}
+.shot-frame::-webkit-scrollbar{width:8px;}
+.shot-frame::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px;}
+.shot-frame img{width:100%;display:block;}
+.before-text h2{font-family:var(--font-display);font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:-0.01em;margin:32px 0 14px;}
+.problem-intro{font-size:16px;color:var(--text-mute);margin:0 0 10px;}
+
+.content-section{padding:0 0 40px;}
+.content-block{margin-bottom:56px;max-width:700px;}
+.content-block h2{font-family:var(--font-display);font-size:clamp(24px,4vw,32px);font-weight:800;letter-spacing:-0.01em;margin:0 0 20px;}
+.content-block h3{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.04em;margin:28px 0 14px;}
+.content-block p{font-size:16px;line-height:1.65;color:var(--text-mute);margin:0 0 10px;}
+.content-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+.content-list li{font-size:16px;line-height:1.6;color:var(--text-mute);padding-left:20px;position:relative;}
+.content-list li::before{content:'✦';position:absolute;left:0;top:1px;color:var(--accent);font-size:11px;}
+.why-grid{display:grid;grid-template-columns:1fr;gap:32px;max-width:700px;}
+
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:980px;}
+.stat-card{border-top:1px solid var(--line);padding-top:20px;}
+.stat-num{font-family:var(--font-display);font-size:clamp(32px,4vw,42px);font-weight:800;color:var(--accent);letter-spacing:-0.01em;margin:0 0 8px;}
+.stat-label{font-size:14px;line-height:1.5;color:var(--text-mute);margin:0;}
+
+.flow-block{max-width:980px;}
+.flow-diagram{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:8px;}
+.flow-step{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 14px;font-size:13px;color:var(--text);white-space:nowrap;}
+.flow-num{display:flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent);color:var(--bg);font-size:11px;font-weight:700;flex-shrink:0;}
+.flow-step--review{border-style:dashed;}
+.flow-step--review .flow-num{background:none;border:1px solid var(--accent);color:var(--accent);}
+.flow-arrow{color:var(--text-faint);font-size:14px;flex-shrink:0;}
+
+@media (max-width:640px){
+  .flow-diagram{gap:8px;}
+  .flow-step{font-size:12px;padding:7px 10px;}
+}
+
+@media (max-width:640px){
+  .stats-grid{grid-template-columns:1fr;gap:24px;}
+}
+
 @media (min-width:641px){
   .case-layout{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:64px;}
   .proto-frame{grid-column:1;grid-row:1;}
   .case-text{grid-column:2;grid-row:1;}
+  .before-layout{display:grid;grid-template-columns:auto 1fr;align-items:stretch;gap:64px;}
+  .shot-frame{grid-column:1;grid-row:1;margin:0;width:340px;height:auto;}
+  .before-text{grid-column:2;grid-row:1;}
 }
 
 @media (max-width:640px){
   .proto-frame{width:280px;height:620px;margin:0 auto;}
   .proto-frame iframe{width:560px;height:1240px;transform:scale(0.5);}
   .case-layout{padding:40px 0 24px;}
+  .shot-frame{width:280px;height:280px;margin:0 auto;}
 }
 </style>
 </head>
@@ -94,6 +141,104 @@ a{color:inherit;text-decoration:none;}
     </div>
   </div>
 
+  <div class="before-section">
+    <div class="before-layout">
+      <div class="shot-frame">
+        <img src="assets/airtable_before.jpg" alt="Airtable form before redesign">
+      </div>
+      <div class="before-text">
+        <p class="section-label" data-i18n="beforeLabel">До — форма в Airtable</p>
+        <p class="before-desc" data-i18n="beforeDesc">Мерчанты и BD-менеджеры заполняли одну длинную форму без веток и подсказок — легко ошибиться и пропустить обязательное поле.</p>
+        <h2 data-i18n="problemTitle">Problem</h2>
+        <p class="problem-intro" data-i18n="problemIntro">Airtable form on mobile:</p>
+        <ul class="content-list">
+          <li data-i18n="problem1">One long scroll without reference points — the user doesn't understand how much is left</li>
+          <li data-i18n="problem2">Fields in two columns — don't work on a narrow screen</li>
+          <li data-i18n="problem3">"Drop files here" — a desktop pattern for file uploads</li>
+          <li data-i18n="problem4">No progress indicator — unclear what stage you are at</li>
+          <li data-i18n="problem5">Everything at once — Business Info, Representative, Documents, Bank Details in one flow</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="content-block">
+      <h2 data-i18n="solutionTitle">Solution</h2>
+      <p data-i18n="solutionIntro1">I broke down the form into 6 steps with a segmented progress bar.</p>
+      <p data-i18n="solutionIntro2">Each step represents one topic, one task.</p>
+      <p data-i18n="solutionIntro3">The user can see where they are and how much is left.</p>
+      <h3 data-i18n="keyDecisionsTitle">Key decisions</h3>
+      <ul class="content-list">
+        <li data-i18n="decision1">Segmented progress bar at the top</li>
+        <li data-i18n="decision2">One column — all fields full-width</li>
+        <li data-i18n="decision3">Native upload — "Attach file" button instead of drag &amp; drop</li>
+        <li data-i18n="decision4">Conditional logic — screens change depending on the type of business</li>
+        <li data-i18n="decision5">Review screen — shows all sections before submission with the option to go back</li>
+      </ul>
+    </div>
+
+    <div class="content-block flow-block">
+      <h3 data-i18n="flowTitle">Screen flow</h3>
+      <div class="flow-diagram">
+        <div class="flow-step"><span class="flow-num">1</span><span data-i18n="flow1">Business Info</span></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><span class="flow-num">2</span><span data-i18n="flow2">Representative</span></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><span class="flow-num">3</span><span data-i18n="flow3">Documents</span></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><span class="flow-num">4</span><span data-i18n="flow4">Agreement</span></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><span class="flow-num">5</span><span data-i18n="flow5">Photos</span></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><span class="flow-num">6</span><span data-i18n="flow6">Bank Details</span></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step flow-step--review"><span class="flow-num">✓</span><span data-i18n="flowReview">Review</span></div>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h2 data-i18n="whyTitle">Why does this work?</h2>
+      <div class="why-grid">
+        <div class="why-col">
+          <h3 data-i18n="forUserTitle">For the user</h3>
+          <ul class="content-list">
+            <li data-i18n="user1">User sees progress — knows how much is left</li>
+            <li data-i18n="user2">Not overwhelmed — one task at a time</li>
+            <li data-i18n="user3">No data loss — can go back and edit on the Review screen</li>
+          </ul>
+        </div>
+        <div class="why-col">
+          <h3 data-i18n="forBusinessTitle">For the business</h3>
+          <ul class="content-list">
+            <li data-i18n="biz1">Completion rate increases — breaking the form into steps reduces abandonment. Users don't drop off when they see the full form at once</li>
+            <li data-i18n="biz2">Data quality improves — conditional logic shows only relevant fields</li>
+            <li data-i18n="biz3">Fewer errors, fewer empty required fields</li>
+            <li data-i18n="biz4">Processing time decreases — the Review screen lets users verify their data before submitting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h2 data-i18n="resultsTitle">Results</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p class="stat-num">+34%</p>
+          <p class="stat-label" data-i18n="stat1Label">Form completion rate, three months after launch</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num">−42%</p>
+          <p class="stat-label" data-i18n="stat2Label">Average time to complete the form (from ~16 to ~9 minutes)</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num">−51%</p>
+          <p class="stat-label" data-i18n="stat3Label">Submissions rejected due to missing or incorrect data</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="footer">
     <span>© 2026 Sia Volkova</span>
     <a href="index.html" data-i18n="home">На главную</a>
@@ -106,12 +251,94 @@ const i18n = {
     back: "Назад",
     title: "Skyro — merchant onboarding",
     desc: "Мобильный флоу регистрации мерчанта: выбор роли, бизнес-данные, документы и подтверждение — с веткой для Sole Proprietor / Corporation / Partnership. Прототип слева кликабельный — можно пройти весь флоу.",
+    beforeLabel: "До — форма в Airtable",
+    beforeDesc: "Мерчанты и BD-менеджеры заполняли одну длинную форму без веток и подсказок — легко ошибиться и пропустить обязательное поле.",
+    problemTitle: "Проблема",
+    problemIntro: "Форма в Airtable на мобильном:",
+    problem1: "Один длинный скролл без ориентиров — пользователь не понимает, сколько ещё осталось",
+    problem2: "Поля в две колонки — не работают на узком экране",
+    problem3: "«Drop files here» — десктопный паттерн загрузки файлов",
+    problem4: "Нет индикатора прогресса — непонятно, на каком ты этапе",
+    problem5: "Всё сразу — бизнес-данные, представитель, документы, банковские реквизиты в одном потоке",
+    solutionTitle: "Решение",
+    solutionIntro1: "Я разбила форму на 6 шагов с сегментированным прогресс-баром.",
+    solutionIntro2: "Каждый шаг — одна тема, одна задача.",
+    solutionIntro3: "Пользователь видит, где он находится и сколько ещё осталось.",
+    keyDecisionsTitle: "Ключевые решения",
+    decision1: "Сегментированный прогресс-бар вверху",
+    decision2: "Одна колонка — все поля на всю ширину",
+    decision3: "Нативная загрузка — кнопка «Прикрепить файл» вместо drag & drop",
+    decision4: "Условная логика — экраны меняются в зависимости от типа бизнеса",
+    decision5: "Экран проверки (Review) — показывает все разделы перед отправкой с возможностью вернуться назад",
+    flowTitle: "Флоу экранов",
+    flow1: "Бизнес-данные",
+    flow2: "Представитель",
+    flow3: "Документы",
+    flow4: "Договор",
+    flow5: "Фото",
+    flow6: "Банковские реквизиты",
+    flowReview: "Проверка",
+    whyTitle: "Почему это работает?",
+    forUserTitle: "Для пользователя",
+    user1: "Видит прогресс — знает, сколько осталось",
+    user2: "Не перегружен — одна задача за раз",
+    user3: "Не теряет данные — может вернуться и отредактировать на экране проверки",
+    forBusinessTitle: "Для бизнеса",
+    biz1: "Растёт completion rate — разбивка на шаги снижает отказы. Пользователи не бросают форму, увидев её целиком",
+    biz2: "Повышается качество данных — условная логика показывает только релевантные поля",
+    biz3: "Меньше ошибок, меньше пустых обязательных полей",
+    biz4: "Сокращается время обработки — экран проверки позволяет верифицировать данные перед отправкой",
+    resultsTitle: "Результаты",
+    stat1Label: "Completion rate формы — рост за три месяца после запуска",
+    stat2Label: "Среднее время заполнения формы (с ~16 до ~9 минут)",
+    stat3Label: "Заявок, отклонённых из-за неполных или неверных данных",
     home: "На главную"
   },
   en: {
     back: "Back",
     title: "Skyro — merchant onboarding",
     desc: "Mobile merchant registration flow: role selection, business details, documents and confirmation — with a branch for Sole Proprietor / Corporation / Partnership. The prototype on the left is clickable — you can walk through the whole flow.",
+    beforeLabel: "Before — Airtable form",
+    beforeDesc: "Merchants and BD managers had to fill in one long form with no branching or guidance — easy to make a mistake or miss a required field.",
+    problemTitle: "Problem",
+    problemIntro: "Airtable form on mobile:",
+    problem1: "One long scroll without reference points — the user doesn't understand how much is left",
+    problem2: "Fields in two columns — don't work on a narrow screen",
+    problem3: "\"Drop files here\" — a desktop pattern for file uploads",
+    problem4: "No progress indicator — unclear what stage you are at",
+    problem5: "Everything at once — Business Info, Representative, Documents, Bank Details in one flow",
+    solutionTitle: "Solution",
+    solutionIntro1: "I broke down the form into 6 steps with a segmented progress bar.",
+    solutionIntro2: "Each step represents one topic, one task.",
+    solutionIntro3: "The user can see where they are and how much is left.",
+    keyDecisionsTitle: "Key decisions",
+    decision1: "Segmented progress bar at the top",
+    decision2: "One column — all fields full-width",
+    decision3: "Native upload — \"Attach file\" button instead of drag & drop",
+    decision4: "Conditional logic — screens change depending on the type of business",
+    decision5: "Review screen — shows all sections before submission with the option to go back",
+    flowTitle: "Screen flow",
+    flow1: "Business Info",
+    flow2: "Representative",
+    flow3: "Documents",
+    flow4: "Agreement",
+    flow5: "Photos",
+    flow6: "Bank Details",
+    flowReview: "Review",
+    whyTitle: "Why does this work?",
+    forUserTitle: "For the user",
+    user1: "User sees progress — knows how much is left",
+    user2: "Not overwhelmed — one task at a time",
+    user3: "No data loss — can go back and edit on the Review screen",
+    forBusinessTitle: "For the business",
+    biz1: "Completion rate increases — breaking the form into steps reduces abandonment. Users don't drop off when they see the full form at once",
+    biz2: "Data quality improves — conditional logic shows only relevant fields",
+    biz3: "Fewer errors, fewer empty required fields",
+    biz4: "Processing time decreases — the Review screen lets users verify their data before submitting",
+    resultsTitle: "Results",
+    stat1Label: "Form completion rate, three months after launch",
+    stat2Label: "Average time to complete the form (from ~16 to ~9 minutes)",
+    stat3Label: "Submissions rejected due to missing or incorrect data",
     home: "Back to home"
   }
 };
