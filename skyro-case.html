@@ -39,13 +39,14 @@ a{color:inherit;text-decoration:none;}
 .hero p{font-size:17px;line-height:1.6;color:var(--text-mute);max-width:640px;margin:0;}
 
 .proto-section{padding:24px 0 96px;display:flex;justify-content:center;}
-.proto-frame{width:100%;max-width:600px;overflow:hidden;}
-.proto-frame iframe{width:100%;height:640px;border:0;display:block;}
+.proto-frame{width:340px;height:753px;overflow:hidden;position:relative;}
+.proto-frame iframe{width:560px;height:1240px;border:0;display:block;transform:scale(0.6071);transform-origin:top left;}
 
 .footer{padding:32px 0 48px;display:flex;justify-content:space-between;font-size:13px;color:var(--text-faint);border-top:1px solid var(--line);}
 
 @media (max-width:640px){
-  .proto-frame iframe{height:560px;}
+  .proto-frame{width:280px;height:620px;}
+  .proto-frame iframe{width:560px;height:1240px;transform:scale(0.5);}
   .hero{padding:40px 0 24px;}
 }
 </style>
