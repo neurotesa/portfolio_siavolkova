@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,25 +29,35 @@ a{color:inherit;text-decoration:none;}
 .nav{padding:20px 0;position:sticky;top:0;z-index:50;background:rgba(10,10,11,0.75);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
 .nav-inner{max-width:var(--container);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;}
 .nav-name{font-family:var(--font-display);font-weight:600;font-size:15px;letter-spacing:-0.01em;}
+.nav-right{display:flex;align-items:center;gap:16px;}
 .back-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text-mute);}
 .back-link:hover{color:var(--text);}
+.lang-switch{display:flex;gap:2px;background:var(--surface-2);border:1px solid var(--line);border-radius:100px;padding:3px;}
+.lang-opt{font-size:12px;font-weight:600;color:var(--text-faint);background:none;border:none;padding:6px 13px;border-radius:100px;cursor:pointer;font-family:var(--font-body);letter-spacing:0.02em;transition:background .15s ease, color .15s ease;}
+.lang-opt.active{background:var(--text);color:var(--bg);}
+.lang-opt:not(.active):hover{color:var(--text-mute);}
 
-.hero{padding:64px 0 32px;}
+.case-layout{padding:64px 0 96px;}
 .case-tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
 .case-tags span{font-size:13px;color:var(--text-mute);background:var(--surface-2);border:1px solid var(--line);padding:8px 16px;border-radius:8px;}
-.hero h1{font-family:var(--font-display);font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-0.01em;margin:0 0 16px;}
-.hero p{font-size:17px;line-height:1.6;color:var(--text-mute);max-width:640px;margin:0;}
+.case-text h1{font-family:var(--font-display);font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-0.01em;margin:0 0 16px;}
+.case-text p{font-size:17px;line-height:1.6;color:var(--text-mute);max-width:640px;margin:0;}
 
-.proto-section{padding:24px 0 96px;display:flex;justify-content:center;}
-.proto-frame{width:340px;height:753px;overflow:hidden;position:relative;}
+.proto-frame{width:340px;height:753px;overflow:hidden;position:relative;flex-shrink:0;}
 .proto-frame iframe{width:560px;height:1240px;border:0;display:block;transform:scale(0.6071);transform-origin:top left;}
 
-.footer{padding:32px 0 48px;display:flex;justify-content:space-between;font-size:13px;color:var(--text-faint);border-top:1px solid var(--line);}
+.footer{padding:32px 0 48px;display:flex;justify-content:space-between;font-size:13px;color:var(--text-faint);}
+
+@media (min-width:641px){
+  .case-layout{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:64px;}
+  .proto-frame{grid-column:1;grid-row:1;}
+  .case-text{grid-column:2;grid-row:1;}
+}
 
 @media (max-width:640px){
-  .proto-frame{width:280px;height:620px;}
+  .proto-frame{width:280px;height:620px;margin:0 auto;}
   .proto-frame iframe{width:560px;height:1240px;transform:scale(0.5);}
-  .hero{padding:40px 0 24px;}
+  .case-layout{padding:40px 0 24px;}
 }
 </style>
 </head>
@@ -57,32 +67,71 @@ a{color:inherit;text-decoration:none;}
   <div class="nav-inner">
     <a href="index.html" class="back-link">
       <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Назад
+      <span data-i18n="back">Назад</span>
     </a>
     <span class="nav-name">Anastasia Volkova</span>
+    <div class="nav-right">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Язык / Language">
+        <button class="lang-opt" data-lang="ru">RU</button>
+        <button class="lang-opt active" data-lang="en">EN</button>
+      </div>
+    </div>
   </div>
 </header>
 
 <main class="wrap">
-  <section class="hero">
-    <div class="case-tags">
-      <span>FinTech</span><span>Mobile</span><span>Onboarding</span>
+  <div class="case-layout">
+    <div class="case-text">
+      <div class="case-tags">
+        <span>FinTech</span><span>Mobile</span><span>Onboarding</span>
+      </div>
+      <h1 data-i18n="title">Skyro — merchant onboarding</h1>
+      <p data-i18n="desc">Мобильный флоу регистрации мерчанта: выбор роли, бизнес-данные, документы и подтверждение — с веткой для Sole Proprietor / Corporation / Partnership. Прототип слева кликабельный — можно пройти весь флоу.</p>
     </div>
-    <h1>Skyro — merchant onboarding</h1>
-    <p>Мобильный флоу регистрации мерчанта: выбор роли, бизнес-данные, документы и подтверждение — с веткой для Sole Proprietor / Corporation / Partnership. Прототип ниже кликабельный — можно пройти весь флоу.</p>
-  </section>
 
-  <section class="proto-section">
     <div class="proto-frame">
       <iframe src="skyro-prototype.html" title="Skyro interactive prototype" loading="lazy"></iframe>
     </div>
-  </section>
+  </div>
 
   <div class="footer">
     <span>© 2026 Sia Volkova</span>
-    <a href="index.html">На главную</a>
+    <a href="index.html" data-i18n="home">На главную</a>
   </div>
 </main>
+
+<script>
+const i18n = {
+  ru: {
+    back: "Назад",
+    title: "Skyro — merchant onboarding",
+    desc: "Мобильный флоу регистрации мерчанта: выбор роли, бизнес-данные, документы и подтверждение — с веткой для Sole Proprietor / Corporation / Partnership. Прототип слева кликабельный — можно пройти весь флоу.",
+    home: "На главную"
+  },
+  en: {
+    back: "Back",
+    title: "Skyro — merchant onboarding",
+    desc: "Mobile merchant registration flow: role selection, business details, documents and confirmation — with a branch for Sole Proprietor / Corporation / Partnership. The prototype on the left is clickable — you can walk through the whole flow.",
+    home: "Back to home"
+  }
+};
+
+function applyLang(lang){
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(i18n[lang][key] !== undefined){
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+  document.querySelectorAll('.lang-opt').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+}
+
+applyLang('en');
+
+document.querySelectorAll('.lang-opt').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
+</script>
 
 </body>
 </html>
