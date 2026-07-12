@@ -143,7 +143,10 @@ p{margin:0;}
 .carousel-wrap{position:relative;margin-top:20px;}
 .carousel-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;}
 .carousel-track::-webkit-scrollbar{display:none;}
-.carousel-item{position:relative;flex:0 0 auto;width:220px;aspect-ratio:16/9;background:var(--surface);border:1px solid var(--line);border-radius:14px;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;}
+.carousel-item{position:relative;flex:0 0 auto;width:220px;aspect-ratio:16/9;background:var(--surface);border:1px solid var(--line);border-radius:14px;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.carousel-item[data-vimeo-id]{cursor:pointer;}
+.carousel-item[data-vimeo-id]:hover .carousel-play{transform:scale(1.08);}
+.carousel-play{transition:transform .18s ease;}
 .carousel-play{width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;}
 .carousel-label{position:absolute;bottom:12px;left:12px;font-size:12px;color:var(--text-faint);}
 .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--text-mute);display:flex;align-items:center;justify-content:center;cursor:pointer;}
@@ -410,21 +413,20 @@ p{margin:0;}
 
     <div class="carousel-wrap reveal">
       <div class="carousel-track" id="motionCarousel">
-        <div class="carousel-item">
+        <div class="carousel-item" data-vimeo-id="708579268" data-vimeo-h="015769af14" style="background-image:url('assets/reel1-thumb.jpg');background-size:cover;background-position:center;">
           <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
-          <span class="carousel-label" data-i18n="reel1.label">Эксплейнер №1</span>
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item" data-vimeo-id="729928768" data-vimeo-h="a2adcaecd3" style="background-image:url('assets/reel2-thumb.jpg');background-size:cover;background-position:center;">
           <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
-          <span class="carousel-label" data-i18n="reel2.label">Эксплейнер №2</span>
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item" data-vimeo-id="715960847" data-vimeo-h="0071d9c262" style="background-image:url('assets/reel3-thumb.jpg');background-size:cover;background-position:center;">
           <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
-          <span class="carousel-label" data-i18n="reel3.label">Эксплейнер №3</span>
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item" data-vimeo-id="493337381" data-vimeo-h="d1ba2b0b23" style="background-image:url('assets/reel4-thumb.jpg');background-size:cover;background-position:center;">
           <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
-          <span class="carousel-label" data-i18n="reel4.label">Эксплейнер №4</span>
+        </div>
+        <div class="carousel-item" data-vimeo-id="338222790" data-vimeo-h="0c25a9f865" style="background-image:url('assets/reel5-thumb.jpg');background-size:cover;background-position:center;">
+          <div class="carousel-play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="#0A0A0B"/></svg></div>
         </div>
       </div>
       <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Назад">
@@ -604,6 +606,17 @@ if(showreelWrap){
     showreelWrap.style.cursor = 'default';
   }, { once:true });
 }
+
+document.querySelectorAll('.carousel-item[data-vimeo-id]').forEach(item => {
+  item.addEventListener('click', function loadReel(){
+    const id = item.dataset.vimeoId;
+    const hash = item.dataset.vimeoH;
+    const src = 'https://player.vimeo.com/video/' + id + '?h=' + hash + '&autoplay=1';
+    item.innerHTML = '<iframe title="vimeo-player" src="' + src + '" style="position:absolute;inset:0;width:100%;height:100%;border:0;" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>';
+    item.style.cursor = 'default';
+    item.style.backgroundImage = 'none';
+  }, { once:true });
+});
 
 const carouselTrack = document.getElementById('motionCarousel');
 const carouselPrev = document.getElementById('carouselPrev');
