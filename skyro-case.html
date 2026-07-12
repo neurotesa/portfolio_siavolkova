@@ -75,16 +75,23 @@ a{color:inherit;text-decoration:none;}
 .stat-label{font-size:14px;line-height:1.5;color:var(--text-mute);margin:0;}
 
 .flow-block{max-width:980px;}
-.flow-diagram{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:8px;}
-.flow-step{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 14px;font-size:13px;color:var(--text);white-space:nowrap;}
+.flow-diagram{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:20px;}
+.flow-step{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 20px;font-size:13px;color:var(--text);white-space:nowrap;}
 .flow-num{display:flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent);color:var(--bg);font-size:11px;font-weight:700;flex-shrink:0;}
 .flow-step--review{border-style:dashed;}
 .flow-step--review .flow-num{background:none;border:1px solid var(--accent);color:var(--accent);}
 .flow-arrow{color:var(--text-faint);font-size:14px;flex-shrink:0;}
+.flow-block .flow-split-label{font-size:12px;color:var(--text-faint);text-align:center;margin:44px 0 24px;}
+.flow-branches{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:24px 0;}
+.flow-branch{display:flex;flex-direction:column;gap:14px;border-left:2px solid var(--line);padding-left:18px;}
+.flow-branch-label{font-size:11px;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.03em;margin-bottom:6px;}
+.flow-branch .flow-step{width:100%;box-sizing:border-box;white-space:normal;}
 
 @media (max-width:640px){
-  .flow-diagram{gap:8px;}
-  .flow-step{font-size:12px;padding:7px 10px;}
+  .flow-diagram{gap:12px;}
+  .flow-step{font-size:12px;padding:10px 14px;}
+  .flow-branches{grid-template-columns:1fr;gap:20px;}
+  .flow-block .flow-split-label{margin:28px 0 16px;}
 }
 
 @media (max-width:640px){
@@ -96,7 +103,8 @@ a{color:inherit;text-decoration:none;}
   .proto-frame{grid-column:1;grid-row:1;}
   .case-text{grid-column:2;grid-row:1;}
   .before-layout{display:grid;grid-template-columns:auto 1fr;align-items:stretch;gap:64px;}
-  .shot-frame{grid-column:1;grid-row:1;margin:0;width:340px;height:auto;}
+  .shot-frame{grid-column:1;grid-row:1;margin:0;width:340px;height:auto;min-height:0;}
+  .before-text{min-height:0;}
   .before-text{grid-column:2;grid-row:1;}
 }
 
@@ -105,6 +113,9 @@ a{color:inherit;text-decoration:none;}
   .proto-frame iframe{width:560px;height:1240px;transform:scale(0.5);}
   .case-layout{padding:40px 0 24px;}
   .shot-frame{width:280px;height:280px;margin:0 auto;}
+  .before-layout{display:flex;flex-direction:column;}
+  .before-text{order:1;}
+  .shot-frame{order:2;margin-top:24px;}
 }
 </style>
 </head>
@@ -181,19 +192,39 @@ a{color:inherit;text-decoration:none;}
     <div class="content-block flow-block">
       <h3 data-i18n="flowTitle">Screen flow</h3>
       <div class="flow-diagram">
-        <div class="flow-step"><span class="flow-num">1</span><span data-i18n="flow1">Business Info</span></div>
+        <div class="flow-step"><span class="flow-num">1</span><span data-i18n="flowRole">Role</span></div>
         <span class="flow-arrow">→</span>
-        <div class="flow-step"><span class="flow-num">2</span><span data-i18n="flow2">Representative</span></div>
+        <div class="flow-step"><span class="flow-num">2</span><span data-i18n="flowBizType">Business Type</span></div>
         <span class="flow-arrow">→</span>
-        <div class="flow-step"><span class="flow-num">3</span><span data-i18n="flow3">Documents</span></div>
+        <div class="flow-step"><span class="flow-num">3</span><span data-i18n="flow1">Business Info</span></div>
+      </div>
+      <p class="flow-split-label" data-i18n="flowSplitLabel">↓ splits by business type ↓</p>
+      <div class="flow-branches">
+        <div class="flow-branch">
+          <p class="flow-branch-label" data-i18n="flowBranchSole">Sole Proprietor</p>
+          <div class="flow-step"><span class="flow-num">4</span><span data-i18n="flow2">Representative</span></div>
+          <div class="flow-step"><span class="flow-num">5</span><span data-i18n="flow3">Documents</span></div>
+        </div>
+        <div class="flow-branch">
+          <p class="flow-branch-label" data-i18n="flowBranchCorp">Corporation</p>
+          <div class="flow-step"><span class="flow-num">4</span><span data-i18n="flow2">Representative</span></div>
+          <div class="flow-step"><span class="flow-num">5</span><span data-i18n="flow3">Documents</span></div>
+        </div>
+        <div class="flow-branch">
+          <p class="flow-branch-label" data-i18n="flowBranchPartner">Partnership</p>
+          <div class="flow-step"><span class="flow-num">4</span><span data-i18n="flow2">Representative</span></div>
+          <div class="flow-step"><span class="flow-num">5</span><span data-i18n="flow3">Documents</span></div>
+        </div>
+      </div>
+      <p class="flow-split-label" data-i18n="flowMergeLabel">↓ merges back ↓</p>
+      <div class="flow-diagram">
+        <div class="flow-step"><span class="flow-num">6</span><span data-i18n="flow4">Agreement</span></div>
         <span class="flow-arrow">→</span>
-        <div class="flow-step"><span class="flow-num">4</span><span data-i18n="flow4">Agreement</span></div>
+        <div class="flow-step"><span class="flow-num">7</span><span data-i18n="flow5">Photos</span></div>
         <span class="flow-arrow">→</span>
-        <div class="flow-step"><span class="flow-num">5</span><span data-i18n="flow5">Photos</span></div>
+        <div class="flow-step"><span class="flow-num">8</span><span data-i18n="flowReview2">Review</span></div>
         <span class="flow-arrow">→</span>
-        <div class="flow-step"><span class="flow-num">6</span><span data-i18n="flow6">Bank Details</span></div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step flow-step--review"><span class="flow-num">✓</span><span data-i18n="flowReview">Review</span></div>
+        <div class="flow-step flow-step--review"><span class="flow-num">✓</span><span data-i18n="flowReview">Success</span></div>
       </div>
     </div>
 
@@ -249,7 +280,7 @@ a{color:inherit;text-decoration:none;}
 const i18n = {
   ru: {
     back: "Назад",
-    title: "Skyro — merchant onboarding",
+    title: "Skyro — онбординг мерчанта",
     desc: "Мобильный флоу регистрации мерчанта: выбор роли, бизнес-данные, документы и подтверждение — с веткой для Sole Proprietor / Corporation / Partnership. Прототип слева кликабельный — можно пройти весь флоу.",
     beforeLabel: "До — форма в Airtable",
     beforeDesc: "Мерчанты и BD-менеджеры заполняли одну длинную форму без веток и подсказок — легко ошибиться и пропустить обязательное поле.",
@@ -271,13 +302,20 @@ const i18n = {
     decision4: "Условная логика — экраны меняются в зависимости от типа бизнеса",
     decision5: "Экран проверки (Review) — показывает все разделы перед отправкой с возможностью вернуться назад",
     flowTitle: "Флоу экранов",
+    flowRole: "Роль",
+    flowBizType: "Тип бизнеса",
     flow1: "Бизнес-данные",
+    flowSplitLabel: "↓ разветвляется по типу бизнеса ↓",
+    flowBranchSole: "Sole Proprietor",
+    flowBranchCorp: "Corporation",
+    flowBranchPartner: "Partnership",
     flow2: "Представитель",
     flow3: "Документы",
+    flowMergeLabel: "↓ снова сходится в один поток ↓",
     flow4: "Договор",
     flow5: "Фото",
-    flow6: "Банковские реквизиты",
-    flowReview: "Проверка",
+    flowReview2: "Проверка",
+    flowReview: "Успех",
     whyTitle: "Почему это работает?",
     forUserTitle: "Для пользователя",
     user1: "Видит прогресс — знает, сколько осталось",
@@ -318,13 +356,20 @@ const i18n = {
     decision4: "Conditional logic — screens change depending on the type of business",
     decision5: "Review screen — shows all sections before submission with the option to go back",
     flowTitle: "Screen flow",
+    flowRole: "Role",
+    flowBizType: "Business Type",
     flow1: "Business Info",
+    flowSplitLabel: "↓ splits by business type ↓",
+    flowBranchSole: "Sole Proprietor",
+    flowBranchCorp: "Corporation",
+    flowBranchPartner: "Partnership",
     flow2: "Representative",
     flow3: "Documents",
+    flowMergeLabel: "↓ merges back into one flow ↓",
     flow4: "Agreement",
     flow5: "Photos",
-    flow6: "Bank Details",
-    flowReview: "Review",
+    flowReview2: "Review",
+    flowReview: "Success",
     whyTitle: "Why does this work?",
     forUserTitle: "For the user",
     user1: "User sees progress — knows how much is left",
