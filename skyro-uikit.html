@@ -11,7 +11,7 @@
   --blue:#5DA5FD; --blue-h:#3C82F5; --green:#B0F558; --green-h:#87DE03;
   --bg:#0A0A0B; --line:#26262A; --mute:#8C8C91; --white:#F2F2F0;
   --disp:'Circular',-apple-system,sans-serif; --body-f:'Noto Sans',-apple-system,sans-serif;
-  background:var(--bg); padding:48px 40px; font-family:var(--body-f); color:var(--white);
+  background:var(--bg); padding:40px 40px 20px; font-family:var(--body-f); color:var(--white); overflow-x:hidden;
 }
 .skyui *{box-sizing:border-box;}
 .skyui .wrap{max-width:1040px;margin:0 auto;}
@@ -61,7 +61,14 @@
 .t-btn{font-size:16px;line-height:20px;letter-spacing:-.2px;font-weight:500;}
 .t-cap{font-size:12px;line-height:16px;letter-spacing:-.2px;}
 
-@media (max-width:640px){ .skyui{padding:36px 20px;} .btn-blue{min-width:100%;} }
+@media (max-width:640px){
+  .skyui{padding:28px 18px 16px;}
+  .btn-blue{min-width:100%;}
+  .tiles{grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:12px;}
+  .tile-chip{border-radius:12px;}
+  .tile-name{font-size:12px;} .tile-hex{font-size:10px;margin-top:-4px;}
+  .sec{margin-bottom:44px;}
+}
 </style></head>
 <body>
 <div class="skyui"><div class="wrap">
