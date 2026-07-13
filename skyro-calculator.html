@@ -29,7 +29,7 @@
   letter-spacing:-0.02em;color:#F2F2F0;text-align:center;line-height:1.1;margin:0 0 40px;}
 .skycalc-head b{color:var(--blue);font-weight:800;}
 
-.skycalc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;
+.skycalc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;
   width:100%;max-width:920px;align-items:stretch;}
 .card{background:var(--card);border-radius:22px;padding:30px 30px 32px;display:flex;flex-direction:column;}
 .card h3{font-family:var(--font);font-weight:700;font-size:21px;color:var(--dark);margin:0 0 6px;letter-spacing:-0.01em;}
@@ -93,7 +93,7 @@
 .btn:active{transform:scale(.99);}
 .safe{text-align:center;font-size:13px;color:var(--gray);margin:14px 0 0;}
 
-@media (max-width:720px){ .skycalc-grid{grid-template-columns:1fr;max-width:420px;} }
+@media (max-width:700px){ .skycalc-grid{max-width:420px;} }
 </style>
 </head>
 <body>
