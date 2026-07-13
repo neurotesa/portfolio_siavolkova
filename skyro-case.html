@@ -1,449 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skyro — case study</title>
+<title>Skyro — регистрация мерчанта · Sia Volkova</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:        #0A0A0B;
-  --surface:   #141416;
-  --surface-2: #1B1B1E;
-  --line:      #26262A;
-  --text:      #F2F2F0;
-  --text-mute: #8C8C91;
-  --text-faint:#5C5C61;
-  --accent:    #4ADE80;
-  --font-display: 'Manrope', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --container: 980px;
+  --bg:#0A0A0B; --surface:#141416; --surface-2:#1B1B1E; --line:#26262A;
+  --text:#F2F2F0; --text-mute:#8C8C91; --text-faint:#5C5C61; --accent:#9DB4FF;
+  --font-display:'Manrope',sans-serif; --font-body:'Inter',sans-serif;
+  --container:980px; --gap-block:120px;
 }
 *,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none;}
+h1,h2,h3{font-family:var(--font-display);margin:0;}
+p{margin:0;}
 .wrap{max-width:var(--container);margin:0 auto;padding:0 32px;}
 
-.nav{padding:20px 0;position:sticky;top:0;z-index:50;background:rgba(10,10,11,0.75);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.nav{padding:20px 0;position:sticky;top:0;z-index:50;background:rgba(10,10,11,0.75);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s ease;}
+.nav.scrolled{border-bottom-color:var(--line);}
 .nav-inner{max-width:var(--container);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;}
+.nav-back{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mute);}
+.nav-back:hover{color:var(--text);}
 .nav-name{font-family:var(--font-display);font-weight:600;font-size:15px;letter-spacing:-0.01em;}
-.nav-right{display:flex;align-items:center;gap:16px;}
-.back-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text-mute);}
-.back-link:hover{color:var(--text);}
-.lang-switch{display:flex;gap:2px;background:var(--surface-2);border:1px solid var(--line);border-radius:100px;padding:3px;}
-.lang-opt{font-size:12px;font-weight:600;color:var(--text-faint);background:none;border:none;padding:6px 13px;border-radius:100px;cursor:pointer;font-family:var(--font-body);letter-spacing:0.02em;transition:background .15s ease, color .15s ease;}
-.lang-opt.active{background:var(--text);color:var(--bg);}
-.lang-opt:not(.active):hover{color:var(--text-mute);}
 
-.case-layout{padding:64px 0 96px;}
-.case-tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
-.case-tags span{font-size:13px;color:var(--text-mute);background:var(--surface-2);border:1px solid var(--line);padding:8px 16px;border-radius:8px;}
-.case-text h1{font-family:var(--font-display);font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-0.01em;margin:0 0 16px;}
-.case-text p{font-size:17px;line-height:1.6;color:var(--text-mute);max-width:640px;margin:0;}
+.hero{padding:80px 0 0;}
+.eyebrow{font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-faint);margin-bottom:22px;}
+.hero h1{font-size:clamp(36px,6vw,60px);font-weight:800;letter-spacing:-0.02em;line-height:1.05;margin-bottom:26px;}
+.hero-lead{font-size:19px;line-height:1.6;color:var(--text-mute);max-width:640px;}
+.meta{display:flex;flex-wrap:wrap;gap:14px 40px;margin-top:44px;padding-top:28px;border-top:1px solid var(--line);}
+.meta-item .k{font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-faint);margin-bottom:6px;}
+.meta-item .v{font-size:15px;color:var(--text);}
 
-.proto-frame{width:340px;height:753px;overflow:hidden;position:relative;flex-shrink:0;}
-.proto-frame iframe{width:560px;height:1240px;border:0;display:block;transform:scale(0.6071);transform-origin:top left;}
+.section{margin-top:var(--gap-block);}
+.section-label{font-size:13px;color:var(--text-faint);margin-bottom:22px;letter-spacing:0.02em;}
+.section h2{font-size:clamp(24px,3.6vw,34px);font-weight:700;letter-spacing:-0.01em;line-height:1.15;margin-bottom:20px;}
+.body-text{font-size:17px;line-height:1.7;color:var(--text-mute);max-width:680px;}
+.body-text + .body-text{margin-top:18px;}
+.placeholder{color:var(--text-faint);}
 
-.footer{padding:32px 0 48px;display:flex;justify-content:space-between;font-size:13px;color:var(--text-faint);}
+.decisions{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;}
+.decisions > *{min-width:0;}
+.dcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 24px;}
+.dcard h3{font-size:18px;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;}
+.dcard p{font-size:14.5px;line-height:1.55;color:var(--text-mute);}
+.dcard .num{font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--accent);margin-bottom:14px;display:block;}
 
-.before-section{padding:0 0 96px;}
-.before-text .section-label{margin-bottom:12px;}
-.section-label{font-size:13px;color:var(--text-faint);letter-spacing:0.02em;}
-.before-desc{font-size:17px;line-height:1.6;color:var(--text-mute);max-width:640px;margin:0;}
-.shot-frame{width:340px;height:580px;margin:0;overflow-y:auto;overflow-x:hidden;border:1px solid var(--line);border-radius:14px;background:var(--surface);scrollbar-width:auto;scrollbar-color:var(--text-mute) var(--surface-2);flex-shrink:0;}
-.shot-frame::-webkit-scrollbar{width:10px;}
-.shot-frame::-webkit-scrollbar-track{background:var(--surface-2);border-radius:8px;}
-.shot-frame::-webkit-scrollbar-thumb{background:var(--text-mute);border-radius:8px;border:2px solid var(--surface-2);}
-.shot-frame::-webkit-scrollbar-thumb:hover{background:var(--text);}
-.shot-frame img{width:100%;display:block;}
-.before-text h2{font-family:var(--font-display);font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:-0.01em;margin:32px 0 14px;}
-.problem-intro{font-size:16px;color:var(--text-mute);margin:0 0 10px;}
+.proto-wrap{margin-top:26px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--bg);}
+.proto-frame{width:100%;height:1120px;border:none;display:block;}
+.proto-cap{font-size:13.5px;color:var(--text-faint);margin-top:16px;text-align:center;line-height:1.5;}
 
-.content-section{padding:0 0 40px;}
-.content-block{margin-bottom:56px;max-width:700px;}
-.content-block h2{font-family:var(--font-display);font-size:clamp(24px,4vw,32px);font-weight:800;letter-spacing:-0.01em;margin:0 0 20px;}
-.content-block h3{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.04em;margin:28px 0 14px;}
-.content-block p{font-size:16px;line-height:1.65;color:var(--text-mute);margin:0 0 10px;}
-.content-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
-.content-list li{font-size:16px;line-height:1.6;color:var(--text-mute);padding-left:20px;position:relative;}
-.content-list li::before{content:'✦';position:absolute;left:0;top:1px;color:var(--accent);font-size:11px;}
-.why-grid{display:grid;grid-template-columns:1fr;gap:32px;max-width:700px;}
+.results{display:flex;flex-wrap:wrap;gap:16px;margin-top:8px;}
+.rcard{flex:1 1 200px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 24px;}
+.rcard .big{font-family:var(--font-display);font-weight:800;font-size:32px;letter-spacing:-0.02em;color:var(--text);margin-bottom:8px;}
+.rcard .lbl{font-size:14px;color:var(--text-mute);line-height:1.45;}
 
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:980px;}
-.stat-card{border-top:1px solid var(--line);padding-top:20px;}
-.stat-num{font-family:var(--font-display);font-size:clamp(32px,4vw,42px);font-weight:800;color:var(--accent);letter-spacing:-0.01em;margin:0 0 8px;}
-.stat-label{font-size:14px;line-height:1.5;color:var(--text-mute);margin:0;}
+.case-nav{margin-top:var(--gap-block);padding:36px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+.case-nav a{font-size:15px;color:var(--text-mute);}
+.case-nav a:hover{color:var(--text);}
+.footer{padding:32px 0 56px;font-size:13px;color:var(--text-faint);}
 
-.flow-block{max-width:980px;}
-.flow-diagram{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:20px;}
-.flow-step{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 20px;font-size:13px;color:var(--text);white-space:nowrap;}
-.flow-num{display:flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent);color:var(--bg);font-size:11px;font-weight:700;flex-shrink:0;}
-.flow-step--review{border-style:dashed;}
-.flow-step--review .flow-num{background:none;border:1px solid var(--accent);color:var(--accent);}
-.flow-arrow{color:var(--text-faint);font-size:14px;flex-shrink:0;}
-.flow-block .flow-split-label{font-size:12px;color:var(--text-faint);text-align:center;margin:44px 0 24px;}
-.flow-branches{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:24px 0;}
-.flow-branch{display:flex;flex-direction:column;gap:14px;border-left:2px solid var(--line);padding-left:18px;}
-.flow-branch-label{font-size:11px;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.03em;margin-bottom:6px;}
-.flow-branch .flow-step{width:100%;box-sizing:border-box;white-space:normal;}
-
-@media (max-width:640px){
-  .flow-diagram{gap:12px;}
-  .flow-step{font-size:12px;padding:10px 14px;}
-  .flow-branches{grid-template-columns:1fr;gap:20px;}
-  .flow-block .flow-split-label{margin:28px 0 16px;}
-}
-
-@media (max-width:640px){
-  .stats-grid{grid-template-columns:1fr;gap:24px;}
-}
-
-@media (min-width:641px){
-  .case-layout{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:64px;}
-  .proto-frame{grid-column:1;grid-row:1;}
-  .case-text{grid-column:2;grid-row:1;}
-  .before-layout{display:flex;align-items:flex-start;gap:64px;}
-  .shot-frame{flex:0 0 340px;width:340px;margin:0;height:580px;}
-  .before-text{flex:1;min-width:0;}
-}
-
-@media (max-width:640px){
-  .proto-frame{width:280px;height:620px;margin:0 auto;}
-  .proto-frame iframe{width:560px;height:1240px;transform:scale(0.5);}
-  .case-layout{padding:40px 0 24px;}
-  .shot-frame{width:280px;height:520px;margin:0 auto;}
-  .before-layout{display:flex;flex-direction:column;}
-  .before-text{order:1;}
-  .shot-frame{order:2;margin-top:24px;}
+@media (max-width:760px){
+  :root{--gap-block:64px;}
+  .hero{padding:48px 0 0;}
+  .decisions{grid-template-columns:1fr;}
+  .proto-frame{height:860px;}
 }
 </style>
 </head>
 <body>
 
-<header class="nav">
+<header class="nav" id="siteNav">
   <div class="nav-inner">
-    <a href="index.html" class="back-link">
-      <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span data-i18n="back">Назад</span>
+    <a class="nav-back" href="index.html">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Все проекты</span>
     </a>
     <span class="nav-name">Anastasia Volkova</span>
-    <div class="nav-right">
-      <div class="lang-switch" id="langSwitch" role="group" aria-label="Язык / Language">
-        <button class="lang-opt" data-lang="ru">RU</button>
-        <button class="lang-opt active" data-lang="en">EN</button>
-      </div>
-    </div>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="case-layout">
-    <div class="case-text">
-      <div class="case-tags">
-        <span>FinTech</span><span>Mobile</span><span>Onboarding</span>
-      </div>
-      <h1 data-i18n="title">Skyro — merchant onboarding</h1>
-      <p data-i18n="desc">Мобильный флоу регистрации мерчанта: выбор роли, бизнес-данные, документы и подтверждение — с веткой для Sole Proprietor / Corporation / Partnership. Прототип слева кликабельный — можно пройти весь флоу.</p>
-    </div>
 
-    <div class="proto-frame">
-      <iframe src="skyro-prototype.html" title="Skyro interactive prototype" loading="lazy"></iframe>
+  <section class="hero">
+    <p class="eyebrow">FinTech · iOS · Онбординг</p>
+    <h1>Skyro —<br>регистрация мерчанта</h1>
+    <p class="hero-lead">Редизайн онбординга партнёра-мерчанта для Skyro — филиппинского финтеха.
+      Восьмишаговая регистрация с разветвлением под роль и тип бизнеса, собранная в единый
+      кликабельный прототип: от выбора роли до отправки заявки.</p>
+    <div class="meta">
+      <div class="meta-item"><div class="k">Роль</div><div class="v">Product / UX-дизайн</div></div>
+      <div class="meta-item"><div class="k">Платформа</div><div class="v">iOS</div></div>
+      <div class="meta-item"><div class="k">Тип</div><div class="v">Onboarding flow</div></div>
+      <div class="meta-item"><div class="k">Год</div><div class="v">2026</div></div>
     </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Контекст</p>
+    <h2>Регистрация, в которой легко потеряться</h2>
+    <p class="body-text placeholder">[Плейсхолдер — здесь коротко о продукте и ситуации: что за поток,
+      кто его проходит, почему он важен для бизнеса. 2–3 предложения своими словами.]</p>
+    <p class="body-text placeholder">[Плейсхолдер — что было не так с исходным опытом: где отваливались
+      пользователи, что путало. Сюда ложатся твои реальные наблюдения / ресёрч.]</p>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Задача</p>
+    <h2>Провести мерчанта до конца заявки без поддержки</h2>
+    <p class="body-text placeholder">[Плейсхолдер — сформулируй задачу и рамки: что нужно было решить,
+      какие ограничения (типы бизнеса, обязательные документы, верификация).]</p>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Прототип</p>
+    <h2>Весь путь — кликабельно</h2>
+    <p class="body-text">Ниже — интерактивный прототип всего потока. Выбери роль на входе, пройди шаги,
+      на «Tell us about your store» выбери тип бизнеса — дальше ветка owner / authorized rep и набор
+      документов подстраиваются автоматически.</p>
+    <div class="proto-wrap">
+      <iframe class="proto-frame" src="skyro-prototype.html" loading="lazy" title="Skyro — интерактивный прототип"></iframe>
+    </div>
+    <p class="proto-cap">Кликай карточки и кнопку Continue, либо листай стрелками ‹ ›. Шапка и кнопка
+      закреплены, форма скроллится между ними.</p>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Ключевые решения</p>
+    <h2>Что заложено в поток</h2>
+    <div class="decisions">
+      <div class="dcard">
+        <span class="num">01</span>
+        <h3>Ветвление по роли</h3>
+        <p>На входе — развилка «сотрудник Skyro / мерчант-партнёр». Каждый видит свой первый шаг и
+          дальнейший поток, без лишних полей.</p>
+      </div>
+      <div class="dcard">
+        <span class="num">02</span>
+        <h3>Адаптация под тип бизнеса</h3>
+        <p>Выбор Sole Proprietor / Corporation / Partnership переопределяет шаг с реквизитами
+          (владелец или авторизованный представитель) и список обязательных документов.</p>
+      </div>
+      <div class="dcard">
+        <span class="num">03</span>
+        <h3>Закреплённые шапка и действие</h3>
+        <p>Прогресс «step X of 8» и кнопка перехода всегда на экране; между ними скроллится только
+          форма — видно, где ты в потоке и что делать дальше.</p>
+      </div>
+      <div class="dcard">
+        <span class="num">04</span>
+        <h3>Прогрессивное раскрытие</h3>
+        <p>Длинная заявка разбита на восемь коротких шагов с понятными заголовками — нагрузка на шаг
+          минимальна, до отправки доходит больше людей.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Результат</p>
+    <h2>Проектные гипотезы</h2>
+    <p class="body-text placeholder">[Плейсхолдер — метрики подаём честно, как гипотезы/ориентиры, а не
+      как продовые данные. Впиши свои цифры и на что опираешься.]</p>
+    <div class="results">
+      <div class="rcard"><div class="big">—</div><div class="lbl">Целевой task success rate</div></div>
+      <div class="rcard"><div class="big">—</div><div class="lbl">Снижение обращений в поддержку</div></div>
+      <div class="rcard"><div class="big">8 → …</div><div class="lbl">Шагов в потоке</div></div>
+    </div>
+  </section>
+
+  <div class="case-nav">
+    <a href="index.html">← Все проекты</a>
+    <a href="#" >Следующий кейс →</a>
   </div>
 
-  <div class="before-section">
-    <div class="before-layout">
-      <div class="shot-frame">
-        <img src="assets/airtable_before.jpg" alt="Airtable form before redesign">
-      </div>
-      <div class="before-text">
-        <p class="section-label" data-i18n="beforeLabel">До — форма в Airtable</p>
-        <p class="before-desc" data-i18n="beforeDesc">Мерчанты и BD-менеджеры заполняли одну длинную форму без веток и подсказок — легко ошибиться и пропустить обязательное поле.</p>
-        <h2 data-i18n="problemTitle">Problem</h2>
-        <p class="problem-intro" data-i18n="problemIntro">Airtable form on mobile:</p>
-        <ul class="content-list">
-          <li data-i18n="problem1">One long scroll without reference points — the user doesn't understand how much is left</li>
-          <li data-i18n="problem2">Fields in two columns — don't work on a narrow screen</li>
-          <li data-i18n="problem3">"Drop files here" — a desktop pattern for file uploads</li>
-          <li data-i18n="problem4">No progress indicator — unclear what stage you are at</li>
-          <li data-i18n="problem5">Everything at once — Business Info, Representative, Documents, Bank Details in one flow</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <div class="footer">© 2026 Sia Volkova</div>
 
-  <div class="content-section">
-    <div class="content-block">
-      <h2 data-i18n="researchTitle">Research</h2>
-      <p data-i18n="researchIntro">Before jumping into screens, I ran 5 interviews with merchants and BD managers, plus a short internal survey (12 responses) about the current onboarding process.</p>
-      <h3 data-i18n="findingsTitle">Key findings</h3>
-      <ul class="content-list">
-        <li data-i18n="finding1">Most merchants filled out the form on a phone, often between other tasks — not sitting at a desk</li>
-        <li data-i18n="finding2">BD managers said the #1 support request was "how much is left?"</li>
-        <li data-i18n="finding3">Sole Proprietor, Corporation and Partnership merchants kept asking about fields that didn't apply to them</li>
-        <li data-i18n="finding4">Several submissions were rejected only because a file was attached in the wrong section</li>
-      </ul>
-      <h3 data-i18n="hypothesesTitle">Hypotheses</h3>
-      <ul class="content-list">
-        <li data-i18n="hypothesis1">If we split the form into short steps with visible progress, fewer people will abandon it midway</li>
-        <li data-i18n="hypothesis2">If we show only the fields relevant to the selected business type, fewer people will get confused or stuck</li>
-        <li data-i18n="hypothesis3">If people can review everything before submitting, fewer applications will come back with errors</li>
-      </ul>
-    </div>
-
-    <div class="content-block">
-      <h2 data-i18n="solutionTitle">Solution</h2>
-      <p data-i18n="solutionIntro1">I broke down the form into 6 steps with a segmented progress bar.</p>
-      <p data-i18n="solutionIntro2">Each step represents one topic, one task.</p>
-      <p data-i18n="solutionIntro3">The user can see where they are and how much is left.</p>
-      <h3 data-i18n="keyDecisionsTitle">Key decisions</h3>
-      <ul class="content-list">
-        <li data-i18n="decision1">Segmented progress bar at the top</li>
-        <li data-i18n="decision2">One column — all fields full-width</li>
-        <li data-i18n="decision3">Native upload — "Attach file" button instead of drag &amp; drop</li>
-        <li data-i18n="decision4">Conditional logic — screens change depending on the type of business</li>
-        <li data-i18n="decision5">Review screen — shows all sections before submission with the option to go back</li>
-      </ul>
-    </div>
-
-    <div class="content-block flow-block">
-      <h3 data-i18n="flowTitle">Screen flow</h3>
-      <div class="flow-diagram">
-        <div class="flow-step"><span class="flow-num">1</span><span data-i18n="flowRole">Role</span></div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step"><span class="flow-num">2</span><span data-i18n="flowBizType">Business Type</span></div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step"><span class="flow-num">3</span><span data-i18n="flow1">Business Info</span></div>
-      </div>
-      <p class="flow-split-label" data-i18n="flowSplitLabel">↓ splits by business type ↓</p>
-      <div class="flow-branches">
-        <div class="flow-branch">
-          <p class="flow-branch-label" data-i18n="flowBranchSole">Sole Proprietor</p>
-          <div class="flow-step"><span class="flow-num">4</span><span data-i18n="flow2">Representative</span></div>
-          <div class="flow-step"><span class="flow-num">5</span><span data-i18n="flow3">Documents</span></div>
-        </div>
-        <div class="flow-branch">
-          <p class="flow-branch-label" data-i18n="flowBranchCorp">Corporation</p>
-          <div class="flow-step"><span class="flow-num">4</span><span data-i18n="flow2">Representative</span></div>
-          <div class="flow-step"><span class="flow-num">5</span><span data-i18n="flow3">Documents</span></div>
-        </div>
-        <div class="flow-branch">
-          <p class="flow-branch-label" data-i18n="flowBranchPartner">Partnership</p>
-          <div class="flow-step"><span class="flow-num">4</span><span data-i18n="flow2">Representative</span></div>
-          <div class="flow-step"><span class="flow-num">5</span><span data-i18n="flow3">Documents</span></div>
-        </div>
-      </div>
-      <p class="flow-split-label" data-i18n="flowMergeLabel">↓ merges back ↓</p>
-      <div class="flow-diagram">
-        <div class="flow-step"><span class="flow-num">6</span><span data-i18n="flow4">Agreement</span></div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step"><span class="flow-num">7</span><span data-i18n="flow5">Photos</span></div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step"><span class="flow-num">8</span><span data-i18n="flowReview2">Review</span></div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step flow-step--review"><span class="flow-num">✓</span><span data-i18n="flowReview">Success</span></div>
-      </div>
-    </div>
-
-    <div class="content-block">
-      <h2 data-i18n="whyTitle">Why does this work?</h2>
-      <div class="why-grid">
-        <div class="why-col">
-          <h3 data-i18n="forUserTitle">For the user</h3>
-          <ul class="content-list">
-            <li data-i18n="user1">User sees progress — knows how much is left</li>
-            <li data-i18n="user2">Not overwhelmed — one task at a time</li>
-            <li data-i18n="user3">No data loss — can go back and edit on the Review screen</li>
-          </ul>
-        </div>
-        <div class="why-col">
-          <h3 data-i18n="forBusinessTitle">For the business</h3>
-          <ul class="content-list">
-            <li data-i18n="biz1">Completion rate increases — breaking the form into steps reduces abandonment. Users don't drop off when they see the full form at once</li>
-            <li data-i18n="biz2">Data quality improves — conditional logic shows only relevant fields</li>
-            <li data-i18n="biz3">Fewer errors, fewer empty required fields</li>
-            <li data-i18n="biz4">Processing time decreases — the Review screen lets users verify their data before submitting</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="content-block">
-      <h2 data-i18n="resultsTitle">Results</h2>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <p class="stat-num">+34%</p>
-          <p class="stat-label" data-i18n="stat1Label">Form completion rate, three months after launch</p>
-        </div>
-        <div class="stat-card">
-          <p class="stat-num">−42%</p>
-          <p class="stat-label" data-i18n="stat2Label">Average time to complete the form (from ~16 to ~9 minutes)</p>
-        </div>
-        <div class="stat-card">
-          <p class="stat-num">−51%</p>
-          <p class="stat-label" data-i18n="stat3Label">Submissions rejected due to missing or incorrect data</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <span>© 2026 Sia Volkova</span>
-    <a href="index.html" data-i18n="home">На главную</a>
-  </div>
 </main>
 
 <script>
-const i18n = {
-  ru: {
-    back: "Назад",
-    title: "Skyro — онбординг мерчанта",
-    desc: "Мобильный флоу регистрации мерчанта: выбор роли, бизнес-данные, документы и подтверждение — с веткой для Sole Proprietor / Corporation / Partnership. Прототип слева кликабельный — можно пройти весь флоу.",
-    beforeLabel: "До — форма в Airtable",
-    beforeDesc: "Мерчанты и BD-менеджеры заполняли одну длинную форму без веток и подсказок — легко ошибиться и пропустить обязательное поле.",
-    problemTitle: "Проблема",
-    problemIntro: "Форма в Airtable на мобильном:",
-    problem1: "Один длинный скролл без ориентиров — пользователь не понимает, сколько ещё осталось",
-    problem2: "Поля в две колонки — не работают на узком экране",
-    problem3: "«Drop files here» — десктопный паттерн загрузки файлов",
-    problem4: "Нет индикатора прогресса — непонятно, на каком ты этапе",
-    problem5: "Всё сразу — бизнес-данные, представитель, документы, банковские реквизиты в одном потоке",
-    researchTitle: "Исследование",
-    researchIntro: "Перед тем как перейти к экранам, я провела 5 интервью с мерчантами и BD-менеджерами, плюс короткий внутренний опрос (12 ответов) о текущем процессе онбординга.",
-    findingsTitle: "Ключевые находки",
-    finding1: "Люди часто звонили в поддержку вместо того, чтобы разобраться самостоятельно — не понимали, что делать дальше",
-    finding2: "Путали разделы и прикрепляли не те документы не туда",
-    finding3: "Часть мерчантов просто бросала заполнение формы на середине",
-    finding4: "Заполнение занимало очень много времени — гораздо больше, чем люди ожидали",
-    hypothesesTitle: "Гипотезы",
-    hypothesis1: "Если разбить форму на короткие шаги с видимым прогрессом, меньше людей будет бросать её на середине",
-    hypothesis2: "Если каждая загрузка документа будет чётко привязана к своему шагу, люди перестанут прикреплять файлы не туда",
-    hypothesis3: "Если человек будет видеть весь процесс и сможет всё проверить перед отправкой, форма будет отнимать меньше времени и меньше звонков в поддержку",
-    solutionTitle: "Решение",
-    solutionIntro1: "Я разбила форму на 6 шагов с сегментированным прогресс-баром.",
-    solutionIntro2: "Каждый шаг — одна тема, одна задача.",
-    solutionIntro3: "Пользователь видит, где он находится и сколько ещё осталось.",
-    keyDecisionsTitle: "Ключевые решения",
-    decision1: "Сегментированный прогресс-бар вверху",
-    decision2: "Одна колонка — все поля на всю ширину",
-    decision3: "Нативная загрузка — кнопка «Прикрепить файл» вместо drag & drop",
-    decision4: "Условная логика — экраны меняются в зависимости от типа бизнеса",
-    decision5: "Экран проверки (Review) — показывает все разделы перед отправкой с возможностью вернуться назад",
-    flowTitle: "Флоу экранов",
-    flowRole: "Роль",
-    flowBizType: "Тип бизнеса",
-    flow1: "Бизнес-данные",
-    flowSplitLabel: "↓ разветвляется по типу бизнеса ↓",
-    flowBranchSole: "Sole Proprietor",
-    flowBranchCorp: "Corporation",
-    flowBranchPartner: "Partnership",
-    flow2: "Представитель",
-    flow3: "Документы",
-    flowMergeLabel: "↓ снова сходится в один поток ↓",
-    flow4: "Договор",
-    flow5: "Фото",
-    flowReview2: "Проверка",
-    flowReview: "Успех",
-    whyTitle: "Почему это работает?",
-    forUserTitle: "Для пользователя",
-    user1: "Видит прогресс — знает, сколько осталось",
-    user2: "Не перегружен — одна задача за раз",
-    user3: "Не теряет данные — может вернуться и отредактировать на экране проверки",
-    forBusinessTitle: "Для бизнеса",
-    biz1: "Растёт completion rate — разбивка на шаги снижает отказы. Пользователи не бросают форму, увидев её целиком",
-    biz2: "Повышается качество данных — условная логика показывает только релевантные поля",
-    biz3: "Меньше ошибок, меньше пустых обязательных полей",
-    biz4: "Сокращается время обработки — экран проверки позволяет верифицировать данные перед отправкой",
-    resultsTitle: "Результаты",
-    stat1Label: "Completion rate формы — рост за три месяца после запуска",
-    stat2Label: "Среднее время заполнения формы (с ~16 до ~9 минут)",
-    stat3Label: "Заявок, отклонённых из-за неполных или неверных данных",
-    home: "На главную"
-  },
-  en: {
-    back: "Back",
-    title: "Skyro — merchant onboarding",
-    desc: "Mobile merchant registration flow: role selection, business details, documents and confirmation — with a branch for Sole Proprietor / Corporation / Partnership. The prototype on the left is clickable — you can walk through the whole flow.",
-    beforeLabel: "Before — Airtable form",
-    beforeDesc: "Merchants and BD managers had to fill in one long form with no branching or guidance — easy to make a mistake or miss a required field.",
-    problemTitle: "Problem",
-    problemIntro: "Airtable form on mobile:",
-    problem1: "One long scroll without reference points — the user doesn't understand how much is left",
-    problem2: "Fields in two columns — don't work on a narrow screen",
-    problem3: "\"Drop files here\" — a desktop pattern for file uploads",
-    problem4: "No progress indicator — unclear what stage you are at",
-    problem5: "Everything at once — Business Info, Representative, Documents, Bank Details in one flow",
-    researchTitle: "Research",
-    researchIntro: "Before jumping into screens, I ran 5 interviews with merchants and BD managers, plus a short internal survey (12 responses) about the current onboarding process.",
-    findingsTitle: "Key findings",
-    finding1: "People often called support instead of figuring it out themselves — they didn't understand what to do next",
-    finding2: "They mixed up sections and attached the wrong documents in the wrong place",
-    finding3: "Some merchants simply abandoned the form halfway through",
-    finding4: "Filling it out took a lot of time — much longer than people expected",
-    hypothesesTitle: "Hypotheses",
-    hypothesis1: "If we split the form into short steps with visible progress, fewer people will abandon it midway",
-    hypothesis2: "If each document upload is clearly tied to its own step, people will stop attaching files in the wrong place",
-    hypothesis3: "If people can see the whole process and review everything before submitting, the form will take less time and generate fewer support calls",
-    solutionTitle: "Solution",
-    solutionIntro1: "I broke down the form into 6 steps with a segmented progress bar.",
-    solutionIntro2: "Each step represents one topic, one task.",
-    solutionIntro3: "The user can see where they are and how much is left.",
-    keyDecisionsTitle: "Key decisions",
-    decision1: "Segmented progress bar at the top",
-    decision2: "One column — all fields full-width",
-    decision3: "Native upload — \"Attach file\" button instead of drag & drop",
-    decision4: "Conditional logic — screens change depending on the type of business",
-    decision5: "Review screen — shows all sections before submission with the option to go back",
-    flowTitle: "Screen flow",
-    flowRole: "Role",
-    flowBizType: "Business Type",
-    flow1: "Business Info",
-    flowSplitLabel: "↓ splits by business type ↓",
-    flowBranchSole: "Sole Proprietor",
-    flowBranchCorp: "Corporation",
-    flowBranchPartner: "Partnership",
-    flow2: "Representative",
-    flow3: "Documents",
-    flowMergeLabel: "↓ merges back into one flow ↓",
-    flow4: "Agreement",
-    flow5: "Photos",
-    flowReview2: "Review",
-    flowReview: "Success",
-    whyTitle: "Why does this work?",
-    forUserTitle: "For the user",
-    user1: "User sees progress — knows how much is left",
-    user2: "Not overwhelmed — one task at a time",
-    user3: "No data loss — can go back and edit on the Review screen",
-    forBusinessTitle: "For the business",
-    biz1: "Completion rate increases — breaking the form into steps reduces abandonment. Users don't drop off when they see the full form at once",
-    biz2: "Data quality improves — conditional logic shows only relevant fields",
-    biz3: "Fewer errors, fewer empty required fields",
-    biz4: "Processing time decreases — the Review screen lets users verify their data before submitting",
-    resultsTitle: "Results",
-    stat1Label: "Form completion rate, three months after launch",
-    stat2Label: "Average time to complete the form (from ~16 to ~9 minutes)",
-    stat3Label: "Submissions rejected due to missing or incorrect data",
-    home: "Back to home"
-  }
-};
-
-function applyLang(lang){
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if(i18n[lang][key] !== undefined){
-      el.innerHTML = i18n[lang][key];
-    }
-  });
-  document.querySelectorAll('.lang-opt').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
-}
-
-applyLang('en');
-
-document.querySelectorAll('.lang-opt').forEach(btn => {
-  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
-});
+const siteNav=document.getElementById('siteNav');
+window.addEventListener('scroll',()=>siteNav.classList.toggle('scrolled',window.scrollY>8));
 </script>
 
 </body>
