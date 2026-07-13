@@ -124,6 +124,8 @@ a{color:inherit;text-decoration:none;}
 .case-divider{display:flex;align-items:center;gap:20px;margin:8px 0;}
 .case-divider::before,.case-divider::after{content:"";height:1px;background:var(--line);flex:1;}
 .case-divider span{font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-faint);white-space:nowrap;}
+.land-embed{width:100%;height:720px;border:none;display:block;margin-top:28px;}
+@media (max-width:760px){ .land-embed{height:calc(780px + 69vw);} }
 </style>
 </head>
 <body>
@@ -153,6 +155,7 @@ a{color:inherit;text-decoration:none;}
       <h1 data-i18n="lTitle">SkyroCredit — лендинг продукта</h1>
       <p data-i18n="lDesc">Первый экран продуктовой страницы SkyroCredit под десктоп: за секунды показать незнакомый продукт, донести ключевые цифры и удержать игривый голос бренда.</p>
     </div>
+    <iframe class="land-embed" src="skyro-landing.html" title="SkyroCredit — landing preview" loading="lazy"></iframe>
   </div>
 
   <div class="content-section">
