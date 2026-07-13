@@ -118,6 +118,12 @@ a{color:inherit;text-decoration:none;}
   .before-text{order:1;}
   .shot-frame{order:2;margin-top:24px;}
 }
+
+.landing-intro{padding:64px 0 40px;}
+.task-eyebrow{font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--accent);margin:0 0 18px;}
+.case-divider{display:flex;align-items:center;gap:20px;margin:8px 0;}
+.case-divider::before,.case-divider::after{content:"";height:1px;background:var(--line);flex:1;}
+.case-divider span{font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-faint);white-space:nowrap;}
 </style>
 </head>
 <body>
@@ -139,6 +145,94 @@ a{color:inherit;text-decoration:none;}
 </header>
 
 <main class="wrap">
+  <!-- ===================== TASK 1 · LANDING ===================== -->
+  <div class="landing-intro">
+    <p class="task-eyebrow" data-i18n="lPhase">Задача 1 · Лендинг продукта</p>
+    <div class="case-text">
+      <div class="case-tags"><span>FinTech</span><span>Web</span><span>Landing</span></div>
+      <h1 data-i18n="lTitle">SkyroCredit — лендинг продукта</h1>
+      <p data-i18n="lDesc">Первый экран продуктовой страницы SkyroCredit под десктоп: за секунды показать незнакомый продукт, донести ключевые цифры и удержать игривый голос бренда.</p>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="content-block">
+      <h2 data-i18n="lTaskTitle">Задача</h2>
+      <p data-i18n="lTask">Спроектировать первый экран лендинга SkyroCredit под десктоп: визуально показать продукт, донести ключевую информацию и выдержать бренд-стиль — яркий, с юмором, дружелюбный, но технологичный. За основу взята существующая страница skyro.ph.</p>
+    </div>
+
+    <div class="content-block">
+      <h2 data-i18n="lProblemTitle">Проблема</h2>
+      <p data-i18n="lProblem">SkyroCredit — непривычный продукт: возобновляемая кредитная линия без пластика, оплата сканом QR Ph. Его легко спутать с обычным кредитом или картой. Нужно за секунды объяснить незнакомую механику, сделать её желанной и при этом удержать игривый голос бренда.</p>
+      <h3 data-i18n="lFocusTitle">Что должен сделать первый экран</h3>
+      <ul class="content-list">
+          <li data-i18n="lFocus1">Показать, что это — линия в приложении, оплата по QR, возобновляемость</li>
+          <li data-i18n="lFocus2">Донести ключевые цифры — 0% на 45 дней, 1% кэшбэк, лимит растёт до ₱100K</li>
+          <li data-i18n="lFocus3">Удержать тон и визуал бренда</li>
+      </ul>
+      <p data-i18n="lInsight" style="margin-top:14px;">Ключевой инсайт: подавать продукт не как «ещё один кредит», а через его отличия и мягкое позиционирование, снимающее стигму заимствования.</p>
+    </div>
+
+    <div class="content-block">
+      <h2 data-i18n="lResearchTitle">Исследование</h2>
+      <ul class="content-list">
+          <li data-i18n="lResearch1">Бренд skyro.ph — голос «boss», таглиш, юмор; визуал: синий + лаймовый акцент, скругления, жирный гротеск</li>
+          <li data-i18n="lResearch2">Механика продукта — оплата сканом QR Ph, 0% до 45 дней, 1% кэшбэк на покупки от ₱100, лимит ₱1K–₱100K и растёт при ответственном использовании, проценты только на потраченное</li>
+          <li data-i18n="lResearch3">Переносимый банковский UX (UsabilityLab, кейс SimbirSoft на vc.ru) — объяснять термины простым языком, держать калькулятор на странице оформления, упрощать форму, давать понятные подсказки</li>
+          <li data-i18n="lResearch4">Страхи кредитных продуктов — скрытые комиссии, «подводные камни», непрозрачность → нужна прозрачность условий</li>
+      </ul>
+    </div>
+
+    <div class="content-block">
+      <h2 data-i18n="lHypothesesTitle">Гипотезы</h2>
+      <ul class="content-list">
+          <li data-i18n="lHyp1">«Backup fund» вместо «loan» — позиционировать продукт как деньги наготове, а не как кредит; уйти от негатива слова «заём» (это не долг, а подушка, которая у тебя уже есть)</li>
+          <li data-i18n="lHyp2">Вести отличием продукта — «кредит без пластика / сканируй и плати / трать-гаси-снова» помогает быстро понять незнакомую механику</li>
+          <li data-i18n="lHyp3">Показать продукт визуально — мокап приложения (лимит, оплата по QR, кэшбэк, возобновление) считывается быстрее текста</li>
+          <li data-i18n="lHyp4">Ключевые цифры + тон вместе — стат-бар 0% / 1% / ₱100K / QR Ph в голосе «boss» доносит и информацию, и характер бренда</li>
+          <li data-i18n="lHyp5">Прозрачность у CTA — «walang hidden fees» и понятные условия рядом с кнопкой снимают страх «в чём подвох»</li>
+      </ul>
+    </div>
+
+    <div class="content-block">
+      <h2 data-i18n="lSolutionTitle">Решение</h2>
+      <h3 data-i18n="lSolHeroTitle">Первый экран (герой)</h3>
+      <p data-i18n="lSolHero">Заголовок в позиционировании «фонд наготове» + голос бренда; мокап приложения (доступный лимит, «Scan to pay» по QR, история с кэшбэком, строка «ready ulit» про возобновление); стат-бар 0% / 1% / ₱100K / QR Ph.</p>
+      <h3 data-i18n="lSolRestTitle">Дальше по лендингу</h3>
+      <p data-i18n="lSolRest">Объяснение механики «always on standby», 3 выгоды (0% / 1% / 30 дней), 3 шага, петля обновления (взял → погасил 0% → снова доступно), калькулятор с юзкейсами и живым кэшбэком, прогрессивная заявка, FAQ.</p>
+      <p data-i18n="lSolBrand" style="margin-top:10px;">Бренд: синий + лаймовый акцент, Poppins, голос «boss» / таглиш.</p>
+    </div>
+
+    <div class="content-block">
+      <h2 data-i18n="lMetricsTitle">Метрики</h2>
+      <h3 data-i18n="lMetricsSuccessTitle">Успех</h3>
+      <p data-i18n="lMetricsSuccess">Понятность (считывают ли, что такое SkyroCredit), вовлечённость (глубина скролла, взаимодействие с калькулятором), клик по CTA / установки приложения / старт заявки. Ниже по воронке — средний чек и повторное использование.</p>
+      <h3 data-i18n="lMetricsGuardTitle">Guardrail</h3>
+      <p data-i18n="lMetricsGuard">Успешность выполнения ключевой задачи и NPS — не уронить.</p>
+    </div>
+
+    <div class="content-block">
+      <h2 data-i18n="lResultsTitle">Результаты</h2>
+      <p data-i18n="lResultsDone">Сделано: десктопный лендинг SkyroCredit и его первый экран в бренде и тоне Skyro, интерактивный калькулятор и мобильный вайрфрейм. Цельная система, где каждое решение привязано к гипотезе и к находке из ресёрча.</p>
+      <h3 data-i18n="lResultsExpTitle">Ожидаемый эффект (гипотезы, требуют проверки)</h3>
+      <ul class="content-list">
+          <li data-i18n="lExp1">Быстрее считывается продукт — позиционирование «фонд наготове» + визуальный мокап QR-механики снижают отвал «что это вообще?»</li>
+          <li data-i18n="lExp2">Ниже отвал в заявке — прогрессивная форма вместо пяти полей</li>
+          <li data-i18n="lExp3">Выше средний чек — юзкейсы и живой кэшбэк в калькуляторе смещают фокус с «сколько нужно» на «что беру»</li>
+          <li data-i18n="lExp4">Больше повтора — явная петля обновления как LTV-двигатель</li>
+      </ul>
+      <h3 data-i18n="lBenchmarkTitle">Бенчмарк</h3>
+      <p data-i18n="lBenchmark">В сопоставимом кейсе редизайна банковского оформления (SimbirSoft, vc.ru) упрощение пути снизило долю незавершивших заявку с 43% до 23% и сократило время оформления с 16 до 6 минут. Это ориентир того же порядка, а не обещание конкретной цифры.</p>
+      <h3 data-i18n="lValidateTitle">Как валидировать перед запуском</h3>
+      <p data-i18n="lValidate">Юзабилити-тест на ~12 респондентах по 4–5 гипотезам и сценариям, с замером понятности продукта, успешности выполнения ключевой задачи (task success) и времени оформления.</p>
+      <h3 data-i18n="lReflectionTitle">Рефлексия</h3>
+      <p data-i18n="lReflection">Главный риск — гипотеза «backup fund вместо loan»: она снимает стигму заимствования, но может недокоммуницировать, что это всё-таки кредит с обязательствами. Это первое, что я бы протестировала — понимают ли пользователи природу продукта, а не только дружелюбную обёртку.</p>
+    </div>
+  </div>
+
+  <!-- ===================== divider ===================== -->
+  <div class="case-divider"><span data-i18n="phase2">Задача 2 · Форма онбординга</span></div>
+
   <div class="case-layout">
     <div class="case-text">
       <div class="case-tags">
@@ -299,6 +393,54 @@ a{color:inherit;text-decoration:none;}
 const i18n = {
   ru: {
     back: "Назад",
+    lPhase: "Задача 1 · Лендинг продукта",
+    lTitle: "SkyroCredit — лендинг продукта",
+    lDesc: "Первый экран продуктовой страницы SkyroCredit под десктоп: за секунды показать незнакомый продукт, донести ключевые цифры и удержать игривый голос бренда.",
+    lTaskTitle: "Задача",
+    lTask: "Спроектировать первый экран лендинга SkyroCredit под десктоп: визуально показать продукт, донести ключевую информацию и выдержать бренд-стиль — яркий, с юмором, дружелюбный, но технологичный. За основу взята существующая страница skyro.ph.",
+    lProblemTitle: "Проблема",
+    lProblem: "SkyroCredit — непривычный продукт: возобновляемая кредитная линия без пластика, оплата сканом QR Ph. Его легко спутать с обычным кредитом или картой. Нужно за секунды объяснить незнакомую механику, сделать её желанной и при этом удержать игривый голос бренда.",
+    lFocusTitle: "Что должен сделать первый экран",
+    lFocus1: "Показать, что это — линия в приложении, оплата по QR, возобновляемость",
+    lFocus2: "Донести ключевые цифры — 0% на 45 дней, 1% кэшбэк, лимит растёт до ₱100K",
+    lFocus3: "Удержать тон и визуал бренда",
+    lInsight: "Ключевой инсайт: подавать продукт не как «ещё один кредит», а через его отличия и мягкое позиционирование, снимающее стигму заимствования.",
+    lResearchTitle: "Исследование",
+    lResearch1: "Бренд skyro.ph — голос «boss», таглиш, юмор; визуал: синий + лаймовый акцент, скругления, жирный гротеск",
+    lResearch2: "Механика продукта — оплата сканом QR Ph, 0% до 45 дней, 1% кэшбэк на покупки от ₱100, лимит ₱1K–₱100K и растёт при ответственном использовании, проценты только на потраченное",
+    lResearch3: "Переносимый банковский UX (UsabilityLab, кейс SimbirSoft на vc.ru) — объяснять термины простым языком, держать калькулятор на странице оформления, упрощать форму, давать понятные подсказки",
+    lResearch4: "Страхи кредитных продуктов — скрытые комиссии, «подводные камни», непрозрачность → нужна прозрачность условий",
+    lHypothesesTitle: "Гипотезы",
+    lHyp1: "«Backup fund» вместо «loan» — позиционировать продукт как деньги наготове, а не как кредит; уйти от негатива слова «заём» (это не долг, а подушка, которая у тебя уже есть)",
+    lHyp2: "Вести отличием продукта — «кредит без пластика / сканируй и плати / трать-гаси-снова» помогает быстро понять незнакомую механику",
+    lHyp3: "Показать продукт визуально — мокап приложения (лимит, оплата по QR, кэшбэк, возобновление) считывается быстрее текста",
+    lHyp4: "Ключевые цифры + тон вместе — стат-бар 0% / 1% / ₱100K / QR Ph в голосе «boss» доносит и информацию, и характер бренда",
+    lHyp5: "Прозрачность у CTA — «walang hidden fees» и понятные условия рядом с кнопкой снимают страх «в чём подвох»",
+    lSolutionTitle: "Решение",
+    lSolHeroTitle: "Первый экран (герой)",
+    lSolHero: "Заголовок в позиционировании «фонд наготове» + голос бренда; мокап приложения (доступный лимит, «Scan to pay» по QR, история с кэшбэком, строка «ready ulit» про возобновление); стат-бар 0% / 1% / ₱100K / QR Ph.",
+    lSolRestTitle: "Дальше по лендингу",
+    lSolRest: "Объяснение механики «always on standby», 3 выгоды (0% / 1% / 30 дней), 3 шага, петля обновления (взял → погасил 0% → снова доступно), калькулятор с юзкейсами и живым кэшбэком, прогрессивная заявка, FAQ.",
+    lSolBrand: "Бренд: синий + лаймовый акцент, Poppins, голос «boss» / таглиш.",
+    lMetricsTitle: "Метрики",
+    lMetricsSuccessTitle: "Успех",
+    lMetricsSuccess: "Понятность (считывают ли, что такое SkyroCredit), вовлечённость (глубина скролла, взаимодействие с калькулятором), клик по CTA / установки приложения / старт заявки. Ниже по воронке — средний чек и повторное использование.",
+    lMetricsGuardTitle: "Guardrail",
+    lMetricsGuard: "Успешность выполнения ключевой задачи и NPS — не уронить.",
+    lResultsTitle: "Результаты",
+    lResultsDone: "Сделано: десктопный лендинг SkyroCredit и его первый экран в бренде и тоне Skyro, интерактивный калькулятор и мобильный вайрфрейм. Цельная система, где каждое решение привязано к гипотезе и к находке из ресёрча.",
+    lResultsExpTitle: "Ожидаемый эффект (гипотезы, требуют проверки)",
+    lExp1: "Быстрее считывается продукт — позиционирование «фонд наготове» + визуальный мокап QR-механики снижают отвал «что это вообще?»",
+    lExp2: "Ниже отвал в заявке — прогрессивная форма вместо пяти полей",
+    lExp3: "Выше средний чек — юзкейсы и живой кэшбэк в калькуляторе смещают фокус с «сколько нужно» на «что беру»",
+    lExp4: "Больше повтора — явная петля обновления как LTV-двигатель",
+    lBenchmarkTitle: "Бенчмарк",
+    lBenchmark: "В сопоставимом кейсе редизайна банковского оформления (SimbirSoft, vc.ru) упрощение пути снизило долю незавершивших заявку с 43% до 23% и сократило время оформления с 16 до 6 минут. Это ориентир того же порядка, а не обещание конкретной цифры.",
+    lValidateTitle: "Как валидировать перед запуском",
+    lValidate: "Юзабилити-тест на ~12 респондентах по 4–5 гипотезам и сценариям, с замером понятности продукта, успешности выполнения ключевой задачи (task success) и времени оформления.",
+    lReflectionTitle: "Рефлексия",
+    lReflection: "Главный риск — гипотеза «backup fund вместо loan»: она снимает стигму заимствования, но может недокоммуницировать, что это всё-таки кредит с обязательствами. Это первое, что я бы протестировала — понимают ли пользователи природу продукта, а не только дружелюбную обёртку.",
+    phase2: "Задача 2 · Форма онбординга",
     title: "Skyro — онбординг мерчанта",
     desc: "Мобильный флоу регистрации мерчанта: выбор роли, бизнес-данные, документы и подтверждение — с веткой для Sole Proprietor / Corporation / Partnership. Прототип слева кликабельный — можно пройти весь флоу.",
     beforeLabel: "До — форма в Airtable",
@@ -364,6 +506,54 @@ const i18n = {
   },
   en: {
     back: "Back",
+    lPhase: "Task 1 · Product landing",
+    lTitle: "SkyroCredit — product landing",
+    lDesc: "The hero screen of the SkyroCredit desktop landing: explain an unfamiliar product in seconds, land the key numbers, and keep the brand's playful voice.",
+    lTaskTitle: "Task",
+    lTask: "Design the hero screen of the SkyroCredit desktop landing: show the product visually, deliver the key information, and hold the brand style — bright, playful, friendly yet technological. Based on the existing skyro.ph.",
+    lProblemTitle: "Problem",
+    lProblem: "SkyroCredit is an unfamiliar product: a revolving credit line with no plastic, paid by scanning QR Ph. It's easily mistaken for a regular loan or card. The hero has seconds to explain an unfamiliar mechanic, make it desirable, and keep the playful brand voice.",
+    lFocusTitle: "What the hero must do",
+    lFocus1: "Show what it is — a line inside the app, QR payment, revolving",
+    lFocus2: "Deliver the key numbers — 0% for 45 days, 1% cashback, limit grows up to ₱100K",
+    lFocus3: "Hold the brand tone and visuals",
+    lInsight: "Key insight: frame the product not as “another loan” but through its differences and a gentle positioning that removes the stigma of borrowing.",
+    lResearchTitle: "Research",
+    lResearch1: "skyro.ph brand — voice “boss”, Taglish, humor; visuals: blue + lime accent, rounded shapes, bold grotesque",
+    lResearch2: "Product mechanic — pay by scanning QR Ph, 0% up to 45 days, 1% cashback on purchases from ₱100, limit ₱1K–₱100K growing with responsible use, interest only on what's spent",
+    lResearch3: "Transferable banking UX (UsabilityLab, SimbirSoft case on vc.ru) — explain terms in plain language, keep a calculator on the application page, simplify the form, give clear hints",
+    lResearch4: "Credit-product fears — hidden fees, “catches”, opacity → transparency of terms is needed",
+    lHypothesesTitle: "Hypotheses",
+    lHyp1: "“Backup fund” instead of “loan” — position it as money on standby, not a loan; drop the negative of “debt” (it's not debt, it's a cushion you already have)",
+    lHyp2: "Lead with the difference — “credit without plastic / scan and pay / spend-repay-again” makes an unfamiliar mechanic click fast",
+    lHyp3: "Show the product visually — an app mockup (limit, QR payment, cashback, revolving) reads faster than text",
+    lHyp4: "Key numbers + tone together — a 0% / 1% / ₱100K / QR Ph stat bar in the “boss” voice carries both the info and the brand's character",
+    lHyp5: "Transparency at the CTA — “walang hidden fees” and clear terms next to the button remove the “what's the catch” fear",
+    lSolutionTitle: "Solution",
+    lSolHeroTitle: "The hero screen",
+    lSolHero: "A headline in the “fund on standby” positioning + brand voice; an app mockup (available limit, “Scan to pay” via QR, a cashback entry, a “ready ulit” line about revolving); a 0% / 1% / ₱100K / QR Ph stat bar.",
+    lSolRestTitle: "Down the landing",
+    lSolRest: "An “always on standby” explainer, 3 benefits (0% / 1% / 30 days), 3 steps, the revolving loop (borrow → repay 0% → available again), a calculator with use cases and live cashback, a progressive application, FAQ.",
+    lSolBrand: "Brand: blue + lime accent, Poppins, “boss” voice / Taglish.",
+    lMetricsTitle: "Metrics",
+    lMetricsSuccessTitle: "Success",
+    lMetricsSuccess: "Clarity (do people read what SkyroCredit is), engagement (scroll depth, calculator interaction), CTA click / app installs / application start. Further down the funnel — average check and repeat use.",
+    lMetricsGuardTitle: "Guardrail",
+    lMetricsGuard: "Task success on the key task and NPS — don't drop these.",
+    lResultsTitle: "Results",
+    lResultsDone: "Done: a SkyroCredit desktop landing and its hero in Skyro's brand and tone, an interactive calculator and a mobile wireframe. A coherent system where every decision ties back to a hypothesis and a research finding.",
+    lResultsExpTitle: "Expected effect (hypotheses, to be validated)",
+    lExp1: "Faster product comprehension — the “fund on standby” positioning + a visual QR mockup lower the “what even is this?” drop-off",
+    lExp2: "Lower application drop-off — a progressive form instead of five fields",
+    lExp3: "Higher average check — use cases and live cashback in the calculator shift focus from “how much do I need” to “what am I getting”",
+    lExp4: "More repeat use — an explicit revolving loop as an LTV driver",
+    lBenchmarkTitle: "Benchmark",
+    lBenchmark: "In a comparable banking-flow redesign (SimbirSoft, vc.ru) simplifying the path cut the drop-off rate from 43% to 23% and the completion time from 16 to 6 minutes. That's a reference of the same order, not a promise of a specific number.",
+    lValidateTitle: "How to validate before launch",
+    lValidate: "A usability test with ~12 participants on 4–5 hypotheses and scenarios, measuring product clarity, task success on the key task, and completion time.",
+    lReflectionTitle: "Reflection",
+    lReflection: "The main risk is the “backup fund vs loan” hypothesis: it removes the borrowing stigma but may under-communicate that it's still credit with obligations. That's the first thing I'd test — whether users understand the nature of the product, not just its friendly wrapper.",
+    phase2: "Task 2 · Onboarding form",
     title: "Skyro — merchant onboarding",
     desc: "Mobile merchant registration flow: role selection, business details, documents and confirmation — with a branch for Sole Proprietor / Corporation / Partnership. The prototype on the left is clickable — you can walk through the whole flow.",
     beforeLabel: "Before — Airtable form",
