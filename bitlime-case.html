@@ -125,6 +125,35 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
 .screen{display:block;width:100%;height:auto;border-radius:24px;}
 @media (max-width:760px){.screen{border-radius:16px;}}
 
+
+.table-wrap{overflow-x:auto;margin-top:32px;border:1px solid var(--line);border-radius:18px;-webkit-overflow-scrolling:touch;}
+.table-wrap table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.5;}
+.table-wrap th,.table-wrap td{padding:14px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);}
+.table-wrap tr:last-child th,.table-wrap tr:last-child td{border-bottom:none;}
+.table-wrap thead th{font-family:var(--font-display);font-weight:600;color:var(--text);background:var(--surface);white-space:nowrap;}
+.table-wrap tbody th{font-weight:600;color:var(--text);background:var(--surface);white-space:nowrap;}
+.table-wrap td{color:var(--text-mute);}
+.table-wrap tbody th,.table-wrap thead th:first-child{position:sticky;left:0;z-index:1;}
+.t-cjm{min-width:1500px;}
+.t-cjm td{min-width:150px;}
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:32px;}
+.map > *{min-width:0;}
+.map-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;}
+.map-title{font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--text);margin-bottom:10px;}
+.map-card ul{list-style:none;margin:0;padding:0;}
+.map-card li{font-size:13px;line-height:1.5;color:var(--text-mute);padding:4px 0;}
+.map-card li.sub-i{padding-left:14px;color:var(--text-faint);position:relative;}
+.map-card li.sub-i::before{content:'';position:absolute;left:3px;top:4px;bottom:4px;width:1px;background:var(--line);}
+.swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:32px;}
+.swatches > *{min-width:0;}
+.sw span{display:block;aspect-ratio:1/1;border-radius:14px;border:1px solid var(--line);margin-bottom:10px;}
+.sw b,.sp b{display:block;font-size:13px;font-weight:600;color:var(--text);}
+.sw i,.sp i{display:block;font-size:12px;font-style:normal;color:var(--text-faint);margin-top:2px;}
+.spacing{display:flex;flex-wrap:wrap;gap:32px;margin-top:28px;align-items:flex-end;}
+.sp span{display:block;height:48px;background:#D5F24D;border-radius:4px;margin-bottom:10px;}
+.sp span.font{width:auto;height:48px;background:none;font-family:var(--font-display);font-weight:700;font-size:40px;line-height:48px;color:var(--text);}
+@media (max-width:760px){.swatches{grid-template-columns:repeat(3,1fr);}}
+
 /* next */
 .next{margin-top:var(--gap-block);padding:48px 0 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
 .next a{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-0.01em;}
@@ -168,7 +197,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
     <div class="hero-meta">
       <div>
         <p class="meta-label">Role</p>
-        <p class="meta-value">Product designer, end to end: research, structure, wireframes, UI, design system.</p>
+        <p class="meta-value">Product designer, end to end: research, structure, wireframes, UI.</p>
       </div>
       <div>
         <p class="meta-label">Scope</p>
@@ -176,7 +205,11 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
     </div>
     <div class="hero-shots">
-      <div class="ph ph-hero">Hero image</div>
+      <div class="stage"><div class="shots shots-3">
+          <img class="screen" src="assets/main.webp" alt="Home" loading="lazy">
+          <img class="screen" src="assets/select-network.webp" alt="Select network" loading="lazy">
+          <img class="screen" src="assets/chart.webp" alt="Assets" loading="lazy">
+        </div></div>
     </div>
   </section>
 
@@ -201,7 +234,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       <div class="sub">
         <h3>Who it's for</h3>
         <p class="text">I described five types of users: investor, trader, beginner, business owner and student. They all want speed, safety and low fees. Beginners also want guidance, traders want more tools.</p>
-        <div class="ph ph-wide">Personas</div>
+        <div class="table-wrap"><table class="t-personas"><thead><tr><th></th><th>Investor</th><th>Trader</th><th>Beginner</th><th>Business owner</th><th>Student</th></tr></thead><tbody><tr><th>Who</th><td>Michael, 45</td><td>Sofia, 30</td><td>Daniel, 25</td><td>Omar, 35</td><td>Lucas, 20</td></tr><tr><th>Spending power</th><td>High</td><td>Medium</td><td>Low</td><td>High</td><td>Low</td></tr><tr><th>Motivation</th><td>Grow and diversify capital</td><td>Earn on short-term trades using technical and fundamental analysis</td><td>Start investing and learn how the market works</td><td>Diversify investments and use crypto in the business</td><td>Interest in new tech and earning on crypto growth</td></tr><tr><th>Expectations</th><td>Fast operations, reliability, security, portfolio reports</td><td>Up-to-date market data, analysis and forecasting tools</td><td>A simple, clear interface and learning materials</td><td>Market analysis tools, integration with other financial tools</td><td>Low fees, a chance to learn, a fresh approach</td></tr></tbody></table></div>
       </div>
 
       <div class="sub">
@@ -218,13 +251,13 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       <div class="sub">
         <h3>Competitors</h3>
         <p class="text">I compared Binance, Bybit and Bitget screen by screen. They are built almost the same way. The main difference is how much they show at once. None of them asks early whether you're a beginner or not.</p>
-        <div class="ph ph-wide">Competitor analysis</div>
+        <div class="table-wrap"><table class="t-comp"><thead><tr><th></th><th>Binance</th><th>Bybit</th><th>Bitget</th><th>Bitlime</th></tr></thead><tbody><tr><th>First screen</th><td>Choose a role</td><td>Choose exchange or Web3, demo trading, search</td><td>Sign-up and a news pop-up</td><td>Preview of the account with a locked balance, demo trading, favorite pairs</td></tr><tr><th>Sign-up</th><td>Email or phone, Google, Apple, Telegram, corporate account</td><td>Email or phone, Google, Apple, Telegram, confirmation code</td><td>Email or phone, Google, Apple, Telegram, bot check</td><td>Email or phone, Google, Apple, Telegram</td></tr><tr><th>Verification</th><td>Passkey</td><td>Country, document type, document photo</td><td>ID type, country, document photo, face recognition</td><td>A checklist up front, then country, ID type and photo</td></tr><tr><th>Deposit from Home</th><td>Deposit, Pay or P2P → coin → network → address</td><td>Buy / Deposit / P2P → payment method → amount → coin → network → address</td><td>Deposit → card, P2P or exchanger → coin → address</td><td>Buy / Deposit / P2P → method → coin → network with min. amount and arrival time → address</td></tr><tr><th>Assets</th><td>Overview, Spot, Earn and Deposits tabs, spot history</td><td>Balance, hide assets, send, transfer, convert</td><td>Spot wallet and transaction history</td><td>One balance card with a chart and asset split, Deposit, Send, Transfer, hide-balance mode</td></tr></tbody></table></div>
       </div>
 
       <div class="sub">
         <h3>User journey</h3>
         <p class="text">I walked through the path from opening the app to the first deposit and noted every question and problem. The hardest step was choosing a network: you only see names, with no minimum amount, no arrival time and no easy way back.</p>
-        <div class="ph ph-wide">Customer journey map</div>
+        <div class="table-wrap"><table class="t-cjm"><thead><tr><th></th><th>1. Choose role</th><th>2. Sign up</th><th>3. Home</th><th>4. Buy method</th><th>5. Coin</th><th>6. Network</th><th>7. Address</th><th>8. Top up via wallet</th><th>9. Check deposit</th></tr></thead><tbody><tr><th>Doing</th><td>Pick beginner or experienced</td><td>Enter email or phone</td><td>Open Home</td><td>Pick "I don't have crypto" or "I have crypto"</td><td>Find and pick a coin</td><td>Pick a network</td><td>Copy the address</td><td>Open a wallet and paste the address</td><td>Assets → Wallet → Spot → History</td></tr><tr><th>Asks</th><td>Do I have crypto experience?</td><td>Can I sign in without email?</td><td>How do I deposit crypto?</td><td>Pros and cons of each? Do they work in my country? Different fees?</td><td>How do I find it? Which one if I don't know them?</td><td>Which one? Minimum amount? Arrival time?</td><td>Why do I need it? What next?</td><td>Can I go back to another coin? Where are the fees?</td><td>Where is the deposit history?</td></tr><tr><th>Pain points</th><td>Why choose at all?</td><td>How many more steps before I can buy?</td><td>The Deposit button is easy to miss</td><td>No explanation of P2P, no hint when a feature isn't available, too much info</td><td>Hard to tell what a coin is for</td><td>Only names, unsupported networks shown, no way back</td><td>Have to open a browser and look for a wallet</td><td>Not sure it's safe, afraid to share card details</td><td>Don't know where to tap</td></tr><tr><th>Ideas</th><td>Let experienced users skip onboarding, show basics to beginners</td><td>Google, Apple and Telegram sign-in, show the number of steps</td><td>Make it bright and the only accent on the screen</td><td>Short explanation under each option, hint when unavailable</td><td>Market data tab, filter, search, recent coins</td><td>Only supported networks, details pop-up, easy way back</td><td>A button that opens a list of wallets</td><td>Return to Home automatically after the exchange</td><td>Fewer steps, hints to find sections fast</td></tr></tbody></table></div>
       </div>
     </div>
   </section>
@@ -233,7 +266,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
     <p class="block-label">Structure</p>
     <div>
       <p class="text">The app has five main sections: Home, Markets, Trade, Futures and Assets, plus a Profile. The deposit is split into small, simple steps instead of one crowded screen.</p>
-      <div class="ph ph-wide">App map</div>
+      <div class="map"><div class="map-card"><p class="map-title">Before sign-up</p><ul><li class="">Sign-up page</li><li class="">News pop-up</li></ul></div><div class="map-card"><p class="map-title">Sign-up / Log in</p><ul><li class="">Sign-up</li><li class="">Log in</li><li class="">Google, Apple, Telegram</li></ul></div><div class="map-card"><p class="map-title">Home</p><ul><li class="">Verification</li><li class="sub-i">Country</li><li class="sub-i">Personal data</li><li class="sub-i">Confirm</li><li class="">Buy crypto</li><li class="sub-i">Pay</li><li class="sub-i">P2P → coin → network → address</li><li class="sub-i">Deposit crypto</li><li class="">Sell crypto</li><li class="">Learning and support</li><li class="">Notifications</li></ul></div><div class="map-card"><p class="map-title">Profile</p><ul><li class="">Security</li><li class="">Verification</li><li class="">Edit data</li><li class="">Theme</li><li class="">Scan QR code</li><li class="">Support</li><li class="">Settings</li></ul></div><div class="map-card"><p class="map-title">Trade</p><ul><li class="">Analytics</li><li class="sub-i">Market reports</li><li class="sub-i">Historical data</li></ul></div><div class="map-card"><p class="map-title">Assets</p><ul><li class="">History</li><li class="sub-i">Spot transactions</li><li class="">Buy</li><li class="">Send (withdraw)</li><li class="">Transfer between wallets</li><li class="">Balance changes</li><li class="">Create a wallet</li></ul></div><div class="map-card"><p class="map-title">Markets</p><ul><li class="">Favorites</li><li class="">Active coins</li><li class="">New coins</li><li class="">Popular coins</li></ul></div></div>
       <p class="text" style="margin-top:32px;">Before working on visuals, I built a clickable wireframe prototype to test the flows.</p>
     </div>
   </section>
@@ -389,8 +422,20 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
     <p class="block-label">Visual style</p>
     <div>
       <p class="text">Dark navy background and one bright lime color for the brand and main buttons. Price up and price down have their own colors, so the brand color never mixes with profit and loss. One font, Manrope, and one set of icons. Clear spacing: 32 between blocks, 12 inside a block. The name Bitlime comes from bit + lime, so the name and the colors work together.</p>
-      <div class="ph ph-wide">Palette and spacing</div>
-      <div class="ph ph-wide">Components and icons</div>
+      <div class="swatches">
+        <div class="sw"><span style="background:#0C1020"></span><b>Background</b><i>#0C1020</i></div>
+        <div class="sw"><span style="background:#19203B"></span><b>Surface</b><i>#19203B</i></div>
+        <div class="sw"><span style="background:#212C4D"></span><b>Elevated</b><i>#212C4D</i></div>
+        <div class="sw"><span style="background:#D5F24D"></span><b>Brand lime</b><i>#D5F24D</i></div>
+        <div class="sw"><span style="background:#A0DE28"></span><b>Price up</b><i>#A0DE28</i></div>
+        <div class="sw"><span style="background:#F86832"></span><b>Price down</b><i>#F86832</i></div>
+      </div>
+      <div class="spacing">
+        <div class="sp"><span style="width:32px"></span><b>32</b><i>between blocks</i></div>
+        <div class="sp"><span style="width:12px"></span><b>12</b><i>inside a block</i></div>
+        <div class="sp"><span class="font">Aa</span><b>Manrope</b><i>one font for everything</i></div>
+      </div>
+      
     </div>
   </section>
 
