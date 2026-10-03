@@ -87,6 +87,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
 .shots-2{grid-template-columns:repeat(2,1fr);max-width:520px;}
 .shots-3{grid-template-columns:repeat(3,1fr);max-width:780px;}
 .shots-4{grid-template-columns:repeat(4,1fr);}
+.shots-5{grid-template-columns:repeat(5,1fr);}
 .ph{display:flex;align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);color:var(--text-faint);font-size:12px;text-align:center;padding:12px;}
 .ph-phone{aspect-ratio:390/844;border-radius:24px;}
 .ph-wide{aspect-ratio:16/9;border-radius:18px;margin-top:32px;}
@@ -163,7 +164,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
 @media (max-width:860px){
   .block{grid-template-columns:1fr;gap:12px;}
   .steps{grid-template-columns:repeat(2,1fr);}
-  .shots-4{grid-template-columns:repeat(2,1fr);}
+  .shots-4,.shots-5{grid-template-columns:repeat(2,1fr);}
 }
 @media (max-width:760px){
   :root{--gap-block:64px;}
@@ -246,11 +247,12 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
           <li>They chose a new app based on ease of use, fees and security.</li>
           <li>Before switching, they worried about fees and about how support works.</li>
         </ul>
+        <p class="text" style="margin-top:16px;">Both are experienced users, so I took beginners' pains from the journey map and the competitor review.</p>
       </div>
 
       <div class="sub">
         <h3>Competitors</h3>
-        <p class="text">I compared Binance, Bybit and Bitget screen by screen. They are built almost the same way. The main difference is how much they show at once. None of them asks early whether you're a beginner or not.</p>
+        <p class="text">I compared Binance, Bybit and Bitget screen by screen. They are built almost the same way. The main difference is how much they show at once. Binance asks for a role on the first screen, but none of them shows a newcomer what they get before signing up.</p>
         <div class="table-wrap"><table class="t-comp"><thead><tr><th></th><th>Binance</th><th>Bybit</th><th>Bitget</th><th>Bitlime</th></tr></thead><tbody><tr><th>First screen</th><td>Choose a role</td><td>Choose exchange or Web3, demo trading, search</td><td>Sign-up and a news pop-up</td><td>Preview of the account with a locked balance, demo trading, favorite pairs</td></tr><tr><th>Sign-up</th><td>Email or phone, Google, Apple, Telegram, corporate account</td><td>Email or phone, Google, Apple, Telegram, confirmation code</td><td>Email or phone, Google, Apple, Telegram, bot check</td><td>Email or phone, Google, Apple, Telegram</td></tr><tr><th>Verification</th><td>Passkey</td><td>Country, document type, document photo</td><td>ID type, country, document photo, face recognition</td><td>A checklist up front, then country, ID type and photo</td></tr><tr><th>Deposit from Home</th><td>Deposit, Pay or P2P → coin → network → address</td><td>Buy / Deposit / P2P → payment method → amount → coin → network → address</td><td>Deposit → card, P2P or exchanger → coin → address</td><td>Buy / Deposit / P2P → method → coin → network with min. amount and arrival time → address</td></tr><tr><th>Assets</th><td>Overview, Spot, Earn and Deposits tabs, spot history</td><td>Balance, hide assets, send, transfer, convert</td><td>Spot wallet and transaction history</td><td>One balance card with a chart and asset split, Deposit, Send, Transfer, hide-balance mode</td></tr></tbody></table></div>
       </div>
 
@@ -265,7 +267,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
   <section class="block">
     <p class="block-label">Structure</p>
     <div>
-      <p class="text">The app has five main sections: Home, Markets, Trade, Futures and Assets, plus a Profile. The deposit is split into small, simple steps instead of one crowded screen.</p>
+      <p class="text">The main sections are Home, Markets, Trade and Assets, plus a Profile. The deposit is split into small, simple steps instead of one crowded screen.</p>
       <div class="map"><div class="map-card"><p class="map-title">Before sign-up</p><ul><li class="">Sign-up page</li><li class="">News pop-up</li></ul></div><div class="map-card"><p class="map-title">Sign-up / Log in</p><ul><li class="">Sign-up</li><li class="">Log in</li><li class="">Google, Apple, Telegram</li></ul></div><div class="map-card"><p class="map-title">Home</p><ul><li class="">Verification</li><li class="sub-i">Country</li><li class="sub-i">Personal data</li><li class="sub-i">Confirm</li><li class="">Buy crypto</li><li class="sub-i">Pay</li><li class="sub-i">P2P → coin → network → address</li><li class="sub-i">Deposit crypto</li><li class="">Sell crypto</li><li class="">Learning and support</li><li class="">Notifications</li></ul></div><div class="map-card"><p class="map-title">Profile</p><ul><li class="">Security</li><li class="">Verification</li><li class="">Edit data</li><li class="">Theme</li><li class="">Scan QR code</li><li class="">Support</li><li class="">Settings</li></ul></div><div class="map-card"><p class="map-title">Trade</p><ul><li class="">Analytics</li><li class="sub-i">Market reports</li><li class="sub-i">Historical data</li></ul></div><div class="map-card"><p class="map-title">Assets</p><ul><li class="">History</li><li class="sub-i">Spot transactions</li><li class="">Buy</li><li class="">Send (withdraw)</li><li class="">Transfer between wallets</li><li class="">Balance changes</li><li class="">Create a wallet</li></ul></div><div class="map-card"><p class="map-title">Markets</p><ul><li class="">Favorites</li><li class="">Active coins</li><li class="">New coins</li><li class="">Popular coins</li></ul></div></div>
     </div>
   </section>
@@ -278,6 +280,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
         <h3>First entry and Home</h3>
         <div>
           <p class="text">Before signing up, the user sees what their account will look like: a locked balance with "1,000 USDT will be here", one Registration button and an option to try demo trading. They can also pick favorite pairs right away.</p>
+          <p class="text">Instead of asking for a role, this screen works for both: beginners see the welcome bonus, experienced users can go straight to demo trading.</p>
           <p class="text">On Home, the main action, Buy / Deposit / P2P, is the biggest button on the screen, because in research users couldn't find it.</p>
         </div>
       </div>
@@ -339,8 +342,9 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
         </div>
       </div>
       <div class="stage">
-        <div class="shots shots-4">
+        <div class="shots shots-5">
           <img class="screen" src="assets/default.webp" alt="Default" loading="lazy">
+          <img class="screen" src="assets/input.webp" alt="Input" loading="lazy">
           <img class="screen" src="assets/input-filled.webp" alt="Input filled" loading="lazy">
           <img class="screen" src="assets/tp-sl-sell.webp" alt="TP-SL sell" loading="lazy">
           <img class="screen" src="assets/open-order.webp" alt="Open order" loading="lazy">
