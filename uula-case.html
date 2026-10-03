@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UULA — Sia Volkova</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0B;
+  --surface:#141416;
+  --surface-2:#1B1B1E;
+  --line:#26262A;
+  --text:#F2F2F0;
+  --text-mute:#8C8C91;
+  --text-faint:#5C5C61;
+  --accent:#9DB4FF;
+  --font-display:'Manrope',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --container:1120px;
+  --gap-block:120px;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3{font-family:var(--font-display);margin:0;}
+p,ul,ol{margin:0;padding:0;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px;}
+
+.wrap{max-width:var(--container);margin:0 auto;padding:0 32px;}
+
+.nav{position:sticky;top:0;z-index:50;padding:20px 0;background:rgba(10,10,11,0.75);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s ease;}
+.nav.scrolled{border-bottom-color:var(--line);}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.nav-name{font-family:var(--font-display);font-weight:600;font-size:15px;letter-spacing:-0.01em;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--text-mute);}
+.back-link:hover{color:var(--text);}
+.lang-switch{display:flex;gap:2px;background:var(--surface-2);border:1px solid var(--line);border-radius:100px;padding:3px;}
+.lang-opt{font-size:12px;font-weight:600;color:var(--text-faint);background:none;border:none;padding:6px 13px;border-radius:100px;cursor:pointer;font-family:var(--font-body);letter-spacing:0.02em;transition:background .15s ease, color .15s ease;}
+.lang-opt.active{background:var(--text);color:var(--bg);}
+.lang-opt:not(.active):hover{color:var(--text-mute);}
+
+.hero{padding:96px 0 0;}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+.hero-tags span{font-size:13px;color:var(--text-mute);background:var(--surface-2);border:1px solid var(--line);padding:8px 16px;border-radius:8px;}
+.hero h1{font-size:clamp(48px,9vw,104px);font-weight:800;letter-spacing:-0.03em;line-height:0.95;margin-bottom:24px;}
+.hero-lead{font-size:clamp(20px,2.4vw,26px);line-height:1.4;color:var(--text-mute);max-width:680px;font-family:var(--font-display);font-weight:500;}
+.hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:56px;padding-top:28px;border-top:1px solid var(--line);}
+.hero-meta > *{min-width:0;}
+.meta-label{font-size:13px;color:var(--text-faint);margin-bottom:8px;}
+.meta-value{font-size:15px;line-height:1.55;color:var(--text);overflow-wrap:break-word;}
+
+.block{margin-top:var(--gap-block);display:grid;grid-template-columns:220px 1fr;gap:48px;}
+.block > *{min-width:0;}
+.block-label{font-size:13px;color:var(--text-faint);letter-spacing:0.02em;padding-top:8px;}
+.block h2{font-size:clamp(26px,3.2vw,36px);font-weight:700;letter-spacing:-0.015em;line-height:1.15;margin-bottom:20px;overflow-wrap:break-word;}
+.block h3{font-size:20px;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;overflow-wrap:break-word;}
+.text{font-size:17px;line-height:1.65;color:var(--text-mute);max-width:640px;}
+.text + .text{margin-top:16px;}
+.sub{margin-top:64px;}
+.sub:first-of-type{margin-top:0;}
+
+.steps{list-style:none;margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step;}
+.steps > *{min-width:0;}
+.steps li{counter-increment:step;font-size:15px;line-height:1.55;color:var(--text-mute);padding-top:16px;border-top:1px solid var(--line);}
+.steps li::before{content:counter(step);display:block;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--accent);margin-bottom:8px;}
+.steps li b{display:block;color:var(--text);font-weight:600;margin-bottom:4px;}
+
+.stats{list-style:none;margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:760px;}
+.stats > *{min-width:0;}
+.stats li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 20px;}
+.stats b{display:block;font-family:var(--font-display);font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:6px;}
+.stats span{font-size:14px;line-height:1.45;color:var(--text-mute);}
+
+/* media */
+.shots{display:grid;gap:16px;margin-top:32px;}
+.shots > *{min-width:0;}
+.shots-2{grid-template-columns:repeat(2,1fr);}
+.shots-3{grid-template-columns:repeat(3,1fr);}
+.shots-4{grid-template-columns:repeat(4,1fr);}
+.ph{display:flex;align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);color:var(--text-faint);font-size:12px;line-height:1.4;text-align:center;padding:12px;border-radius:18px;}
+.ph-hero{aspect-ratio:16/9;border-radius:24px;margin-top:72px;font-size:13px;}
+.ph-wide{aspect-ratio:16/9;margin-top:32px;}
+.ph-sq{aspect-ratio:1/1;}
+.ph-phone{aspect-ratio:390/844;border-radius:24px;}
+.anim{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--surface);border:1px solid var(--line);border-radius:18px;}
+
+.vid-wrap{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:24px;margin-top:32px;}
+.vid-hero{margin-top:72px;}
+.vid{display:block;max-width:100%;max-height:80vh;margin:0 auto;border-radius:14px;}
+.shot{display:block;width:100%;height:auto;margin-top:32px;}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+.pair > *{min-width:0;}
+.pair img{display:block;width:100%;height:auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;}
+.scroll{margin-top:32px;overflow-y:auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;scrollbar-width:thin;scrollbar-color:var(--line) transparent;}
+.scroll img{display:block;width:100%;height:auto;}
+.scroll-phone{max-width:360px;height:680px;border-radius:28px;}
+.scroll-wide{height:560px;}
+.scroll-cap{font-size:13px;color:var(--text-faint);margin-top:10px;}
+.next{margin-top:var(--gap-block);padding:48px 0 0;border-top:1px solid var(--line);}
+.next a{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-0.01em;}
+.next a:hover{color:var(--accent);}
+.footer{padding:48px 0;font-size:13px;color:var(--text-faint);}
+
+@media (max-width:960px){
+  .hero-meta{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:860px){
+  .block{grid-template-columns:1fr;gap:12px;}
+  .steps{grid-template-columns:repeat(2,1fr);}
+  .shots-4{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:760px){
+  :root{--gap-block:64px;}
+  .wrap,.nav-inner{padding:0 20px;}
+  .nav-name{display:none;}
+  .hero{padding:64px 0 0;}
+  .hero-meta{grid-template-columns:1fr;gap:20px;}
+  .ph-hero{margin-top:48px;aspect-ratio:4/5;}
+  .shots-3{grid-template-columns:1fr 1fr;}
+  .stats{grid-template-columns:1fr;}
+  .vid-wrap{padding:12px;border-radius:18px;}
+  .scroll-phone{height:560px;}
+  .scroll-wide{height:420px;}
+}
+@media (max-width:420px){
+  .steps{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html#work" class="back-link">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i18n="back">Back</span>
+    </a>
+    <a href="index.html" class="nav-name">Anastasia Volkova</a>
+    <div class="lang-switch" role="group" aria-label="Язык / Language">
+      <button class="lang-opt" data-lang="ru">RU</button>
+      <button class="lang-opt active" data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="hero-tags"><span>EdTech</span><span>3D</span><span>Motion</span></div>
+    <h1>UULA</h1>
+    <p class="hero-lead" data-i18n="lead">3D illustrations, animations and video for Kuwait's largest EdTech platform and its Saudi version.</p>
+    <div class="hero-meta">
+      <div><p class="meta-label" data-i18n="mRole">Role</p><p class="meta-value" data-i18n="mRoleV">UI Designer / 3D &amp; Product Visual. All 3D and motion solo, working with the art director.</p></div>
+      <div><p class="meta-label" data-i18n="mPeriod">Company</p><p class="meta-value" data-i18n="mPeriodV">UULA Technologies, 2022–2025</p></div>
+      <div><p class="meta-label" data-i18n="mMarkets">Markets</p><p class="meta-value" data-i18n="mMarketsV">Kuwait, Saudi Arabia. Arabic interface, RTL.</p></div>
+      <div><p class="meta-label" data-i18n="mTools">Tools</p><p class="meta-value" data-i18n="mToolsV">Blender, Midjourney, After Effects, Lottie, Figma</p></div>
+    </div>
+    <div class="vid-wrap vid-hero">
+      <video class="vid" src="assets/uula-landing.mp4" autoplay muted loop playsinline data-i18n-label="vLanding" aria-label="uula.com/sa landing with animations"></video>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label" data-i18n="lTask">The task</p>
+    <div>
+      <h2 data-i18n="hTask">Studying versus games and social media.</h2>
+      <p class="text" data-i18n="tTask1">UULA is an online learning platform for school students: video lessons, notes, tests and questions to teachers, following Kuwait's curriculum. The Saudi version also prepares students for the Qudurat and Tahsili exams.</p>
+      <p class="text" data-i18n="tTask2">For these students, studying is a boring obligation, and the product competes for their attention with games and social media. My job was to make it beautiful and fun for kids: build a recognisable 3D style and fill the website and app with it. Assets had to ship fast, since new courses, bundles and seasonal campaigns kept coming.</p>
+      <!-- TODO: одна фраза «как было до меня» -->
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label" data-i18n="lStyle">Style</p>
+    <div>
+      <h2 data-i18n="hStyle">Plastic toys and building blocks.</h2>
+      <p class="text" data-i18n="tStyle1">Bright, saturated colours, soft rounded shapes and tactile materials: glossy and matte plastic. Soft studio light with highlights. One hero object on a platform or an “island”, with small details around it.</p>
+      <div class="vid-wrap">
+        <video class="vid" src="assets/uula-animations.mp4" autoplay muted loop playsinline data-i18n-label="vAnims" aria-label="Animations made for UULA"></video>
+      </div>
+      <!-- TODO: гайд стиля сеткой из 6–8 иллюстраций -->
+      <p class="text" style="margin-top:32px;" data-i18n="tStyle2">The same illustration shipped in different colourways to fit each page.</p>
+      <div class="pair">
+        <img src="assets/uula-case-dark.webp" data-i18n-alt="phCaseDark" alt="Case, dark version" loading="lazy">
+        <img src="assets/uula-case-blue.webp" data-i18n-alt="phCaseBlue" alt="Case, blue version" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label" data-i18n="lWork">What I did</p>
+    <div>
+      <h2 data-i18n="hWork">Website, store, app, campaigns.</h2>
+
+      <div class="sub">
+        <h3 data-i18n="sSite">Website and landing pages</h3>
+        <p class="text" data-i18n="tSite">Illustrations and animations for the uula.com/sa home page and landing pages: the top students page with the “10” trophy, bundle and course pages.</p>
+        <img class="shot" src="assets/uula-landing-mobile.webp" data-i18n-alt="phMobile" alt="Mobile landing: first screen, Ramadan scene, bundle" loading="lazy">
+        <img class="shot" src="assets/uula-lessons.webp" data-i18n-alt="phLessons" alt="Video lessons, biology course, Tahsili bundle" loading="lazy">
+        <div class="scroll scroll-wide" tabindex="0" data-i18n-label="phTop" aria-label="Top students: “10” trophy and A+ case"><img src="assets/uula-top10.webp" alt="" loading="lazy"></div>
+        <p class="scroll-cap" data-i18n="phTop">Top students: “10” trophy and A+ case</p>
+        <div class="scroll scroll-phone" tabindex="0" data-i18n-label="phTahsili" aria-label="Tahsili bundle page"><img src="assets/uula-bundle-page.webp" alt="" loading="lazy"></div>
+        <p class="scroll-cap" data-i18n="phTahsili">Tahsili bundle page</p>
+      </div>
+
+      <div class="sub">
+        <h3 data-i18n="sStore">Store</h3>
+        <p class="text" data-i18n="tStore">Cases: course bundles for a grade, with subject figures inside. Subject tiles.</p>
+        <div class="scroll scroll-phone" tabindex="0" data-i18n-label="phStore" aria-label="Store: cases and subject tiles"><img src="assets/uula-store.webp" alt="" loading="lazy"></div>
+      </div>
+
+      <div class="sub">
+        <h3 data-i18n="sApp">App</h3>
+        <p class="text" data-i18n="tApp">Subject covers in My Subscriptions and recommendations, in-app illustrations and animations, Lottie micro-interactions.</p>
+        <!-- TODO: уточнить, где именно Lottie-микроинтеракции -->
+        <img class="shot" src="assets/uula-app-home.webp" data-i18n-alt="phApp" alt="App home on desktop" loading="lazy" style="border:1px solid var(--line);border-radius:18px;">
+        <!-- TODO: микроинтеракции записью экрана -->
+      </div>
+
+      <div class="sub">
+        <h3 data-i18n="sCovers">Covers and notes</h3>
+        <p class="text" data-i18n="tCovers">Course covers and printed-notes cards.</p>
+        <img class="shot" src="assets/uula-covers.webp" data-i18n-alt="phCovers" alt="Course covers and a notes card" loading="lazy">
+      </div>
+
+      <div class="sub">
+        <h3 data-i18n="sCamp">Campaigns and video</h3>
+        <p class="text" data-i18n="tCamp">Lottie animations for seasonal campaigns such as Ramadan. Marketing videos for UULA's Instagram and ads for Kuwait.</p>
+        <!-- TODO: рамадановая Lottie, ссылки на ролики из Instagram и рекламу -->
+      </div>
+
+      <div class="sub">
+        <h3 data-i18n="sLottie">Lottie ready for development</h3>
+        <p class="text" data-i18n="tLottie">I prepared animations ready for developers: light file size, defined start and end points, tied to user actions.</p>
+        <!-- TODO: если вела A/B-тесты визуала, добавить что тестировали -->
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label" data-i18n="lAi">AI in production</p>
+    <div>
+      <h2 data-i18n="hAi">Illustration cycle: from several weeks to one.</h2>
+      <p class="text" data-i18n="tAi">Before, every object was modelled in Blender from scratch, and one illustration took several weeks. I moved ideation to Midjourney and kept Blender for the final build. The style stayed consistent.</p>
+      <!-- TODO: проверить шаги -->
+      <ol class="steps">
+        <li data-i18n="st1"><b>Concept</b>Options in Midjourney from the brief.</li>
+        <li data-i18n="st2"><b>Approval</b>One option is picked.</li>
+        <li data-i18n="st3"><b>Build</b>Model in Blender following the style rules.</li>
+        <li data-i18n="st4"><b>Animation</b>After Effects or Blender, exported to MP4 or Lottie.</li>
+      </ol>
+      <!-- TODO: реконструкция на одной новой иллюстрации -->
+
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label" data-i18n="lRes">Results</p>
+    <div>
+      <h2 data-i18n="hRes">Faster delivery, stronger launches.</h2>
+      <ul class="stats">
+        <li><b>+10%</b><span data-i18n="r1">launch effectiveness</span></li>
+        <li><b>−20%</b><span data-i18n="r2">time to market</span></li>
+        <li><b data-i18n="r3b">1 week</b><span data-i18n="r3">illustration cycle instead of several</span></li>
+      </ul>
+      <!-- TODO: выбрать по одной цифре вместо диапазонов; как измерялась эффективность запусков -->
+      <p class="text" style="margin-top:28px;" data-i18n="tRes">On the website: page depth +12–18%, time on site +15–25%, clicks to feature and pricing pages +10–14%, first-screen bounce −8–12%.</p>
+    </div>
+  </section>
+
+  <div class="next">
+    <a href="index.html#work" data-i18n="backAll">← Back to portfolio</a>
+  </div>
+
+  <footer class="footer">© 2026 Sia Volkova</footer>
+
+</main>
+
+<script>
+const i18n = {
+  ru: {
+    "back": "Назад",
+    "lead": "3D-иллюстрации, анимации и видео для крупнейшей EdTech-платформы Кувейта и её саудовской версии.",
+    "mRole": "Роль",
+    "mRoleV": "UI Designer / 3D &amp; Product Visual. Весь 3D и моушн одна, в паре с арт-директором.",
+    "mPeriod": "Компания",
+    "mPeriodV": "UULA Technologies, 2022–2025",
+    "mMarkets": "Рынки",
+    "mMarketsV": "Кувейт, Саудовская Аравия. Интерфейс на арабском, RTL.",
+    "mTools": "Инструменты",
+    "mToolsV": "Blender, Midjourney, After Effects, Lottie, Figma",
+    "vLanding": "Лендинг uula.com/sa с анимациями",
+    "vAnims": "Анимации для UULA",
+    "lTask": "Задача",
+    "hTask": "Учёба против игр и соцсетей.",
+    "tTask1": "UULA это онлайн-платформа для школьников: видеоуроки, конспекты, тесты и вопросы учителю по программе Кувейта. В саудовской версии ещё и подготовка к экзаменам Кудурат и Тахсили.",
+    "tTask2": "Для аудитории учёба это скучная обязанность, и продукт борется за внимание с играми и соцсетями. Моя задача: сделать продукт красивым и интересным для детей, создать узнаваемый 3D-стиль и наполнить им сайт и приложение. Ассеты нужно было выпускать быстро: новые курсы, наборы и сезонные кампании появлялись постоянно.",
+    "lStyle": "Стиль",
+    "hStyle": "Пластиковые игрушки и конструктор.",
+    "tStyle1": "Яркие насыщенные цвета, мягкие округлые формы, тактильные материалы: глянцевый и матовый пластик. Мягкий студийный свет с бликами. Один главный объект на площадке или «острове» и мелкие детали вокруг.",
+    "tStyle2": "Одна и та же иллюстрация выпускалась в разных цветовых решениях под задачу страницы.",
+    "phGrid": "Иллюстрация",
+    "phCaseDark": "Чемоданчик, тёмный вариант",
+    "phCaseBlue": "Чемоданчик, синий вариант",
+    "lWork": "Что делала",
+    "hWork": "Сайт, магазин, приложение, кампании.",
+    "sSite": "Сайт и лендинги",
+    "tSite": "Иллюстрации и анимации для главной uula.com/sa и лендингов: страница лучших учеников с кубком «10», страницы пакетов и курсов.",
+    "phMobile": "Мобильный лендинг: первый экран, рамадановая сцена, пакет",
+    "phTahsili": "Страница пакета Тахсили",
+    "phTop": "Лучшие ученики: кубок «10» и чемоданчик с A+",
+    "sStore": "Магазин",
+    "tStore": "Чемоданчики: наборы курсов для класса с фигурками предметов внутри. Плитки предметов.",
+    "phStore": "Магазин: чемоданчики и плитки предметов",
+    "sApp": "Приложение",
+    "tApp": "Обложки предметов в «Моих подписках» и рекомендациях, иллюстрации и анимации в интерфейсе, Lottie-микроинтеракции.",
+    "phApp": "Главная приложения на десктопе",
+    "phLessons": "Видеоуроки, курс биологии, пакет Тахсили",
+    "phMicro": "Микроинтеракции, запись экрана",
+    "sCovers": "Обложки и конспекты",
+    "tCovers": "Обложки курсов и карточки печатных конспектов.",
+    "phCovers": "Обложки курсов и карточка конспекта",
+    "sCamp": "Кампании и видео",
+    "tCamp": "Lottie-анимации для сезонных кампаний, например к Рамадану. Маркетинговые видео для Instagram UULA и рекламные ролики для Кувейта.",
+    "phRamadan": "Рамадановая Lottie",
+    "phInsta": "Ролики из Instagram и реклама",
+    "sLottie": "Lottie под разработку",
+    "tLottie": "Готовила анимации сразу под разработку: лёгкий вес, точки старта и окончания, привязка к действиям пользователя.",
+    "lAi": "AI в производстве",
+    "hAi": "Цикл иллюстрации: с нескольких недель до одной.",
+    "tAi": "Раньше каждый объект моделировался в Blender с нуля, и иллюстрация проходила цикл в несколько недель. Я перенесла поиск идеи в Midjourney, а Blender оставила для финальной сборки. Стиль при этом остался единым.",
+    "st1": "<b>Концепт</b>Варианты в Midjourney по брифу.",
+    "st2": "<b>Согласование</b>Выбираем один вариант.",
+    "st3": "<b>Сборка</b>Модель в Blender по правилам стиля.",
+    "st4": "<b>Анимация</b>After Effects или Blender, экспорт в MP4 или Lottie.",
+    "phAi1": "Промпт и варианты Midjourney",
+    "phAi2": "Сцена в Blender",
+    "phAi3": "Финал",
+    "lRes": "Результат",
+    "hRes": "Быстрее выпуск, сильнее запуски.",
+    "r1": "эффективность запусков",
+    "r2": "time to market",
+    "r3": "цикл иллюстрации вместо нескольких",
+    "r3b": "1 неделя",
+    "tRes": "По сайту: глубина просмотра +12–18%, время на сайте +15–25%, переходы на страницы фич и цен +10–14%, отказы на первых экранах −8–12%.",
+    "backAll": "← К портфолио"
+},
+  en: {
+    "back": "Back",
+    "lead": "3D illustrations, animations and video for Kuwait's largest EdTech platform and its Saudi version.",
+    "mRole": "Role",
+    "mRoleV": "UI Designer / 3D &amp; Product Visual. All 3D and motion solo, working with the art director.",
+    "mPeriod": "Company",
+    "mPeriodV": "UULA Technologies, 2022–2025",
+    "mMarkets": "Markets",
+    "mMarketsV": "Kuwait, Saudi Arabia. Arabic interface, RTL.",
+    "mTools": "Tools",
+    "mToolsV": "Blender, Midjourney, After Effects, Lottie, Figma",
+    "vLanding": "uula.com/sa landing with animations",
+    "vAnims": "Animations made for UULA",
+    "lTask": "The task",
+    "hTask": "Studying versus games and social media.",
+    "tTask1": "UULA is an online learning platform for school students: video lessons, notes, tests and questions to teachers, following Kuwait's curriculum. The Saudi version also prepares students for the Qudurat and Tahsili exams.",
+    "tTask2": "For these students, studying is a boring obligation, and the product competes for their attention with games and social media. My job was to make it beautiful and fun for kids: build a recognisable 3D style and fill the website and app with it. Assets had to ship fast, since new courses, bundles and seasonal campaigns kept coming.",
+    "lStyle": "Style",
+    "hStyle": "Plastic toys and building blocks.",
+    "tStyle1": "Bright, saturated colours, soft rounded shapes and tactile materials: glossy and matte plastic. Soft studio light with highlights. One hero object on a platform or an “island”, with small details around it.",
+    "tStyle2": "The same illustration shipped in different colourways to fit each page.",
+    "phGrid": "Illustration",
+    "phCaseDark": "Case, dark version",
+    "phCaseBlue": "Case, blue version",
+    "lWork": "What I did",
+    "hWork": "Website, store, app, campaigns.",
+    "sSite": "Website and landing pages",
+    "tSite": "Illustrations and animations for the uula.com/sa home page and landing pages: the top students page with the “10” trophy, bundle and course pages.",
+    "phMobile": "Mobile landing: first screen, Ramadan scene, bundle",
+    "phTahsili": "Tahsili bundle page",
+    "phTop": "Top students: “10” trophy and A+ case",
+    "sStore": "Store",
+    "tStore": "Cases: course bundles for a grade, with subject figures inside. Subject tiles.",
+    "phStore": "Store: cases and subject tiles",
+    "sApp": "App",
+    "tApp": "Subject covers in My Subscriptions and recommendations, in-app illustrations and animations, Lottie micro-interactions.",
+    "phApp": "App home on desktop",
+    "phLessons": "Video lessons, biology course, Tahsili bundle",
+    "phMicro": "Micro-interactions, screen recording",
+    "sCovers": "Covers and notes",
+    "tCovers": "Course covers and printed-notes cards.",
+    "phCovers": "Course covers and a notes card",
+    "sCamp": "Campaigns and video",
+    "tCamp": "Lottie animations for seasonal campaigns such as Ramadan. Marketing videos for UULA's Instagram and ads for Kuwait.",
+    "phRamadan": "Ramadan Lottie",
+    "phInsta": "Instagram videos and ads",
+    "sLottie": "Lottie ready for development",
+    "tLottie": "I prepared animations ready for developers: light file size, defined start and end points, tied to user actions.",
+    "lAi": "AI in production",
+    "hAi": "Illustration cycle: from several weeks to one.",
+    "tAi": "Before, every object was modelled in Blender from scratch, and one illustration took several weeks. I moved ideation to Midjourney and kept Blender for the final build. The style stayed consistent.",
+    "st1": "<b>Concept</b>Options in Midjourney from the brief.",
+    "st2": "<b>Approval</b>One option is picked.",
+    "st3": "<b>Build</b>Model in Blender following the style rules.",
+    "st4": "<b>Animation</b>After Effects or Blender, exported to MP4 or Lottie.",
+    "phAi1": "Prompt and Midjourney options",
+    "phAi2": "Blender scene",
+    "phAi3": "Final",
+    "lRes": "Results",
+    "hRes": "Faster delivery, stronger launches.",
+    "r1": "launch effectiveness",
+    "r2": "time to market",
+    "r3": "illustration cycle instead of several",
+    "r3b": "1 week",
+    "tRes": "On the website: page depth +12–18%, time on site +15–25%, clicks to feature and pricing pages +10–14%, first-screen bounce −8–12%.",
+    "backAll": "← Back to portfolio"
+}
+};
+
+function applyLang(lang){
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(i18n[lang][key] !== undefined){ el.innerHTML = i18n[lang][key]; }
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => { el.alt = i18n[lang][el.dataset.i18nAlt].replace(/<[^>]+>/g,''); });
+  document.querySelectorAll('[data-i18n-label]').forEach(el => { el.setAttribute('aria-label', i18n[lang][el.dataset.i18nLabel].replace(/<[^>]+>/g,'')); });
+  document.querySelectorAll('.lang-opt').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+  document.documentElement.lang = lang;
+}
+
+applyLang('en');
+document.querySelectorAll('.lang-opt').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
+
+const siteNav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  siteNav.classList.toggle('scrolled', window.scrollY > 8);
+});
+
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.querySelectorAll('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+}
+</script>
+
+</body>
+</html>
