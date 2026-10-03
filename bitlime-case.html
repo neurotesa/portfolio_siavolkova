@@ -122,6 +122,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
   .stage .shots-1{max-width:220px;}
 }
 
+.screen{display:block;width:100%;height:auto;border-radius:24px;}
+.shots:not(.shots-1) .screen{aspect-ratio:390/844;height:auto;object-fit:cover;object-position:top;}
+@media (max-width:760px){.screen{border-radius:16px;}}
+
 /* next */
 .next{margin-top:var(--gap-block);padding:48px 0 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
 .next a{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-0.01em;}
@@ -247,7 +251,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
       <div class="stage">
         <div class="shots shots-2">
-          <div class="ph ph-phone">Onboarding logo</div>
+          <img class="screen" src="assets/bitlime-onboarding-logo.webp" alt="Onboarding logo" loading="lazy">
           <div class="ph ph-phone">First entry / Main</div>
         </div>
       </div>
@@ -262,10 +266,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
       <div class="stage">
         <div class="shots shots-4">
-          <div class="ph ph-phone">Typing</div>
-          <div class="ph ph-phone">Error</div>
-          <div class="ph ph-phone">Intro</div>
-          <div class="ph ph-phone">Document type</div>
+          <img class="screen" src="assets/bitlime-typing.webp" alt="Typing" loading="lazy">
+          <img class="screen" src="assets/bitlime-error-copy.webp" alt="Error" loading="lazy">
+          <img class="screen" src="assets/bitlime-intro.webp" alt="Intro" loading="lazy">
+          <img class="screen" src="assets/bitlime-document-type.webp" alt="Document type" loading="lazy">
         </div>
       </div>
     </div>
@@ -279,7 +283,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
       <div class="stage">
         <div class="shots shots-1">
-          <div class="ph ph-phone">Main</div>
+          <img class="screen" src="assets/bitlime-main.webp" alt="Main" loading="lazy">
         </div>
       </div>
     </div>
@@ -299,10 +303,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
       <div class="stage">
         <div class="shots shots-4">
-          <div class="ph ph-phone">Method</div>
-          <div class="ph ph-phone">Select coin</div>
-          <div class="ph ph-phone">Select network</div>
-          <div class="ph ph-phone">Address</div>
+          <img class="screen" src="assets/bitlime-method.webp" alt="Method" loading="lazy">
+          <img class="screen" src="assets/bitlime-select-coin.webp" alt="Select coin" loading="lazy">
+          <img class="screen" src="assets/bitlime-select-network.webp" alt="Select network" loading="lazy">
+          <img class="screen" src="assets/bitlime-address.webp" alt="Address" loading="lazy">
         </div>
       </div>
     </div>
@@ -316,10 +320,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
       <div class="stage">
         <div class="shots shots-4">
-          <div class="ph ph-phone">Default</div>
-          <div class="ph ph-phone">Input filled</div>
-          <div class="ph ph-phone">TP-SL sell</div>
-          <div class="ph ph-phone">Open order</div>
+          <img class="screen" src="assets/bitlime-default.webp" alt="Default" loading="lazy">
+          <img class="screen" src="assets/bitlime-input-filled.webp" alt="Input filled" loading="lazy">
+          <img class="screen" src="assets/bitlime-tp-sl-sell.webp" alt="TP-SL sell" loading="lazy">
+          <img class="screen" src="assets/bitlime-open-order.webp" alt="Open order" loading="lazy">
         </div>
       </div>
     </div>
@@ -333,7 +337,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
       <div class="stage">
         <div class="shots shots-4">
-          <div class="ph ph-phone">Data</div>
+          <img class="screen" src="assets/bitlime-data.webp" alt="Data" loading="lazy">
           <div class="ph ph-phone">Markets list</div>
           <div class="ph ph-phone">Pair</div>
           <div class="ph ph-phone">Flow of funds</div>
@@ -350,9 +354,9 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
       <div class="stage">
         <div class="shots shots-3">
-          <div class="ph ph-phone">Chart</div>
-          <div class="ph ph-phone">Distribution</div>
-          <div class="ph ph-phone">Hidden balance</div>
+          <img class="screen" src="assets/bitlime-chart.webp" alt="Chart" loading="lazy">
+          <img class="screen" src="assets/bitlime-distribution.webp" alt="Distribution" loading="lazy">
+          <img class="screen" src="assets/bitlime-hidden-balance.webp" alt="Hidden balance" loading="lazy">
         </div>
       </div>
     </div>
@@ -366,8 +370,8 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
       <div class="stage">
         <div class="shots shots-2">
-          <div class="ph ph-phone">Profile</div>
-          <div class="ph ph-phone">Settings</div>
+          <img class="screen" src="assets/bitlime-main-copy-2.webp" alt="Profile" loading="lazy">
+          <img class="screen" src="assets/bitlime-settings.webp" alt="Settings" loading="lazy">
         </div>
       </div>
     </div>
@@ -381,10 +385,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
       <div class="stage">
         <div class="shots shots-4">
-          <div class="ph ph-phone">Empty</div>
-          <div class="ph ph-phone">Error</div>
-          <div class="ph ph-phone">Confirmation</div>
-          <div class="ph ph-phone">Success</div>
+          <img class="screen" src="assets/bitlime-empty.webp" alt="Empty" loading="lazy">
+          <img class="screen" src="assets/bitlime-error.webp" alt="Error" loading="lazy">
+          <img class="screen" src="assets/bitlime-confirmation.webp" alt="Confirmation" loading="lazy">
+          <img class="screen" src="assets/bitlime-success.webp" alt="Success" loading="lazy">
         </div>
       </div>
     </div>
@@ -418,10 +422,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       <p class="text">All screen states are designed: errors, keyboard, empty states, confirmations, success and hidden balance. Interface texts are rewritten in plain English. The data is consistent across screens: one BTC price, balances that add up, conversions that match the rate.</p>
       <div class="stage stage-inline">
       <div class="shots shots-4">
-        <div class="ph ph-phone">Search results</div>
-        <div class="ph ph-phone">Edit typing</div>
-        <div class="ph ph-phone">Confirmation</div>
-        <div class="ph ph-phone">Hidden balance</div>
+        <img class="screen" src="assets/bitlime-search-results-keyboard.webp" alt="Search results" loading="lazy">
+        <img class="screen" src="assets/bitlime-edit-typing.webp" alt="Edit typing" loading="lazy">
+        <img class="screen" src="assets/bitlime-confirmation.webp" alt="Confirmation" loading="lazy">
+        <img class="screen" src="assets/bitlime-hidden-balance.webp" alt="Hidden balance" loading="lazy">
       </div>
       </div>
     </div>
