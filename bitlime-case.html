@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitlime — Sia Volkova</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0B;
+  --surface:#141416;
+  --surface-2:#1B1B1E;
+  --line:#26262A;
+  --text:#F2F2F0;
+  --text-mute:#8C8C91;
+  --text-faint:#5C5C61;
+  --accent:#9DB4FF;
+  --font-display:'Manrope',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --container:1120px;
+  --gap-block:120px;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3{font-family:var(--font-display);margin:0;}
+p,ul,ol{margin:0;padding:0;}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px;}
+
+.wrap{max-width:var(--container);margin:0 auto;padding:0 32px;}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;padding:20px 0;background:rgba(10,10,11,0.75);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s ease;}
+.nav.scrolled{border-bottom-color:var(--line);}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;}
+.nav-name{font-family:var(--font-display);font-weight:600;font-size:15px;letter-spacing:-0.01em;}
+.nav-back{font-size:14px;color:var(--text-mute);}
+.nav-back:hover{color:var(--text);}
+
+/* hero */
+.hero{padding:96px 0 0;}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+.hero-tags span{font-size:13px;color:var(--text-mute);background:var(--surface-2);border:1px solid var(--line);padding:8px 16px;border-radius:8px;}
+.hero h1{font-size:clamp(48px,9vw,104px);font-weight:800;letter-spacing:-0.03em;line-height:0.95;margin-bottom:24px;}
+.hero-lead{font-size:clamp(20px,2.4vw,26px);line-height:1.4;color:var(--text-mute);max-width:640px;font-family:var(--font-display);font-weight:500;}
+.hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:56px;padding-top:28px;border-top:1px solid var(--line);max-width:760px;}
+.hero-meta > *{min-width:0;}
+.meta-label{font-size:13px;color:var(--text-faint);margin-bottom:8px;}
+.meta-value{font-size:15px;line-height:1.55;color:var(--text);}
+
+.hero-shots{margin-top:72px;}
+
+/* sections */
+.block{margin-top:var(--gap-block);display:grid;grid-template-columns:220px 1fr;gap:48px;}
+.block > *{min-width:0;}
+.block-label{font-size:13px;color:var(--text-faint);letter-spacing:0.02em;padding-top:8px;}
+.block h2{font-size:clamp(26px,3.2vw,36px);font-weight:700;letter-spacing:-0.015em;line-height:1.15;margin-bottom:20px;overflow-wrap:break-word;}
+.block h3{font-size:20px;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;overflow-wrap:break-word;}
+.text{font-size:17px;line-height:1.65;color:var(--text-mute);max-width:640px;}
+.text + .text{margin-top:16px;}
+.text b{color:var(--text);font-weight:600;}
+
+.sub{margin-top:64px;}
+.sub:first-of-type{margin-top:0;}
+
+.plain-list{list-style:none;margin-top:16px;max-width:640px;}
+.plain-list li{font-size:17px;line-height:1.6;color:var(--text-mute);padding:14px 0;border-bottom:1px solid var(--line);}
+.plain-list li:first-child{border-top:1px solid var(--line);}
+
+.steps{list-style:none;margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step;}
+.steps > *{min-width:0;}
+.steps li{counter-increment:step;font-size:15px;line-height:1.55;color:var(--text-mute);padding-top:16px;border-top:1px solid var(--line);}
+.steps li::before{content:counter(step);display:block;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--accent);margin-bottom:8px;}
+.steps li b{display:block;color:var(--text);font-weight:600;margin-bottom:4px;}
+
+.metrics{list-style:none;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;}
+.metrics > *{min-width:0;}
+.metrics li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;font-size:15px;line-height:1.55;color:var(--text-mute);}
+.metrics li b{display:block;font-family:var(--font-display);font-size:17px;color:var(--text);font-weight:600;margin-bottom:6px;}
+
+/* placeholders */
+.shots{display:grid;gap:20px;margin-top:32px;}
+.shots > *{min-width:0;}
+.shots-2{grid-template-columns:repeat(2,1fr);max-width:520px;}
+.shots-3{grid-template-columns:repeat(3,1fr);max-width:780px;}
+.shots-4{grid-template-columns:repeat(4,1fr);}
+.ph{display:flex;align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);color:var(--text-faint);font-size:12px;text-align:center;padding:12px;}
+.ph-phone{aspect-ratio:390/844;border-radius:24px;}
+.ph-wide{aspect-ratio:16/9;border-radius:18px;margin-top:32px;}
+.ph-hero{aspect-ratio:16/8;border-radius:24px;font-size:13px;}
+
+
+/* solution showcase */
+.solution{margin-top:var(--gap-block);}
+.solution > .block-label{padding-top:0;}
+.feature{margin-top:56px;}
+.feature + .feature{margin-top:112px;}
+.feature-head{display:grid;grid-template-columns:220px 1fr;gap:48px;margin-bottom:36px;}
+.feature-head > *{min-width:0;}
+.feature-head h3{font-size:clamp(22px,2.4vw,28px);font-weight:700;letter-spacing:-0.015em;line-height:1.2;overflow-wrap:break-word;}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:64px 56px;}
+.stage .shots{margin:0 auto;gap:28px;}
+.stage .ph-phone{background:var(--surface-2);border-radius:28px;}
+.stage .shots-1{grid-template-columns:1fr;max-width:300px;}
+.stage .shots-2{max-width:620px;}
+.stage .shots-3{max-width:900px;}
+.stage-inline{margin-top:32px;padding:48px 40px;}
+.stage-inline .shots{gap:20px;}
+@media (max-width:860px){
+  .feature-head{grid-template-columns:1fr;gap:12px;}
+  .stage{padding:40px 28px;}
+}
+@media (max-width:760px){
+  .feature + .feature{margin-top:72px;}
+  .stage{padding:28px 20px;border-radius:20px;}
+  .stage .shots{gap:14px;}
+  .stage .ph-phone{border-radius:20px;}
+  .stage .shots-3{grid-template-columns:repeat(2,1fr);}
+  .stage .shots-1{max-width:220px;}
+}
+
+/* next */
+.next{margin-top:var(--gap-block);padding:48px 0 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+.next a{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-0.01em;}
+.next a:hover{color:var(--accent);}
+.footer{padding:48px 0;font-size:13px;color:var(--text-faint);}
+
+@media (max-width:860px){
+  .block{grid-template-columns:1fr;gap:12px;}
+  .steps{grid-template-columns:repeat(2,1fr);}
+  .shots-4{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:760px){
+  :root{--gap-block:64px;}
+  .wrap,.nav-inner{padding:0 20px;}
+  .hero{padding:64px 0 0;}
+  .hero-meta{grid-template-columns:1fr;gap:20px;}
+  .shots-3{grid-template-columns:repeat(2,1fr);}
+  .metrics{grid-template-columns:1fr;}
+  .ph-hero{aspect-ratio:4/5;}
+}
+@media (max-width:420px){
+  .steps{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">Anastasia Volkova</a>
+    <a href="index.html#work" class="nav-back">← All cases</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="hero-tags"><span>Crypto</span><span>iOS</span></div>
+    <h1>Bitlime</h1>
+    <p class="hero-lead">A crypto exchange that doesn't make you feel like a trader.</p>
+    <div class="hero-meta">
+      <div>
+        <p class="meta-label">Role</p>
+        <p class="meta-value">Product designer, end to end: research, structure, wireframes, UI, design system.</p>
+      </div>
+      <div>
+        <p class="meta-label">Scope</p>
+        <p class="meta-value">iOS app, 50 screens.</p>
+      </div>
+    </div>
+    <div class="hero-shots">
+      <div class="ph ph-hero">Hero image</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label">The task</p>
+    <div>
+      <p class="text">Design a mobile app where people can buy, sell and track crypto, for everyone from first-time investors to active traders.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label">The problem</p>
+    <div>
+      <h2>Big exchanges are built for people who already trade.</h2>
+      <p class="text">A beginner opens the app and sees too many buttons, words like P2P, Spot or TRC20, and a home screen that shows everything at once. Even the first deposit takes about 10 steps, and it's easy to get lost on the way.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label">Research</p>
+    <div>
+      <div class="sub">
+        <h3>Who it's for</h3>
+        <p class="text">I described five types of users: investor, trader, beginner, business owner and student. They all want speed, safety and low fees. Beginners also want guidance, traders want more tools.</p>
+        <div class="ph ph-wide">Personas</div>
+      </div>
+
+      <div class="sub">
+        <h3>What users told me</h3>
+        <p class="text">I talked to two people who already use crypto exchanges:</p>
+        <ul class="plain-list">
+          <li>They liked simple interfaces and learning materials.</li>
+          <li>They didn't like high fees and complicated apps.</li>
+          <li>They chose a new app based on ease of use, fees and security.</li>
+          <li>Before switching, they worried about fees and about how support works.</li>
+        </ul>
+      </div>
+
+      <div class="sub">
+        <h3>Competitors</h3>
+        <p class="text">I compared Binance, Bybit and Bitget screen by screen. They are built almost the same way. The main difference is how much they show at once. None of them asks early whether you're a beginner or not.</p>
+        <div class="ph ph-wide">Competitor analysis</div>
+      </div>
+
+      <div class="sub">
+        <h3>User journey</h3>
+        <p class="text">I walked through the path from opening the app to the first deposit and noted every question and problem. The hardest step was choosing a network: you only see names, with no minimum amount, no arrival time and no easy way back.</p>
+        <div class="ph ph-wide">Customer journey map</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label">Structure</p>
+    <div>
+      <p class="text">The app has five main sections: Home, Markets, Trade, Futures and Assets, plus a Profile. The deposit is split into small, simple steps instead of one crowded screen.</p>
+      <div class="ph ph-wide">App map</div>
+      <p class="text" style="margin-top:32px;">Before working on visuals, I built a clickable wireframe prototype to test the flows.</p>
+    </div>
+  </section>
+
+  <section class="solution">
+    <p class="block-label">Solution</p>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>First entry</h3>
+        <div>
+          <p class="text">Before signing up, the user sees what their account will look like: a locked balance with "1,000 USDT will be here", one Registration button and an option to try demo trading. They can also pick favorite pairs right away.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-2">
+          <div class="ph ph-phone">Onboarding logo</div>
+          <div class="ph ph-phone">First entry / Main</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>Registration and verification</h3>
+        <div>
+          <p class="text">Short forms, clear error messages and a simple checklist of what you need for verification.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-4">
+          <div class="ph ph-phone">Typing</div>
+          <div class="ph ph-phone">Error</div>
+          <div class="ph ph-phone">Intro</div>
+          <div class="ph ph-phone">Document type</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>Home</h3>
+        <div>
+          <p class="text">The main action, Buy / Deposit / P2P, is the biggest button on the screen, because in research users couldn't find it.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-1">
+          <div class="ph ph-phone">Main</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>Deposit in four steps</h3>
+        <div>
+          <p class="text">Each step answers a question users had:</p>
+          <ol class="steps">
+            <li><b>Choose a method</b>Each option has a short explanation.</li>
+            <li><b>Pick a coin</b>Popular coins and search.</li>
+            <li><b>Pick a network</b>Confirmations, minimum amount and arrival time for each.</li>
+            <li><b>Send to the address</b>QR code, copy and share.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-4">
+          <div class="ph ph-phone">Method</div>
+          <div class="ph ph-phone">Select coin</div>
+          <div class="ph ph-phone">Select network</div>
+          <div class="ph ph-phone">Address</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>Trade</h3>
+        <div>
+          <p class="text">A simple buy/sell form, an order book and stop-loss / take-profit settings. Every state is designed: empty, typing, filled, sell and open order.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-4">
+          <div class="ph ph-phone">Default</div>
+          <div class="ph ph-phone">Input filled</div>
+          <div class="ph ph-phone">TP-SL sell</div>
+          <div class="ph ph-phone">Open order</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>Markets</h3>
+        <div>
+          <p class="text">A list of pairs with filters, a pair page with a chart, and analytics on money flow.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-4">
+          <div class="ph ph-phone">Data</div>
+          <div class="ph ph-phone">Markets list</div>
+          <div class="ph ph-phone">Pair</div>
+          <div class="ph ph-phone">Flow of funds</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>Assets</h3>
+        <div>
+          <p class="text">One card with the total balance, a chart and asset split, buttons for Deposit, Send and Transfer, and a hide-balance mode.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-3">
+          <div class="ph ph-phone">Chart</div>
+          <div class="ph ph-phone">Distribution</div>
+          <div class="ph ph-phone">Hidden balance</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>Profile</h3>
+        <div>
+          <p class="text">Account info and VIP progress in one card. Risky actions like Disable account are moved to Settings.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-2">
+          <div class="ph ph-phone">Profile</div>
+          <div class="ph ph-phone">Settings</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>Conversion</h3>
+        <div>
+          <p class="text">Swap one coin for another in one screen, with a clear error, a confirmation step and a success screen.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-4">
+          <div class="ph ph-phone">Empty</div>
+          <div class="ph ph-phone">Error</div>
+          <div class="ph ph-phone">Confirmation</div>
+          <div class="ph ph-phone">Success</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label">Visual style</p>
+    <div>
+      <p class="text">Dark navy background and one bright lime color for the brand and main buttons. Price up and price down have their own colors, so the brand color never mixes with profit and loss. One font, Manrope, and one set of icons. Clear spacing: 32 between blocks, 12 inside a block. The name Bitlime comes from bit + lime, so the name and the colors work together.</p>
+      <div class="ph ph-wide">Palette and spacing</div>
+      <div class="ph ph-wide">Components and icons</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label">How to measure success</p>
+    <div>
+      <p class="text">The app hasn't launched yet, so these are the numbers I designed for:</p>
+      <ul class="metrics">
+        <li><b>Activation</b>How many users make a first deposit after signing up.</li>
+        <li><b>Time to first action</b>How fast people go from opening the app to their first deposit or trade.</li>
+        <li><b>Drop-off</b>Where people leave the deposit flow, especially at network selection.</li>
+        <li><b>Sign-up rate</b>Whether the locked-balance screen brings more registrations than a regular promo banner.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="block-label">Beyond the brief</p>
+    <div>
+      <p class="text">All screen states are designed: errors, keyboard, empty states, confirmations, success and hidden balance. Interface texts are rewritten in plain English. The data is consistent across screens: one BTC price, balances that add up, conversions that match the rate.</p>
+      <div class="stage stage-inline">
+      <div class="shots shots-4">
+        <div class="ph ph-phone">Search results</div>
+        <div class="ph ph-phone">Edit typing</div>
+        <div class="ph ph-phone">Confirmation</div>
+        <div class="ph ph-phone">Hidden balance</div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="next">
+    <a href="index.html#work">← All cases</a>
+  </div>
+
+  <footer class="footer">© 2026 Sia Volkova</footer>
+
+</main>
+
+<script>
+const siteNav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  siteNav.classList.toggle('scrolled', window.scrollY > 8);
+});
+</script>
+
+</body>
+</html>
