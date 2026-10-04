@@ -245,18 +245,49 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   </section>
 
   <section class="block">
+    <p class="block-label" data-i18n="lGame">Gamification</p>
+    <div>
+      <h2 data-i18n="hGame">Bringing students back to quizzes.</h2>
+      <p class="text" data-i18n="tGame1">Goal: get students to come back and answer questions, and grow the average session. I was the only designer on the project, working with the product manager from concept to research prototypes and a developer spec for all platforms.</p>
+
+      <div class="sub" style="margin-top:48px;">
+        <h3 data-i18n="sDuck">Duck challenge in stories</h3>
+        <p class="text" data-i18n="tDuck1">The manager's first hypothesis: a new entry point to the quiz through a story on the home screen. The student answers one question in the story and goes on to the full quiz.</p>
+        <p class="text" data-i18n="tDuck2">Competitors hold attention with micro-animations, character reactions and reward effects. A Duolingo lesson runs 14–20 questions, and research puts the optimal set length at 8–14. User interviews showed students didn't want to come back to a separate quiz, so I convinced the manager to build a question bank and let students answer every question right inside the story.</p>
+        <div class="shots shots-3">
+          <div class="ph ph-phone" data-i18n="phDuckStory">All questions in the story (gif)</div>
+          <div class="ph ph-phone" data-i18n="phDuckAnim">Answer animation (gif)</div>
+          <div class="ph ph-phone" data-i18n="phDuckEgg">Easter egg (video/gif)</div>
+        </div>
+        <p class="text" style="margin-top:32px;" data-i18n="tDuck3">The release included answer animations, an Easter egg and an emotional final screen with random GIFs.</p>
+        <div class="ph ph-wide" data-i18n="phDuckRes">Post-launch metrics</div>
+        <p class="text" style="margin-top:32px;" data-i18n="tDuck4">The most common request in feedback was subject-specific challenges. We decided not to complicate the duck and added questions at the end of watched videos instead, where the student is already focused on a specific course.</p>
+      </div>
+
+      <div class="sub">
+        <h3 data-i18n="sReward">Rewards for progress</h3>
+        <p class="text" data-i18n="tReward1">Hypothesis: students don't get enough reward for their effort. I tested three options. A completion animation with a progress bar grew into a separate large epic. A to-do list metaphor in the materials list was postponed. Micro-interactions shipped.</p>
+        <div class="shots shots-3">
+          <div class="ph ph-phone" data-i18n="phProgress">Completion animation and progress bar</div>
+          <div class="ph ph-phone" data-i18n="phTodo">To-do list in materials (gif)</div>
+          <div class="ph ph-phone" data-i18n="phEmoji">Micro-animation at the end of the quiz</div>
+        </div>
+        <p class="text" style="margin-top:32px;" data-i18n="tReward2">I added an emoji micro-animation and Lottie animations on several screens of the student flow. They appear 25% of the time, as a small unexpected delight. The impact is hard to quantify, but students gave positive feedback in interviews.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
     <p class="block-label" data-i18n="lAi">AI in production</p>
     <div>
-      <h2 data-i18n="hAi">Illustration cycle: from several weeks to one.</h2>
-      <p class="text" data-i18n="tAi">Before, every object was modelled in Blender from scratch, and one illustration took several weeks. I moved ideation to Midjourney and kept Blender for the final build. The style stayed consistent.</p>
-      <!-- TODO: проверить шаги -->
+      <h2 data-i18n="hAi">30 illustrations in a week instead of a month.</h2>
+      <p class="text" data-i18n="tAi">We had to ship a feature with 30 illustrations very fast, and there was no time to make them in 3D. I trained Midjourney on our style and made all the illustrations with it. At the time, the team was only starting to adopt Midjourney.</p>
       <ol class="steps">
-        <li data-i18n="st1"><b>Concept</b>Options in Midjourney from the brief.</li>
-        <li data-i18n="st2"><b>Approval</b>One option is picked.</li>
-        <li data-i18n="st3"><b>Build</b>Model in Blender following the style rules.</li>
-        <li data-i18n="st4"><b>Animation</b>After Effects or Blender, exported to MP4 or Lottie.</li>
+        <li data-i18n="st1"><b>Style</b>Trained Midjourney on the UULA style.</li>
+        <li data-i18n="st2"><b>2 days</b>Made 30 illustrations.</li>
+        <li data-i18n="st3"><b>2 days</b>Approval.</li>
+        <li data-i18n="st4"><b>1 day</b>Illustrations added to the product.</li>
       </ol>
-      <!-- TODO: реконструкция на одной новой иллюстрации -->
 
     </div>
   </section>
@@ -268,7 +299,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
       <ul class="stats">
         <li><b>+10%</b><span data-i18n="r1">launch effectiveness</span></li>
         <li><b>−20%</b><span data-i18n="r2">time to market</span></li>
-        <li><b data-i18n="r3b">1 week</b><span data-i18n="r3">illustration cycle instead of several</span></li>
+        <li><b data-i18n="r3b">1 week</b><span data-i18n="r3">for 30 illustrations instead of a month</span></li>
       </ul>
       <!-- TODO: выбрать по одной цифре вместо диапазонов; как измерялась эффективность запусков -->
       <p class="text" style="margin-top:28px;" data-i18n="tRes">On the website: page depth +12–18%, time on site +15–25%, clicks to feature and pricing pages +10–14%, first-screen bounce −8–12%.</p>
@@ -333,13 +364,31 @@ const i18n = {
     "phInsta": "Ролики из Instagram и реклама",
     "sLottie": "Lottie под разработку",
     "tLottie": "Готовила анимации сразу под разработку: лёгкий вес, точки старта и окончания, привязка к действиям пользователя.",
+    "lGame": "Геймификация",
+    "hGame": "Как вернуть учеников к тестам.",
+    "tGame1": "Цель: чтобы ученики возвращались и отвечали на вопросы, а средняя сессия росла. Я была единственным дизайнером на проекте и работала в паре с продакт-менеджером: от концепта до прототипов для исследований и спецификации для разработки на всех платформах.",
+    "sDuck": "Утка-челлендж в сторис",
+    "tDuck1": "Первая гипотеза менеджера: новая точка входа в квиз через сторис на главной. Ученик отвечает на один вопрос в сторис и переходит в полный квиз.",
+    "tDuck2": "Конкуренты держат внимание микроанимациями, реакциями персонажа и эффектами награды. Урок в Duolingo длится 14–20 вопросов, а исследования называют оптимальной длину набора 8–14. Пользовательские интервью показали, что в отдельный квиз ученики возвращаться не хотят, поэтому я убедила менеджера сделать банк вопросов и дать отвечать на все вопросы прямо в сторис.",
+    "tDuck3": "В релиз ушли анимация ответов, пасхалка и эмоциональный финальный экран со случайными GIF.",
+    "tDuck4": "Самым частым запросом в отзывах были челленджи по отдельным предметам. Утку решили не усложнять и встроили вопросы в конец просмотренных видео, где ученик уже сосредоточен на конкретном курсе.",
+    "phDuckAnim": "Анимация ответов (gif)",
+    "phDuckStory": "Все вопросы в сторис (gif)",
+    "phDuckEgg": "Пасхалка (видео/gif)",
+    "phDuckRes": "Метрики после запуска («Is it work?»)",
+    "sReward": "Награды за прогресс",
+    "tReward1": "Гипотеза: ученикам не хватает награды за усилия. Проверяла три варианта. Анимация после завершения материала и прогресс-бар выросли в отдельный большой эпик. Метафору to-do листа в списке материалов отложили. Микроинтеракции ушли в релиз.",
+    "tReward2": "Я добавила эмодзи-микроанимацию и Lottie на нескольких экранах пути ученика. Они появляются в 25% случаев и работают как неожиданный приятный сюрприз. Влияние сложно измерить в цифрах, но на интервью ученики отзывались положительно.",
+    "phProgress": "Анимация завершения материала и прогресс-бар",
+    "phTodo": "To-do лист в материалах (gif)",
+    "phEmoji": "Микроанимация в конце квиза",
     "lAi": "AI в производстве",
-    "hAi": "Цикл иллюстрации: с нескольких недель до одной.",
-    "tAi": "Раньше каждый объект моделировался в Blender с нуля, и иллюстрация проходила цикл в несколько недель. Я перенесла поиск идеи в Midjourney, а Blender оставила для финальной сборки. Стиль при этом остался единым.",
-    "st1": "<b>Концепт</b>Варианты в Midjourney по брифу.",
-    "st2": "<b>Согласование</b>Выбираем один вариант.",
-    "st3": "<b>Сборка</b>Модель в Blender по правилам стиля.",
-    "st4": "<b>Анимация</b>After Effects или Blender, экспорт в MP4 или Lottie.",
+    "hAi": "30 иллюстраций за неделю вместо месяца.",
+    "tAi": "Нужно было очень быстро выпустить фичу с 30 иллюстрациями, и времени делать их в 3D не было. Я натренировала Midjourney на наш стиль и сделала все иллюстрации в нём. На тот момент Midjourney в команде только начинали внедрять.",
+    "st1": "<b>Стиль</b>Натренировала Midjourney на стиль UULA.",
+    "st2": "<b>2 дня</b>Сделала 30 иллюстраций.",
+    "st3": "<b>2 дня</b>Согласование.",
+    "st4": "<b>1 день</b>Вставили иллюстрации в продукт.",
     "phAi1": "Промпт и варианты Midjourney",
     "phAi2": "Сцена в Blender",
     "phAi3": "Финал",
@@ -347,7 +396,7 @@ const i18n = {
     "hRes": "Быстрее выпуск, сильнее запуски.",
     "r1": "эффективность запусков",
     "r2": "time to market",
-    "r3": "цикл иллюстрации вместо нескольких",
+    "r3": "на 30 иллюстраций вместо месяца",
     "r3b": "1 неделя",
     "tRes": "По сайту: глубина просмотра +12–18%, время на сайте +15–25%, переходы на страницы фич и цен +10–14%, отказы на первых экранах −8–12%.",
     "backAll": "← К портфолио"
@@ -400,13 +449,31 @@ const i18n = {
     "phInsta": "Instagram videos and ads",
     "sLottie": "Lottie ready for development",
     "tLottie": "I prepared animations ready for developers: light file size, defined start and end points, tied to user actions.",
+    "lGame": "Gamification",
+    "hGame": "Bringing students back to quizzes.",
+    "tGame1": "Goal: get students to come back and answer questions, and grow the average session. I was the only designer on the project, working with the product manager from concept to research prototypes and a developer spec for all platforms.",
+    "sDuck": "Duck challenge in stories",
+    "tDuck1": "The manager's first hypothesis: a new entry point to the quiz through a story on the home screen. The student answers one question in the story and goes on to the full quiz.",
+    "tDuck2": "Competitors hold attention with micro-animations, character reactions and reward effects. A Duolingo lesson runs 14–20 questions, and research puts the optimal set length at 8–14. User interviews showed students didn't want to come back to a separate quiz, so I convinced the manager to build a question bank and let students answer every question right inside the story.",
+    "tDuck3": "The release included answer animations, an Easter egg and an emotional final screen with random GIFs.",
+    "tDuck4": "The most common request in feedback was subject-specific challenges. We decided not to complicate the duck and added questions at the end of watched videos instead, where the student is already focused on a specific course.",
+    "phDuckAnim": "Answer animation (gif)",
+    "phDuckStory": "All questions in the story (gif)",
+    "phDuckEgg": "Easter egg (video/gif)",
+    "phDuckRes": "Post-launch metrics",
+    "sReward": "Rewards for progress",
+    "tReward1": "Hypothesis: students don't get enough reward for their effort. I tested three options. A completion animation with a progress bar grew into a separate large epic. A to-do list metaphor in the materials list was postponed. Micro-interactions shipped.",
+    "tReward2": "I added an emoji micro-animation and Lottie animations on several screens of the student flow. They appear 25% of the time, as a small unexpected delight. The impact is hard to quantify, but students gave positive feedback in interviews.",
+    "phProgress": "Completion animation and progress bar",
+    "phTodo": "To-do list in materials (gif)",
+    "phEmoji": "Micro-animation at the end of the quiz",
     "lAi": "AI in production",
-    "hAi": "Illustration cycle: from several weeks to one.",
-    "tAi": "Before, every object was modelled in Blender from scratch, and one illustration took several weeks. I moved ideation to Midjourney and kept Blender for the final build. The style stayed consistent.",
-    "st1": "<b>Concept</b>Options in Midjourney from the brief.",
-    "st2": "<b>Approval</b>One option is picked.",
-    "st3": "<b>Build</b>Model in Blender following the style rules.",
-    "st4": "<b>Animation</b>After Effects or Blender, exported to MP4 or Lottie.",
+    "hAi": "30 illustrations in a week instead of a month.",
+    "tAi": "We had to ship a feature with 30 illustrations very fast, and there was no time to make them in 3D. I trained Midjourney on our style and made all the illustrations with it. At the time, the team was only starting to adopt Midjourney.",
+    "st1": "<b>Style</b>Trained Midjourney on the UULA style.",
+    "st2": "<b>2 days</b>Made 30 illustrations.",
+    "st3": "<b>2 days</b>Approval.",
+    "st4": "<b>1 day</b>Illustrations added to the product.",
     "phAi1": "Prompt and Midjourney options",
     "phAi2": "Blender scene",
     "phAi3": "Final",
@@ -414,7 +481,7 @@ const i18n = {
     "hRes": "Faster delivery, stronger launches.",
     "r1": "launch effectiveness",
     "r2": "time to market",
-    "r3": "illustration cycle instead of several",
+    "r3": "for 30 illustrations instead of a month",
     "r3b": "1 week",
     "tRes": "On the website: page depth +12–18%, time on site +15–25%, clicks to feature and pricing pages +10–14%, first-screen bounce −8–12%.",
     "backAll": "← Back to portfolio"
