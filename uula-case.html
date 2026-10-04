@@ -100,6 +100,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .scroll-phone{max-width:360px;height:680px;border-radius:28px;}
 .scroll-wide{height:560px;}
 .scroll-cap{font-size:13px;color:var(--text-faint);margin-top:10px;}
+.stories{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px;}
+.stories > *{min-width:0;}
+.stories figure{margin:0;}
+.stories video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:var(--surface);border:1px solid var(--line);border-radius:18px;}
+.stories figcaption{font-size:13px;color:var(--text-faint);margin-top:10px;}
+.icons{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px;}
+.icons > *{min-width:0;}
+.icons figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 16px 14px;text-align:center;}
+.icons img{display:block;width:100%;max-width:160px;aspect-ratio:1/1;margin:0 auto;}
+.icons figcaption{font-size:13px;color:var(--text-faint);margin-top:8px;}
 .next{margin-top:var(--gap-block);padding:48px 0 0;border-top:1px solid var(--line);}
 .next a{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-0.01em;}
 .next a:hover{color:var(--accent);}
@@ -112,6 +122,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   .block{grid-template-columns:1fr;gap:12px;}
   .steps{grid-template-columns:repeat(2,1fr);}
   .shots-4{grid-template-columns:repeat(2,1fr);}
+  .stories{grid-template-columns:repeat(2,1fr);}
+  .icons{grid-template-columns:repeat(2,1fr);}
 }
 @media (max-width:760px){
   :root{--gap-block:64px;}
@@ -185,7 +197,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
       <div class="vid-wrap">
         <video class="vid" src="assets/uula-animations.mp4" autoplay muted loop playsinline data-i18n-label="vAnims" aria-label="Animations made for UULA"></video>
       </div>
-      <!-- TODO: гайд стиля сеткой из 6–8 иллюстраций -->
+      <p class="text" style="margin-top:32px;" data-i18n="tStyle3">The core of the style is a set of 3D objects modelled in Blender, one per subject. A phone booth for English, a molecule for chemistry, DNA for biology, an arch for Arabic. The objects travel across the whole product: subject covers, cases, stories.</p>
+      <div class="icons">
+        <figure><img src="assets/uula-icon-english.webp" data-i18n-alt="icEnglish" alt="English" loading="lazy"><figcaption data-i18n="icEnglish">English</figcaption></figure>
+        <figure><img src="assets/uula-icon-chemistry.webp" data-i18n-alt="icChemistry" alt="Chemistry" loading="lazy"><figcaption data-i18n="icChemistry">Chemistry</figcaption></figure>
+        <figure><img src="assets/uula-icon-biology.webp" data-i18n-alt="icBiology" alt="Biology" loading="lazy"><figcaption data-i18n="icBiology">Biology</figcaption></figure>
+        <figure><img src="assets/uula-icon-physics.webp" data-i18n-alt="icPhysics" alt="Physics" loading="lazy"><figcaption data-i18n="icPhysics">Physics</figcaption></figure>
+        <figure><img src="assets/uula-icon-geography.webp" data-i18n-alt="icGeography" alt="Geography" loading="lazy"><figcaption data-i18n="icGeography">Geography</figcaption></figure>
+        <figure><img src="assets/uula-icon-arabic.webp" data-i18n-alt="icArabic" alt="Arabic" loading="lazy"><figcaption data-i18n="icArabic">Arabic</figcaption></figure>
+        <figure><img src="assets/uula-icon-islamic.webp" data-i18n-alt="icIslamic" alt="Islamic studies" loading="lazy"><figcaption data-i18n="icIslamic">Islamic studies</figcaption></figure>
+        <figure><img src="assets/uula-icon-quran.webp" data-i18n-alt="icQuran" alt="Quran" loading="lazy"><figcaption data-i18n="icQuran">Quran</figcaption></figure>
+      </div>
       <p class="text" style="margin-top:32px;" data-i18n="tStyle2">The same illustration shipped in different colourways to fit each page.</p>
       <div class="pair">
         <img src="assets/uula-case-dark.webp" data-i18n-alt="phCaseDark" alt="Case, dark version" loading="lazy">
@@ -218,10 +240,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 
       <div class="sub">
         <h3 data-i18n="sApp">App</h3>
-        <p class="text" data-i18n="tApp">Subject covers in My Subscriptions and recommendations, in-app illustrations and animations, Lottie micro-interactions.</p>
-        <!-- TODO: уточнить, где именно Lottie-микроинтеракции -->
+        <p class="text" data-i18n="tApp">Subject covers in My Subscriptions, recommendations and the catalogue: each subject got its own 3D object.</p>
         <img class="shot" src="assets/uula-app-home.webp" data-i18n-alt="phApp" alt="App home on desktop" loading="lazy" style="border:1px solid var(--line);border-radius:18px;">
-        <!-- TODO: микроинтеракции записью экрана -->
       </div>
 
       <div class="sub">
@@ -231,49 +251,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
       </div>
 
       <div class="sub">
-        <h3 data-i18n="sCamp">Campaigns and video</h3>
-        <p class="text" data-i18n="tCamp">Lottie animations for seasonal campaigns such as Ramadan. Marketing videos for UULA's Instagram and ads for Kuwait.</p>
-        <!-- TODO: рамадановая Lottie, ссылки на ролики из Instagram и рекламу -->
-      </div>
-
-      <div class="sub">
-        <h3 data-i18n="sLottie">Lottie ready for development</h3>
-        <p class="text" data-i18n="tLottie">I prepared animations ready for developers: light file size, defined start and end points, tied to user actions.</p>
-        <!-- TODO: если вела A/B-тесты визуала, добавить что тестировали -->
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <p class="block-label" data-i18n="lGame">Gamification</p>
-    <div>
-      <h2 data-i18n="hGame">Bringing students back to quizzes.</h2>
-      <p class="text" data-i18n="tGame1">Goal: get students to come back and answer questions, and grow the average session. I was the only designer on the project, working with the product manager from concept to research prototypes and a developer spec for all platforms.</p>
-
-      <div class="sub" style="margin-top:48px;">
-        <h3 data-i18n="sDuck">Duck challenge in stories</h3>
-        <p class="text" data-i18n="tDuck1">The manager's first hypothesis: a new entry point to the quiz through a story on the home screen. The student answers one question in the story and goes on to the full quiz.</p>
-        <p class="text" data-i18n="tDuck2">Competitors hold attention with micro-animations, character reactions and reward effects. A Duolingo lesson runs 14–20 questions, and research puts the optimal set length at 8–14. User interviews showed students didn't want to come back to a separate quiz, so I convinced the manager to build a question bank and let students answer every question right inside the story.</p>
-        <div class="shots shots-3">
-          <div class="ph ph-phone" data-i18n="phDuckStory">All questions in the story (gif)</div>
-          <div class="ph ph-phone" data-i18n="phDuckAnim">Answer animation (gif)</div>
-          <div class="ph ph-phone" data-i18n="phDuckEgg">Easter egg (video/gif)</div>
+        <h3 data-i18n="sCamp">Feature stories</h3>
+        <p class="text" data-i18n="tCamp">Instagram stories for UULA that explain app features. In each one, the feature's 3D object flies into a real app screen. The Zubda story plays on the literal translation: in Arabic the word means both “the essence of a subject” and “butter”.</p>
+        <div class="stories">
+          <figure><video src="assets/uula-story-summary.mp4" autoplay muted loop playsinline></video><figcaption data-i18n="stSummary">Zubda: subject summary</figcaption></figure>
+          <figure><video src="assets/uula-story-fasttrack.mp4" autoplay muted loop playsinline></video><figcaption data-i18n="stFast">Fast tracks</figcaption></figure>
+          <figure><video src="assets/uula-story-flashcards.mp4" autoplay muted loop playsinline></video><figcaption data-i18n="stCards">Flash cards</figcaption></figure>
+          <figure><video src="assets/uula-story-exams.mp4" autoplay muted loop playsinline></video><figcaption data-i18n="stExams">Past exams</figcaption></figure>
         </div>
-        <p class="text" style="margin-top:32px;" data-i18n="tDuck3">The release included answer animations, an Easter egg and an emotional final screen with random GIFs.</p>
-        <div class="ph ph-wide" data-i18n="phDuckRes">Post-launch metrics</div>
-        <p class="text" style="margin-top:32px;" data-i18n="tDuck4">The most common request in feedback was subject-specific challenges. We decided not to complicate the duck and added questions at the end of watched videos instead, where the student is already focused on a specific course.</p>
       </div>
 
-      <div class="sub">
-        <h3 data-i18n="sReward">Rewards for progress</h3>
-        <p class="text" data-i18n="tReward1">Hypothesis: students don't get enough reward for their effort. I tested three options. A completion animation with a progress bar grew into a separate large epic. A to-do list metaphor in the materials list was postponed. Micro-interactions shipped.</p>
-        <div class="shots shots-3">
-          <div class="ph ph-phone" data-i18n="phProgress">Completion animation and progress bar</div>
-          <div class="ph ph-phone" data-i18n="phTodo">To-do list in materials (gif)</div>
-          <div class="ph ph-phone" data-i18n="phEmoji">Micro-animation at the end of the quiz</div>
-        </div>
-        <p class="text" style="margin-top:32px;" data-i18n="tReward2">I added an emoji micro-animation and Lottie animations on several screens of the student flow. They appear 25% of the time, as a small unexpected delight. The impact is hard to quantify, but students gave positive feedback in interviews.</p>
-      </div>
     </div>
   </section>
 
@@ -288,6 +275,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
         <li data-i18n="st3"><b>2 days</b>Approval.</li>
         <li data-i18n="st4"><b>1 day</b>Illustrations added to the product.</li>
       </ol>
+      <!-- TODO: иллюстрации из архива Midjourney -->
+      <div class="shots shots-3">
+        <div class="ph ph-sq" data-i18n="phMj1">Midjourney illustration · assets/uula-mj-1.webp</div>
+        <div class="ph ph-sq" data-i18n="phMj2">Midjourney illustration · assets/uula-mj-2.webp</div>
+        <div class="ph ph-sq" data-i18n="phMj3">Midjourney illustration · assets/uula-mj-3.webp</div>
+      </div>
 
     </div>
   </section>
@@ -337,9 +330,20 @@ const i18n = {
     "hStyle": "Пластиковые игрушки и конструктор.",
     "tStyle1": "Яркие насыщенные цвета, мягкие округлые формы, тактильные материалы: глянцевый и матовый пластик. Мягкий студийный свет с бликами. Один главный объект на площадке или «острове» и мелкие детали вокруг.",
     "tStyle2": "Одна и та же иллюстрация выпускалась в разных цветовых решениях под задачу страницы.",
-    "phGrid": "Иллюстрация",
     "phCaseDark": "Чемоданчик, тёмный вариант",
     "phCaseBlue": "Чемоданчик, синий вариант",
+    "tStyle3": "Основа стиля: набор 3D-объектов, смоделированных в Blender, по одному на каждый предмет. Будка для английского, молекула для химии, ДНК для биологии, арка для арабского. Объекты кочуют по всему продукту: обложки предметов, чемоданчики, сторис.",
+    "icEnglish": "Английский",
+    "icChemistry": "Химия",
+    "icIslamic": "Исламоведение",
+    "icGeography": "География",
+    "icBiology": "Биология",
+    "icPhysics": "Физика",
+    "icQuran": "Коран",
+    "icArabic": "Арабский",
+    "phMj1": "Иллюстрация из Midjourney · assets/uula-mj-1.webp",
+    "phMj2": "Иллюстрация из Midjourney · assets/uula-mj-2.webp",
+    "phMj3": "Иллюстрация из Midjourney · assets/uula-mj-3.webp",
     "lWork": "Что делала",
     "hWork": "Сайт, магазин, приложение, кампании.",
     "sSite": "Сайт и лендинги",
@@ -351,37 +355,18 @@ const i18n = {
     "tStore": "Чемоданчики: наборы курсов для класса с фигурками предметов внутри. Плитки предметов.",
     "phStore": "Магазин: чемоданчики и плитки предметов",
     "sApp": "Приложение",
-    "tApp": "Обложки предметов в «Моих подписках» и рекомендациях, иллюстрации и анимации в интерфейсе, Lottie-микроинтеракции.",
+    "tApp": "Обложки предметов в «Моих подписках», рекомендациях и каталоге: каждый предмет получил свой 3D-объект.",
     "phApp": "Главная приложения на десктопе",
     "phLessons": "Видеоуроки, курс биологии, пакет Тахсили",
-    "phMicro": "Микроинтеракции, запись экрана",
     "sCovers": "Обложки и конспекты",
     "tCovers": "Обложки курсов и карточки печатных конспектов.",
     "phCovers": "Обложки курсов и карточка конспекта",
-    "sCamp": "Кампании и видео",
-    "tCamp": "Lottie-анимации для сезонных кампаний, например к Рамадану. Маркетинговые видео для Instagram UULA и рекламные ролики для Кувейта.",
-    "phRamadan": "Рамадановая Lottie",
-    "phInsta": "Ролики из Instagram и реклама",
-    "sLottie": "Lottie под разработку",
-    "tLottie": "Готовила анимации сразу под разработку: лёгкий вес, точки старта и окончания, привязка к действиям пользователя.",
-    "lGame": "Геймификация",
-    "hGame": "Как вернуть учеников к тестам.",
-    "tGame1": "Цель: чтобы ученики возвращались и отвечали на вопросы, а средняя сессия росла. Я была единственным дизайнером на проекте и работала в паре с продакт-менеджером: от концепта до прототипов для исследований и спецификации для разработки на всех платформах.",
-    "sDuck": "Утка-челлендж в сторис",
-    "tDuck1": "Первая гипотеза менеджера: новая точка входа в квиз через сторис на главной. Ученик отвечает на один вопрос в сторис и переходит в полный квиз.",
-    "tDuck2": "Конкуренты держат внимание микроанимациями, реакциями персонажа и эффектами награды. Урок в Duolingo длится 14–20 вопросов, а исследования называют оптимальной длину набора 8–14. Пользовательские интервью показали, что в отдельный квиз ученики возвращаться не хотят, поэтому я убедила менеджера сделать банк вопросов и дать отвечать на все вопросы прямо в сторис.",
-    "tDuck3": "В релиз ушли анимация ответов, пасхалка и эмоциональный финальный экран со случайными GIF.",
-    "tDuck4": "Самым частым запросом в отзывах были челленджи по отдельным предметам. Утку решили не усложнять и встроили вопросы в конец просмотренных видео, где ученик уже сосредоточен на конкретном курсе.",
-    "phDuckAnim": "Анимация ответов (gif)",
-    "phDuckStory": "Все вопросы в сторис (gif)",
-    "phDuckEgg": "Пасхалка (видео/gif)",
-    "phDuckRes": "Метрики после запуска («Is it work?»)",
-    "sReward": "Награды за прогресс",
-    "tReward1": "Гипотеза: ученикам не хватает награды за усилия. Проверяла три варианта. Анимация после завершения материала и прогресс-бар выросли в отдельный большой эпик. Метафору to-do листа в списке материалов отложили. Микроинтеракции ушли в релиз.",
-    "tReward2": "Я добавила эмодзи-микроанимацию и Lottie на нескольких экранах пути ученика. Они появляются в 25% случаев и работают как неожиданный приятный сюрприз. Влияние сложно измерить в цифрах, но на интервью ученики отзывались положительно.",
-    "phProgress": "Анимация завершения материала и прогресс-бар",
-    "phTodo": "To-do лист в материалах (gif)",
-    "phEmoji": "Микроанимация в конце квиза",
+    "sCamp": "Сторис про фичи",
+    "tCamp": "Сторис для Instagram UULA, которые объясняют фичи приложения. В каждой 3D-объект фичи влетает в живой экран приложения. В «Зубде» обыгран буквальный перевод: по-арабски это и «выжимка предмета», и «сливочное масло».",
+    "stSummary": "Зубда: выжимка предмета",
+    "stFast": "Быстрые треки",
+    "stCards": "Флеш-карточки",
+    "stExams": "Прошлые экзамены",
     "lAi": "AI в производстве",
     "hAi": "30 иллюстраций за неделю вместо месяца.",
     "tAi": "Нужно было очень быстро выпустить фичу с 30 иллюстрациями, и времени делать их в 3D не было. Я натренировала Midjourney на наш стиль и сделала все иллюстрации в нём. На тот момент Midjourney в команде только начинали внедрять.",
@@ -389,9 +374,6 @@ const i18n = {
     "st2": "<b>2 дня</b>Сделала 30 иллюстраций.",
     "st3": "<b>2 дня</b>Согласование.",
     "st4": "<b>1 день</b>Вставили иллюстрации в продукт.",
-    "phAi1": "Промпт и варианты Midjourney",
-    "phAi2": "Сцена в Blender",
-    "phAi3": "Финал",
     "lRes": "Результат",
     "hRes": "Быстрее выпуск, сильнее запуски.",
     "r1": "эффективность запусков",
@@ -422,9 +404,20 @@ const i18n = {
     "hStyle": "Plastic toys and building blocks.",
     "tStyle1": "Bright, saturated colours, soft rounded shapes and tactile materials: glossy and matte plastic. Soft studio light with highlights. One hero object on a platform or an “island”, with small details around it.",
     "tStyle2": "The same illustration shipped in different colourways to fit each page.",
-    "phGrid": "Illustration",
     "phCaseDark": "Case, dark version",
     "phCaseBlue": "Case, blue version",
+    "tStyle3": "The core of the style is a set of 3D objects modelled in Blender, one per subject. A phone booth for English, a molecule for chemistry, DNA for biology, an arch for Arabic. The objects travel across the whole product: subject covers, cases, stories.",
+    "icEnglish": "English",
+    "icChemistry": "Chemistry",
+    "icIslamic": "Islamic studies",
+    "icGeography": "Geography",
+    "icBiology": "Biology",
+    "icPhysics": "Physics",
+    "icQuran": "Quran",
+    "icArabic": "Arabic",
+    "phMj1": "Midjourney illustration · assets/uula-mj-1.webp",
+    "phMj2": "Midjourney illustration · assets/uula-mj-2.webp",
+    "phMj3": "Midjourney illustration · assets/uula-mj-3.webp",
     "lWork": "What I did",
     "hWork": "Website, store, app, campaigns.",
     "sSite": "Website and landing pages",
@@ -436,37 +429,18 @@ const i18n = {
     "tStore": "Cases: course bundles for a grade, with subject figures inside. Subject tiles.",
     "phStore": "Store: cases and subject tiles",
     "sApp": "App",
-    "tApp": "Subject covers in My Subscriptions and recommendations, in-app illustrations and animations, Lottie micro-interactions.",
+    "tApp": "Subject covers in My Subscriptions, recommendations and the catalogue: each subject got its own 3D object.",
     "phApp": "App home on desktop",
     "phLessons": "Video lessons, biology course, Tahsili bundle",
-    "phMicro": "Micro-interactions, screen recording",
     "sCovers": "Covers and notes",
     "tCovers": "Course covers and printed-notes cards.",
     "phCovers": "Course covers and a notes card",
-    "sCamp": "Campaigns and video",
-    "tCamp": "Lottie animations for seasonal campaigns such as Ramadan. Marketing videos for UULA's Instagram and ads for Kuwait.",
-    "phRamadan": "Ramadan Lottie",
-    "phInsta": "Instagram videos and ads",
-    "sLottie": "Lottie ready for development",
-    "tLottie": "I prepared animations ready for developers: light file size, defined start and end points, tied to user actions.",
-    "lGame": "Gamification",
-    "hGame": "Bringing students back to quizzes.",
-    "tGame1": "Goal: get students to come back and answer questions, and grow the average session. I was the only designer on the project, working with the product manager from concept to research prototypes and a developer spec for all platforms.",
-    "sDuck": "Duck challenge in stories",
-    "tDuck1": "The manager's first hypothesis: a new entry point to the quiz through a story on the home screen. The student answers one question in the story and goes on to the full quiz.",
-    "tDuck2": "Competitors hold attention with micro-animations, character reactions and reward effects. A Duolingo lesson runs 14–20 questions, and research puts the optimal set length at 8–14. User interviews showed students didn't want to come back to a separate quiz, so I convinced the manager to build a question bank and let students answer every question right inside the story.",
-    "tDuck3": "The release included answer animations, an Easter egg and an emotional final screen with random GIFs.",
-    "tDuck4": "The most common request in feedback was subject-specific challenges. We decided not to complicate the duck and added questions at the end of watched videos instead, where the student is already focused on a specific course.",
-    "phDuckAnim": "Answer animation (gif)",
-    "phDuckStory": "All questions in the story (gif)",
-    "phDuckEgg": "Easter egg (video/gif)",
-    "phDuckRes": "Post-launch metrics",
-    "sReward": "Rewards for progress",
-    "tReward1": "Hypothesis: students don't get enough reward for their effort. I tested three options. A completion animation with a progress bar grew into a separate large epic. A to-do list metaphor in the materials list was postponed. Micro-interactions shipped.",
-    "tReward2": "I added an emoji micro-animation and Lottie animations on several screens of the student flow. They appear 25% of the time, as a small unexpected delight. The impact is hard to quantify, but students gave positive feedback in interviews.",
-    "phProgress": "Completion animation and progress bar",
-    "phTodo": "To-do list in materials (gif)",
-    "phEmoji": "Micro-animation at the end of the quiz",
+    "sCamp": "Feature stories",
+    "tCamp": "Instagram stories for UULA that explain app features. In each one, the feature's 3D object flies into a real app screen. The Zubda story plays on the literal translation: in Arabic the word means both “the essence of a subject” and “butter”.",
+    "stSummary": "Zubda: subject summary",
+    "stFast": "Fast tracks",
+    "stCards": "Flash cards",
+    "stExams": "Past exams",
     "lAi": "AI in production",
     "hAi": "30 illustrations in a week instead of a month.",
     "tAi": "We had to ship a feature with 30 illustrations very fast, and there was no time to make them in 3D. I trained Midjourney on our style and made all the illustrations with it. At the time, the team was only starting to adopt Midjourney.",
@@ -474,9 +448,6 @@ const i18n = {
     "st2": "<b>2 days</b>Made 30 illustrations.",
     "st3": "<b>2 days</b>Approval.",
     "st4": "<b>1 day</b>Illustrations added to the product.",
-    "phAi1": "Prompt and Midjourney options",
-    "phAi2": "Blender scene",
-    "phAi3": "Final",
     "lRes": "Results",
     "hRes": "Faster delivery, stronger launches.",
     "r1": "launch effectiveness",
