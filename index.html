@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anastasia Volkova</title>
+<meta name="description" content="Product designer for FinTech and EdTech. 6+ years across product and motion design: Skyro, Bitlime, Lenovo, UULA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://siavolkova.vercel.app/">
+<meta property="og:title" content="Anastasia Volkova — Product Designer">
+<meta property="og:description" content="Product designer for FinTech and EdTech. 6+ years across product and motion design.">
+<meta property="og:image" content="https://siavolkova.vercel.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -202,7 +211,7 @@ p{margin:0;}
 
 .slot-placeholder{padding:56px 40px;border:1px dashed var(--line);border-radius:20px;text-align:center;color:var(--text-faint);font-size:14px;}
 
-.contact{margin-top:var(--gap-block);padding-bottom:60px;}
+.contact{scroll-margin-top:90px;margin-top:var(--gap-block);padding-bottom:60px;}
 .contact h2{font-size:clamp(32px,5vw,52px);font-weight:700;letter-spacing:-0.02em;margin-bottom:40px;line-height:1.1;}
 .contact-links{display:flex;gap:28px;flex-wrap:wrap;}
 .contact-links a{font-size:15px;color:var(--text-mute);border-bottom:1px solid var(--line);padding-bottom:4px;}
@@ -236,7 +245,7 @@ p{margin:0;}
       <a href="#work">Cases</a>
       <a href="#motion" data-i18n="nav.motion">Motion</a>
       <a href="#labs">AI Tool</a>
-      <a href="#" data-i18n="nav.contact">Контакты</a>
+      <a href="#contact" data-i18n="nav.contact">Контакты</a>
     </nav>
     <div class="nav-right">
       <div class="lang-switch" id="langSwitch" role="group" aria-label="Язык / Language">
@@ -252,7 +261,7 @@ p{margin:0;}
     <a href="#work">Cases</a>
     <a href="#motion" data-i18n="nav.motion">Motion</a>
     <a href="#labs">AI Tool</a>
-    <a href="#" data-i18n="nav.contact">Контакты</a>
+    <a href="#contact" data-i18n="nav.contact">Контакты</a>
   </nav>
 </header>
 
@@ -269,8 +278,7 @@ p{margin:0;}
       </span>
       <span class="hero-word" data-i18n="hero.word2">designer</span>
     </h1>
-    <p class="hero-sub" data-i18n="hero.sub">Плейсхолдер подзаголовка — здесь будет короткая строка про домены
-      и годы опыта, без лишних деталей.</p>
+    <p class="hero-sub" data-i18n="hero.sub">For finance and edtech. 6+ years across motion and product design</p>
   </section>
 
   <div class="marquee" style="width:100vw;margin-left:calc(50% - 50vw);">
@@ -394,8 +402,7 @@ p{margin:0;}
       </button>
     </div>
 
-    <p class="motion-text reveal" data-i18n="motion.text">Плейсхолдер короткого текста — какие моушн-проекты я делала, для кого,
-      и как этот опыт связан с product-дизайном сегодня.</p>
+    <p class="motion-text reveal" data-i18n="motion.text">7 years in motion design: projects for crypto platforms, television and international EdTech and FinTech platforms. Today that experience works for the product: I design transitions and animations from the start and hand them to engineering via Lottie.</p>
   </section>
 
   <section class="section" id="labs">
@@ -503,7 +510,7 @@ p{margin:0;}
     </div>
   </section>
 
-  <section class="contact">
+  <section class="contact" id="contact">
     <h2 class="reveal" data-i18n="contact.title">Готова обсудить<br>следующий проект.</h2>
     <div class="contact-links reveal">
       <a href="mailto:volkova.workpost@gmail.com">volkova.workpost@gmail.com</a>
@@ -513,7 +520,7 @@ p{margin:0;}
   </section>
 
   <div class="footer">
-    <span>© 2026 Sia Volkova</span>
+    <span>© 2026 Anastasia Volkova</span>
   </div>
 
 </main>
@@ -567,7 +574,7 @@ const i18n = {
     "reel2.label": "Эксплейнер №2",
     "reel3.label": "Эксплейнер №3",
     "reel4.label": "Эксплейнер №4",
-    "motion.text": "Плейсхолдер короткого текста — какие моушн-проекты я делала, для кого, и как этот опыт связан с product-дизайном сегодня.",
+    "motion.text": "7 лет в моушн-дизайне: проекты для криптоплатформ, телевидения и международных EdTech- и FinTech-платформ. Сегодня этот опыт работает на продукт: я сразу прорабатываю переходы и анимации и отдаю их в разработку через Lottie.",
     "test1.quote": "Рекомендую Анастасию за своевременную сдачу работы и профессионализм. С ней очень приятно работать! Позитивный и командный подход",
     "test1.name": "Ahmad Al-Karmi", "test1.role": "Продакт-менеджер",
     "test2.quote": "Анастасия — прекрасный наставник с глубокой экспертизой. Она помогла мне освоить сложные техники в After Effects, всем рекомендую",
@@ -617,7 +624,7 @@ const i18n = {
     "reel2.label": "Explainer #2",
     "reel3.label": "Explainer #3",
     "reel4.label": "Explainer #4",
-    "motion.text": "Short placeholder text — which motion projects I worked on, for whom, and how that experience connects to product design today.",
+    "motion.text": "7 years in motion design: projects for crypto platforms, television and international EdTech and FinTech platforms. Today that experience works for the product: I design transitions and animations from the start and hand them to engineering via Lottie.",
     "test1.quote": "I recommend Anastasia for her timely delivery and professionalism. She's a joy to work with! Positive and collaborative",
     "test1.name": "Ahmad Al-Karmi", "test1.role": "Product Manager",
     "test2.quote": "Anastasia is an outstanding mentor with deep expertise. She helped me master complex AE techniques, highly recommend",
