@@ -175,18 +175,6 @@ p{margin:0;}
 .testimonial-name{font-family:var(--font-display);font-weight:600;font-size:15px;margin-bottom:2px;}
 .testimonial-role{font-size:13px;color:var(--text-faint);}
 
-.cv-modal{position:fixed;inset:0;background:rgba(10,10,11,0.92);display:none;align-items:center;justify-content:center;z-index:1000;padding:24px;}
-.cv-modal.open{display:flex;}
-.cv-modal-inner{width:100%;max-width:880px;height:100%;max-height:1100px;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
-.cv-modal-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 12px 12px 20px;border-bottom:1px solid var(--line);}
-.cv-modal-title{font-size:14px;color:var(--text-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.cv-modal-actions{display:flex;align-items:center;gap:8px;}
-.cv-modal-btn{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 16px;border-radius:10px;font-size:14px;font-family:var(--font-body);border:1px solid var(--line);background:none;color:var(--text);cursor:pointer;}
-.cv-modal-btn--primary{background:var(--text);color:var(--bg);border-color:var(--text);font-weight:600;}
-.cv-modal-btn--icon{width:36px;padding:0;color:var(--text-mute);}
-.cv-modal-btn--icon:hover{color:var(--text);border-color:var(--text-faint);}
-.cv-modal-frame{flex:1;background:#fff;}
-.cv-modal-frame iframe{display:block;width:100%;height:100%;border:0;}
 .video-modal{position:fixed;inset:0;background:rgba(10,10,11,0.92);display:none;align-items:center;justify-content:center;z-index:1000;padding:24px;}
 .video-modal.open{display:flex;}
 .video-modal-inner{position:relative;width:100%;max-width:960px;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;}
@@ -520,7 +508,7 @@ p{margin:0;}
     <div class="contact-links reveal">
       <a href="mailto:volkova.workpost@gmail.com">volkova.workpost@gmail.com</a>
       <a href="https://t.me/siavolkova" target="_blank" rel="noopener">Telegram ↗</a>
-      <a href="assets/cv-anastasia-volkova.pdf" target="_blank" rel="noopener" id="cvLink">CV ↗</a>
+      <a href="https://drive.google.com/file/d/18ho3uds4GUmA-v-NgcNUIyOxlF1E0Sn1/view?usp=sharing" target="_blank" rel="noopener">CV ↗</a>
     </div>
   </section>
 
@@ -529,21 +517,6 @@ p{margin:0;}
   </div>
 
 </main>
-
-<div class="cv-modal" id="cvModal" role="dialog" aria-modal="true" aria-label="CV">
-  <div class="cv-modal-inner">
-    <div class="cv-modal-bar">
-      <span class="cv-modal-title">CV · Anastasia Volkova</span>
-      <div class="cv-modal-actions">
-        <a class="cv-modal-btn cv-modal-btn--primary" href="assets/cv-anastasia-volkova.pdf" download="Anastasia-Volkova-CV.pdf" data-i18n="cv.download">Скачать</a>
-        <button class="cv-modal-btn cv-modal-btn--icon" id="cvModalClose" aria-label="Close">
-          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="cv-modal-frame" id="cvModalFrame"></div>
-  </div>
-</div>
 
 <div class="video-modal" id="videoModal">
   <button class="video-modal-close" id="videoModalClose" aria-label="Закрыть">
@@ -555,7 +528,6 @@ p{margin:0;}
 <script>
 const i18n = {
   ru: {
-    "cv.download": "Скачать",
     "nav.motion": "Motion", "nav.contact": "Контакты",
     "hero.status": "Open to work",
     "hero.word1": "Product", "hero.word2": "designer",
@@ -606,7 +578,6 @@ const i18n = {
     "contact.title": "Готова обсудить<br>следующий проект.",
   },
   en: {
-    "cv.download": "Download",
     "nav.motion": "Motion", "nav.contact": "Contact",
     "hero.status": "Open to work",
     "hero.word1": "Product", "hero.word2": "designer",
@@ -716,29 +687,6 @@ if(showreelWrap){
     showreelWrap.innerHTML = '<iframe title="vimeo-player" src="' + src + '" style="position:absolute;inset:0;width:100%;height:100%;border:0;" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>';
     showreelWrap.style.cursor = 'default';
   }, { once:true });
-}
-
-const cvLink = document.getElementById('cvLink');
-const cvModal = document.getElementById('cvModal');
-const cvModalFrame = document.getElementById('cvModalFrame');
-const cvModalClose = document.getElementById('cvModalClose');
-function closeCvModal(){
-  cvModal.classList.remove('open');
-  cvModalFrame.innerHTML = '';
-  document.body.style.overflow = '';
-}
-if(cvLink && cvModal){
-  cvLink.addEventListener('click', (e) => {
-    // phones show PDFs poorly inside a frame: let the native viewer open it
-    if(window.matchMedia('(max-width: 760px)').matches) return;
-    e.preventDefault();
-    cvModalFrame.innerHTML = '<iframe title="CV" src="' + cvLink.getAttribute('href') + '#view=FitH"></iframe>';
-    cvModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
-  cvModalClose.addEventListener('click', closeCvModal);
-  cvModal.addEventListener('click', (e) => { if(e.target === cvModal) closeCvModal(); });
-  document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && cvModal.classList.contains('open')) closeCvModal(); });
 }
 
 const videoModal = document.getElementById('videoModal');
