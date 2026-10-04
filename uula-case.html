@@ -110,6 +110,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .icons figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 16px 14px;text-align:center;}
 .icons img{display:block;width:100%;max-width:160px;aspect-ratio:1/1;margin:0 auto;}
 .icons figcaption{font-size:13px;color:var(--text-faint);margin-top:8px;}
+.prompt-label{font-size:13px;color:var(--text-faint);margin-top:32px;margin-bottom:10px;}
+.prompt{margin:0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.65;color:var(--text-mute);white-space:pre-wrap;overflow-wrap:break-word;}
 .next{margin-top:var(--gap-block);padding:48px 0 0;border-top:1px solid var(--line);}
 .next a{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-0.01em;}
 .next a:hover{color:var(--accent);}
@@ -275,12 +277,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
         <li data-i18n="st3"><b>2 days</b>Approval.</li>
         <li data-i18n="st4"><b>1 day</b>Illustrations added to the product.</li>
       </ol>
-      <!-- TODO: иллюстрации из архива Midjourney -->
-      <div class="shots shots-3">
-        <div class="ph ph-sq" data-i18n="phMj1">Midjourney illustration · assets/uula-mj-1.webp</div>
-        <div class="ph ph-sq" data-i18n="phMj2">Midjourney illustration · assets/uula-mj-2.webp</div>
-        <div class="ph ph-sq" data-i18n="phMj3">Midjourney illustration · assets/uula-mj-3.webp</div>
-      </div>
+      <img class="shot" src="assets/uula-ai-style.webp" data-i18n-alt="aiCap" alt="The approach reconstructed on new objects: one style, dozens of scenes." loading="lazy" style="border:1px solid var(--line);border-radius:18px;">
+      <p class="scroll-cap" data-i18n="aiCap">The approach reconstructed on new objects: one style, dozens of scenes.</p>
+      <p class="prompt-label" data-i18n="aiPromptL">Prompt</p>
+      <pre class="prompt">isometric 3D illustration of [subject object] for a children's learning app, one hero object standing on a small soft floating cloud platform, toy-like aesthetic inspired by plastic toys and building blocks, chunky simplified shapes with soft rounded edges, mix of glossy and matte plastic materials, limited palette of cobalt blue, violet and clean white with small accents of green, soft studio lighting with gentle specular highlights and subtle ambient occlusion, a few small secondary details around the object, centered composition with generous negative space, solid dark navy background, clean high-detail Blender-style render, friendly and playful mood --ar 1:1 --style raw --stylize 150 --sref [UULA 3D objects] --no text, letters, logos, people, realistic textures</pre>
 
     </div>
   </section>
@@ -341,9 +341,6 @@ const i18n = {
     "icPhysics": "Физика",
     "icQuran": "Коран",
     "icArabic": "Арабский",
-    "phMj1": "Иллюстрация из Midjourney · assets/uula-mj-1.webp",
-    "phMj2": "Иллюстрация из Midjourney · assets/uula-mj-2.webp",
-    "phMj3": "Иллюстрация из Midjourney · assets/uula-mj-3.webp",
     "lWork": "Что делала",
     "hWork": "Сайт, магазин, приложение, кампании.",
     "sSite": "Сайт и лендинги",
@@ -374,6 +371,8 @@ const i18n = {
     "st2": "<b>2 дня</b>Сделала 30 иллюстраций.",
     "st3": "<b>2 дня</b>Согласование.",
     "st4": "<b>1 день</b>Вставили иллюстрации в продукт.",
+    "aiCap": "Реконструкция подхода на новых объектах: один стиль, десятки сцен.",
+    "aiPromptL": "Промпт",
     "lRes": "Результат",
     "hRes": "Быстрее выпуск, сильнее запуски.",
     "r1": "эффективность запусков",
@@ -415,9 +414,6 @@ const i18n = {
     "icPhysics": "Physics",
     "icQuran": "Quran",
     "icArabic": "Arabic",
-    "phMj1": "Midjourney illustration · assets/uula-mj-1.webp",
-    "phMj2": "Midjourney illustration · assets/uula-mj-2.webp",
-    "phMj3": "Midjourney illustration · assets/uula-mj-3.webp",
     "lWork": "What I did",
     "hWork": "Website, store, app, campaigns.",
     "sSite": "Website and landing pages",
@@ -448,6 +444,8 @@ const i18n = {
     "st2": "<b>2 days</b>Made 30 illustrations.",
     "st3": "<b>2 days</b>Approval.",
     "st4": "<b>1 day</b>Illustrations added to the product.",
+    "aiCap": "The approach reconstructed on new objects: one style, dozens of scenes.",
+    "aiPromptL": "Prompt",
     "lRes": "Results",
     "hRes": "Faster delivery, stronger launches.",
     "r1": "launch effectiveness",
