@@ -74,6 +74,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
 .steps > *{min-width:0;}
 .steps li{counter-increment:step;font-size:15px;line-height:1.55;color:var(--text-mute);padding-top:16px;border-top:1px solid var(--line);}
 .steps li::before{content:counter(step);display:block;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--accent);margin-bottom:8px;}
+.steps-3{grid-template-columns:repeat(3,1fr);}
 .steps li b{display:block;color:var(--text);font-weight:600;margin-bottom:4px;}
 
 .metrics{list-style:none;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;}
@@ -109,6 +110,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
 .stage .shots-2{max-width:620px;}
 .stage .shots-3{max-width:900px;}
 .stage-inline{margin-top:32px;padding:48px 40px;}
+.stage + .stage{margin-top:20px;}
 .stage-inline .shots{gap:20px;}
 @media (max-width:860px){
   .feature-head{grid-template-columns:1fr;gap:12px;}
@@ -202,14 +204,14 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
       <div>
         <p class="meta-label">Scope</p>
-        <p class="meta-value">iOS app, 50 screens.</p>
+        <p class="meta-value">iOS app, 100+ screens.</p>
       </div>
     </div>
     <div class="hero-shots">
       <div class="stage"><div class="shots shots-3">
-          <img class="screen" src="assets/main.webp" alt="Home" loading="lazy">
-          <img class="screen" src="assets/select-network.webp" alt="Select network" loading="lazy">
-          <img class="screen" src="assets/chart.webp" alt="Assets" loading="lazy">
+          <img class="screen" src="assets/bitlime/main.webp" alt="Home" loading="lazy">
+          <img class="screen" src="assets/bitlime/pair.webp" alt="Pair chart" loading="lazy">
+          <img class="screen" src="assets/bitlime/distribution.webp" alt="Assets" loading="lazy">
         </div></div>
     </div>
   </section>
@@ -253,7 +255,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       <div class="sub">
         <h3>Competitors</h3>
         <p class="text">I compared Binance, Bybit and Bitget screen by screen. They are built almost the same way. The main difference is how much they show at once. Binance asks for a role on the first screen, but none of them shows a newcomer what they get before signing up.</p>
-        <div class="table-wrap"><table class="t-comp"><thead><tr><th></th><th>Binance</th><th>Bybit</th><th>Bitget</th><th>Bitlime</th></tr></thead><tbody><tr><th>First screen</th><td>Choose a role</td><td>Choose exchange or Web3, demo trading, search</td><td>Sign-up and a news pop-up</td><td>Preview of the account with a locked balance, demo trading, favorite pairs</td></tr><tr><th>Sign-up</th><td>Email or phone, Google, Apple, Telegram, corporate account</td><td>Email or phone, Google, Apple, Telegram, confirmation code</td><td>Email or phone, Google, Apple, Telegram, bot check</td><td>Email or phone, Google, Apple, Telegram</td></tr><tr><th>Verification</th><td>Passkey</td><td>Country, document type, document photo</td><td>ID type, country, document photo, face recognition</td><td>A checklist up front, then country, ID type and photo</td></tr><tr><th>Deposit from Home</th><td>Deposit, Pay or P2P → coin → network → address</td><td>Buy / Deposit / P2P → payment method → amount → coin → network → address</td><td>Deposit → card, P2P or exchanger → coin → address</td><td>Buy / Deposit / P2P → method → coin → network with min. amount and arrival time → address</td></tr><tr><th>Assets</th><td>Overview, Spot, Earn and Deposits tabs, spot history</td><td>Balance, hide assets, send, transfer, convert</td><td>Spot wallet and transaction history</td><td>One balance card with a chart and asset split, Deposit, Send, Transfer, hide-balance mode</td></tr></tbody></table></div>
+        <div class="table-wrap"><table class="t-comp"><thead><tr><th></th><th>Binance</th><th>Bybit</th><th>Bitget</th><th>Bitlime</th></tr></thead><tbody><tr><th>First screen</th><td>Choose a role</td><td>Choose exchange or Web3, demo trading, search</td><td>Sign-up and a news pop-up</td><td>Preview of the account with a locked balance, demo trading, favorite pairs</td></tr><tr><th>Sign-up</th><td>Email or phone, Google, Apple, Telegram, corporate account</td><td>Email or phone, Google, Apple, Telegram, confirmation code</td><td>Email or phone, Google, Apple, Telegram, bot check</td><td>Email or phone, Google, Apple, Telegram</td></tr><tr><th>Verification</th><td>Passkey</td><td>Country, document type, document photo</td><td>ID type, country, document photo, face recognition</td><td>A checklist up front, then country, ID type, document photo, selfie and address</td></tr><tr><th>Deposit from Home</th><td>Deposit, Pay or P2P → coin → network → address</td><td>Buy / Deposit / P2P → payment method → amount → coin → network → address</td><td>Deposit → card, P2P or exchanger → coin → address</td><td>Buy / Deposit / P2P → method → coin → network with min. amount and arrival time → address</td></tr><tr><th>Assets</th><td>Overview, Spot, Earn and Deposits tabs, spot history</td><td>Balance, hide assets, send, transfer, convert</td><td>Spot wallet and transaction history</td><td>One balance card with a chart and asset split, Deposit, Send, Transfer, hide-balance mode</td></tr></tbody></table></div>
       </div>
 
       <div class="sub">
@@ -267,8 +269,8 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
   <section class="block">
     <p class="block-label">Structure</p>
     <div>
-      <p class="text">The main sections are Home, Markets, Trade and Assets, plus a Profile. The deposit is split into small, simple steps instead of one crowded screen.</p>
-      <div class="map"><div class="map-card"><p class="map-title">Before sign-up</p><ul><li class="">Sign-up page</li><li class="">News pop-up</li></ul></div><div class="map-card"><p class="map-title">Sign-up / Log in</p><ul><li class="">Sign-up</li><li class="">Log in</li><li class="">Google, Apple, Telegram</li></ul></div><div class="map-card"><p class="map-title">Home</p><ul><li class="">Verification</li><li class="sub-i">Country</li><li class="sub-i">Personal data</li><li class="sub-i">Confirm</li><li class="">Buy crypto</li><li class="sub-i">Pay</li><li class="sub-i">P2P → coin → network → address</li><li class="sub-i">Deposit crypto</li><li class="">Sell crypto</li><li class="">Learning and support</li><li class="">Notifications</li></ul></div><div class="map-card"><p class="map-title">Profile</p><ul><li class="">Security</li><li class="">Verification</li><li class="">Edit data</li><li class="">Theme</li><li class="">Scan QR code</li><li class="">Support</li><li class="">Settings</li></ul></div><div class="map-card"><p class="map-title">Trade</p><ul><li class="">Analytics</li><li class="sub-i">Market reports</li><li class="sub-i">Historical data</li></ul></div><div class="map-card"><p class="map-title">Assets</p><ul><li class="">History</li><li class="sub-i">Spot transactions</li><li class="">Buy</li><li class="">Send (withdraw)</li><li class="">Transfer between wallets</li><li class="">Balance changes</li><li class="">Create a wallet</li></ul></div><div class="map-card"><p class="map-title">Markets</p><ul><li class="">Favorites</li><li class="">Active coins</li><li class="">New coins</li><li class="">Popular coins</li></ul></div></div>
+      <p class="text">Five tabs: Home, Markets, Trade, Earn and Assets, plus a Profile. Every flow is split into small steps instead of one crowded screen, and first-time actions get a short tip.</p>
+      <div class="map"><div class="map-card"><p class="map-title">Before sign-up</p><ul><li class="">Account preview with a locked balance</li><li class="">Starter pairs</li><li class="">Demo trading</li></ul></div><div class="map-card"><p class="map-title">Sign-up / Log in</p><ul><li class="">Email or phone</li><li class="">Google, Apple, Telegram</li><li class="">Password reset</li></ul></div><div class="map-card"><p class="map-title">Verification</p><ul><li class="">Checklist</li><li class="">Country and ID type</li><li class="">Document photo</li><li class="">Selfie</li><li class="">Address</li><li class="">Under review</li></ul></div><div class="map-card"><p class="map-title">Home</p><ul><li class="">Buy / Deposit / P2P</li><li class="">First steps for beginners</li><li class="">Education</li><li class="">Earn</li><li class="">News</li><li class="">Search</li></ul></div><div class="map-card"><p class="map-title">Deposit and P2P</p><ul><li class="">Method</li><li class="sub-i">Coin</li><li class="sub-i">Network</li><li class="sub-i">Address</li><li class="">Status and history</li><li class="">P2P buy and sell</li><li class="">Receive via Pay</li></ul></div><div class="map-card"><p class="map-title">Markets</p><ul><li class="">List, Favorites, Gainers</li><li class="">Data</li><li class="sub-i">Fear &amp; Greed</li><li class="sub-i">Order flow</li><li class="">Pair page</li><li class="sub-i">Chart</li><li class="sub-i">Flow of funds</li></ul></div><div class="map-card"><p class="map-title">Trade</p><ul><li class="">Spot: limit and market</li><li class="">TP/SL</li><li class="">Order confirmation</li><li class="">Open orders</li><li class="">Demo mode with tips</li></ul></div><div class="map-card"><p class="map-title">Earn</p><ul><li class="">Staking</li><li class="">Stake</li><li class="">Position</li><li class="">Unstake</li></ul></div><div class="map-card"><p class="map-title">Assets</p><ul><li class="">Accounts: Spot, Earn, Margin, Funding</li><li class="">Send</li><li class="">Transfer</li><li class="">Withdrawal history</li><li class="">Conversion</li></ul></div><div class="map-card"><p class="map-title">Profile</p><ul><li class="">Account information</li><li class="">Edit profile</li><li class="">Settings</li><li class="">All functions</li></ul></div></div>
     </div>
   </section>
 
@@ -279,16 +281,42 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       <div class="feature-head">
         <h3>First entry and Home</h3>
         <div>
-          <p class="text">Before signing up, the user sees what their account will look like: a locked balance with "1,000 USDT will be here", one Registration button and an option to try demo trading. They can also pick favorite pairs right away.</p>
-          <p class="text">Instead of asking for a role, this screen works for both: beginners see the welcome bonus, experienced users can go straight to demo trading.</p>
+          <p class="text">Before signing up, the user sees what their account will look like: a locked balance, a reward of up to 1,000 USDT, one Registration button and an option to try demo trading. They can also pick starter pairs for their favorites right away.</p>
+          <p class="text">Instead of asking for a role, this screen works for both: beginners see the reward, experienced users can go straight to demo trading.</p>
           <p class="text">On Home, the main action, Buy / Deposit / P2P, is the biggest button on the screen, because in research users couldn't find it.</p>
         </div>
       </div>
       <div class="stage">
+        <div class="shots shots-2">
+          <img class="screen" src="assets/bitlime/first-entry-main.webp" alt="First entry" loading="lazy">
+          <img class="screen" src="assets/bitlime/main.webp" alt="Home" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>Beginner path</h3>
+        <div>
+          <p class="text">Beginners' pains from the journey map turned into one guided path from the first screen to the first trade.</p>
+          <ol class="steps steps-3">
+            <li><b>See the account</b>A preview with a locked balance and a reward, before any sign-up.</li>
+            <li><b>Follow the checklist</b>Home shows four first steps: account, verification, demo trade, first deposit.</li>
+            <li><b>Learn the basics</b>Academy has a beginner path of six short lessons, about 15 minutes, with a 10 USDT bonus at the end.</li>
+            <li><b>Make a first deposit</b>The method screen recommends P2P to people with no crypto and explains how it works. The lesson about networks comes right before the deposit.</li>
+            <li><b>Try a demo trade</b>1,000 practice USDT and three tips that explain the trade form. A market order shows how much you will pay before you tap Buy.</li>
+            <li><b>Get a tip at risky moments</b>The first P2P order, TP/SL, stake and withdrawal each show one short warning in plain words.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="stage">
         <div class="shots shots-3">
-          <img class="screen" src="assets/onboarding-logo.webp" alt="Onboarding logo" loading="lazy">
-          <img class="screen" src="assets/first-entry-main.webp" alt="First entry" loading="lazy">
-          <img class="screen" src="assets/main.webp" alt="Home" loading="lazy">
+          <img class="screen" src="assets/bitlime/beginner.webp" alt="First steps" loading="lazy">
+          <img class="screen" src="assets/bitlime/academy.webp" alt="Academy" loading="lazy">
+          <img class="screen" src="assets/bitlime/lesson-network.webp" alt="Lesson about networks" loading="lazy">
+          <img class="screen" src="assets/bitlime/method-tip.webp" alt="Deposit method for beginners" loading="lazy">
+          <img class="screen" src="assets/bitlime/demo.webp" alt="Demo mode" loading="lazy">
+          <img class="screen" src="assets/bitlime/market-beginner.webp" alt="Market order" loading="lazy">
         </div>
       </div>
     </div>
@@ -297,19 +325,19 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       <div class="feature-head">
         <h3>Registration and verification</h3>
         <div>
-          <p class="text">Short forms, clear error messages and a simple checklist of what you need for verification.</p>
+          <p class="text">Short forms, clear error messages and sign-in with Google, Apple or Telegram.</p>
+          <p class="text">Verification starts with a checklist of what you need and how long it takes, and ends with a clear status: when to expect an answer.</p>
         </div>
       </div>
       <div class="stage">
         <div class="shots shots-4">
-          <img class="screen" src="assets/typing.webp" alt="Typing" loading="lazy">
-          <img class="screen" src="assets/error-copy.webp" alt="Error" loading="lazy">
-          <img class="screen" src="assets/intro.webp" alt="Intro" loading="lazy">
-          <img class="screen" src="assets/document-type.webp" alt="Document type" loading="lazy">
+          <img class="screen" src="assets/bitlime/error-copy.webp" alt="Registration error" loading="lazy">
+          <img class="screen" src="assets/bitlime/intro.webp" alt="Verification intro" loading="lazy">
+          <img class="screen" src="assets/bitlime/document-type.webp" alt="Document type" loading="lazy">
+          <img class="screen" src="assets/bitlime/under-review.webp" alt="Under review" loading="lazy">
         </div>
       </div>
     </div>
-
 
     <div class="feature">
       <div class="feature-head">
@@ -322,14 +350,37 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
             <li><b>Pick a network</b>Confirmations, minimum amount and arrival time for each.</li>
             <li><b>Send to the address</b>QR code, copy and share.</li>
           </ol>
+          <p class="text" style="margin-top:24px;">After the deposit, a status screen shows the network, confirmations and transaction ID.</p>
         </div>
       </div>
       <div class="stage">
         <div class="shots shots-4">
-          <img class="screen" src="assets/method.webp" alt="Method" loading="lazy">
-          <img class="screen" src="assets/select-coin.webp" alt="Select coin" loading="lazy">
-          <img class="screen" src="assets/select-network.webp" alt="Select network" loading="lazy">
-          <img class="screen" src="assets/address.webp" alt="Address" loading="lazy">
+          <img class="screen" src="assets/bitlime/method.webp" alt="Method" loading="lazy">
+          <img class="screen" src="assets/bitlime/select-coin.webp" alt="Select coin" loading="lazy">
+          <img class="screen" src="assets/bitlime/select-network.webp" alt="Select network" loading="lazy">
+          <img class="screen" src="assets/bitlime/address.webp" alt="Address" loading="lazy">
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-1">
+          <img class="screen" src="assets/bitlime/credited.webp" alt="Deposit credited" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>P2P</h3>
+        <div>
+          <p class="text">The user enters how much they want to pay and sees how much USDT they get at the best price. Sellers can be filtered by payment method and show a verified badge, completion rate and limits.</p>
+          <p class="text">The order screen lists the payment details step by step, with a timer and a note that Bitlime holds the crypto until the seller confirms. On the first order, a tip warns to tap "I've paid" only after the money is sent.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-3">
+          <img class="screen" src="assets/bitlime/p2p-sellers.webp" alt="Select seller" loading="lazy">
+          <img class="screen" src="assets/bitlime/p2p-payment.webp" alt="Payment" loading="lazy">
+          <img class="screen" src="assets/bitlime/p2p-completed.webp" alt="Order completed" loading="lazy">
         </div>
       </div>
     </div>
@@ -338,16 +389,15 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       <div class="feature-head">
         <h3>Trade</h3>
         <div>
-          <p class="text">A simple buy/sell form, an order book and stop-loss / take-profit settings. Every state is designed: empty, typing, filled, sell and open order.</p>
+          <p class="text">A simple buy/sell form next to the order book. Before a limit order is placed, a confirmation sheet shows the total and the fee. Open orders show how much is filled.</p>
         </div>
       </div>
       <div class="stage">
-        <div class="shots shots-5">
-          <img class="screen" src="assets/default.webp" alt="Default" loading="lazy">
-          <img class="screen" src="assets/input.webp" alt="Input" loading="lazy">
-          <img class="screen" src="assets/input-filled.webp" alt="Input filled" loading="lazy">
-          <img class="screen" src="assets/tp-sl-sell.webp" alt="TP-SL sell" loading="lazy">
-          <img class="screen" src="assets/open-order.webp" alt="Open order" loading="lazy">
+        <div class="shots shots-4">
+          <img class="screen" src="assets/bitlime/default.webp" alt="Default" loading="lazy">
+          <img class="screen" src="assets/bitlime/tp-sl-sell.webp" alt="TP/SL sell" loading="lazy">
+          <img class="screen" src="assets/bitlime/order-confirm.webp" alt="Order confirmation" loading="lazy">
+          <img class="screen" src="assets/bitlime/open-order.webp" alt="Open order" loading="lazy">
         </div>
       </div>
     </div>
@@ -356,15 +406,33 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       <div class="feature-head">
         <h3>Markets</h3>
         <div>
-          <p class="text">Market data on one screen: how prices changed, popular coins, market zones and where money flows. Search remembers recent queries, shows what others look for and splits results into Spot, Futures and Web3.</p>
+          <p class="text">The market list can be filtered by sector. The Data tab shows the Fear &amp; Greed index with an explanation, how many coins went up or down, and order flow for BTC, ETH and SOL.</p>
+          <p class="text">The pair page has a candle chart with moving averages, volume and recent trades. Flow of funds shows who is buying and selling: each ring is one order size, green for buy and orange for sell, with net inflow in the center. Below are the exact numbers and the net flow of large orders over 5 days and 24 hours.</p>
         </div>
       </div>
       <div class="stage">
         <div class="shots shots-4">
-          <img class="screen" src="assets/data.webp" alt="Markets" loading="lazy">
-          <img class="screen" src="assets/search-by-slot.webp" alt="Search by slot" loading="lazy">
-          <img class="screen" src="assets/search-history.webp" alt="Search history" loading="lazy">
-          <img class="screen" src="assets/search-results.webp" alt="Search results" loading="lazy">
+          <img class="screen" src="assets/bitlime/markets.webp" alt="Markets" loading="lazy">
+          <img class="screen" src="assets/bitlime/data.webp" alt="Data" loading="lazy">
+          <img class="screen" src="assets/bitlime/pair.webp" alt="Pair" loading="lazy">
+          <img class="screen" src="assets/bitlime/flow-of-funds.webp" alt="Flow of funds" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-head">
+        <h3>Earn</h3>
+        <div>
+          <p class="text">One screen with the total staked, rewards earned and your positions with their status. Each coin shows its APR and how long unstaking takes.</p>
+          <p class="text">Before staking, the user sees estimated rewards per day, month and year. On the first stake, a tip warns that the coins are locked while staked and for about 2 days after unstaking. The position screen shows what happens next: staked, activating, earning rewards.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-3">
+          <img class="screen" src="assets/bitlime/earn.webp" alt="Staking" loading="lazy">
+          <img class="screen" src="assets/bitlime/earn-amount.webp" alt="Stake amount" loading="lazy">
+          <img class="screen" src="assets/bitlime/earn-position.webp" alt="Position" loading="lazy">
         </div>
       </div>
     </div>
@@ -373,14 +441,23 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       <div class="feature-head">
         <h3>Assets</h3>
         <div>
-          <p class="text">One card with the total balance, a chart and asset split, buttons for Deposit, Send and Transfer, and a hide-balance mode.</p>
+          <p class="text">One card with the total balance, a chart or asset split, buttons for Deposit, Send and Transfer, and a hide-balance mode. Below, the balance by account (Spot, Earn, Margin, Funding) or by coin, with today's PnL and average price.</p>
+          <p class="text">Send shows the network fee and arrival time, warns on the first withdrawal that a wrong address or network means the funds are lost, and asks for a 2FA code. Transfer moves money between accounts instantly with no commission.</p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="shots shots-4">
+          <img class="screen" src="assets/bitlime/accounts.webp" alt="Accounts" loading="lazy">
+          <img class="screen" src="assets/bitlime/chart.webp" alt="Chart" loading="lazy">
+          <img class="screen" src="assets/bitlime/distribution.webp" alt="Distribution" loading="lazy">
+          <img class="screen" src="assets/bitlime/hidden-balance.webp" alt="Hidden balance" loading="lazy">
         </div>
       </div>
       <div class="stage">
         <div class="shots shots-3">
-          <img class="screen" src="assets/chart.webp" alt="Chart" loading="lazy">
-          <img class="screen" src="assets/distribution.webp" alt="Distribution" loading="lazy">
-          <img class="screen" src="assets/hidden-balance.webp" alt="Hidden balance" loading="lazy">
+          <img class="screen" src="assets/bitlime/send.webp" alt="Send" loading="lazy">
+          <img class="screen" src="assets/bitlime/send-2fa.webp" alt="2FA" loading="lazy">
+          <img class="screen" src="assets/bitlime/transfer.webp" alt="Transfer" loading="lazy">
         </div>
       </div>
     </div>
@@ -389,17 +466,14 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       <div class="feature-head">
         <h3>Profile</h3>
         <div>
-          <p class="text">Account info and VIP progress in one card. Risky actions like Disable account are moved to Settings.</p>
+          <p class="text">Account info and VIP progress in one card, with quick access to the most used functions. Risky actions like Disable account are moved to Settings.</p>
         </div>
       </div>
       <div class="stage">
         <div class="shots shots-3">
-          <img class="screen" src="assets/main-copy-2.webp" alt="Profile" loading="lazy">
-          <img class="screen" src="assets/account-information.webp" alt="Account information" loading="lazy">
-          <img class="screen" src="assets/all-functions.webp" alt="All functions" loading="lazy">
-          <img class="screen" src="assets/edit-default.webp" alt="Edit profile" loading="lazy">
-          <img class="screen" src="assets/edit-changed.webp" alt="Edit profile, changed" loading="lazy">
-          <img class="screen" src="assets/settings.webp" alt="Settings" loading="lazy">
+          <img class="screen" src="assets/bitlime/profile.webp" alt="Profile" loading="lazy">
+          <img class="screen" src="assets/bitlime/account-information.webp" alt="Account information" loading="lazy">
+          <img class="screen" src="assets/bitlime/settings.webp" alt="Settings" loading="lazy">
         </div>
       </div>
     </div>
@@ -413,10 +487,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius
       </div>
       <div class="stage">
         <div class="shots shots-4">
-          <img class="screen" src="assets/empty.webp" alt="Empty" loading="lazy">
-          <img class="screen" src="assets/error.webp" alt="Error" loading="lazy">
-          <img class="screen" src="assets/confirmation.webp" alt="Confirmation" loading="lazy">
-          <img class="screen" src="assets/success.webp" alt="Success" loading="lazy">
+          <img class="screen" src="assets/bitlime/conv-filled.webp" alt="Filled" loading="lazy">
+          <img class="screen" src="assets/bitlime/conv-error.webp" alt="Error" loading="lazy">
+          <img class="screen" src="assets/bitlime/confirmation.webp" alt="Confirmation" loading="lazy">
+          <img class="screen" src="assets/bitlime/success.webp" alt="Success" loading="lazy">
         </div>
       </div>
     </div>
